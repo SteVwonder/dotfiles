@@ -8,7 +8,6 @@ sudo apt-get -qq dist-upgrade
 
 # Install APT packages.
 packages=(
-  ansible
   build-essential
   emacs24
   git-core
