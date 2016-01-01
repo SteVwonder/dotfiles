@@ -7,7 +7,13 @@ else
   export EDITOR='vim'
 fi
 
+if [[ "$(type -P emacsclient)" ]]; then
+    EDITOR="emacsclient"
+else
+    EDITOR="emacs"
+fi
+export EDITOR
+export SUDO_EDITOR=$EDITOR
+
 export VISUAL="$EDITOR"
 alias q="$EDITOR"
-alias qv="q $DOTFILES/link/.{,g}vimrc +'cd $DOTFILES'"
-alias qs="q $DOTFILES"

@@ -1,51 +1,51 @@
 
 # Git shortcuts
 
-alias g='git'
-function ga() { git add "${@:-.}"; } # Add all files by default
-alias gp='git push'
-alias gpa='gp --all'
-alias gu='git pull'
-alias gl='git log'
-alias gg='gl --decorate --oneline --graph --date-order --all'
-alias gs='git status'
-alias gst='gs'
-alias gd='git diff'
-alias gdc='gd --cached'
-alias gm='git commit -m'
-alias gma='git commit -am'
-alias gb='git branch'
-alias gba='git branch -a'
-function gc() { git checkout "${@:-master}"; } # Checkout master by default
-alias gco='gc'
-alias gcb='gc -b'
-alias gbc='gc -b' # Dyslexia
-alias gr='git remote'
-alias grv='gr -v'
-#alias gra='git remote add'
-alias grr='git remote rm'
-alias gcl='git clone'
-alias gcd='git rev-parse 2>/dev/null && cd "./$(git rev-parse --show-cdup)"'
+# alias g='git'
+# function ga() { git add "${@:-.}"; } # Add all files by default
+# alias gp='git push'
+# alias gpa='gp --all'
+# alias gu='git pull'
+# alias gl='git log'
+# alias gg='gl --decorate --oneline --graph --date-order --all'
+# alias gs='git status'
+# alias gst='gs'
+# alias gd='git diff'
+# alias gdc='gd --cached'
+# alias gm='git commit -m'
+# alias gma='git commit -am'
+# alias gb='git branch'
+# alias gba='git branch -a'
+# function gc() { git checkout "${@:-master}"; } # Checkout master by default
+# alias gco='gc'
+# alias gcb='gc -b'
+# alias gbc='gc -b' # Dyslexia
+# alias gr='git remote'
+# alias grv='gr -v'
+# #alias gra='git remote add'
+# alias grr='git remote rm'
+# alias gcl='git clone'
+# alias gcd='git rev-parse 2>/dev/null && cd "./$(git rev-parse --show-cdup)"'
 
 # Current branch or SHA if detached.
-alias gbs='git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
+# alias gbs='git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
 
 # Run commands in each subdirectory.
-alias gu-all='eachdir git pull'
-alias gp-all='eachdir git push'
-alias gs-all='eachdir git status'
+# alias gu-all='eachdir git pull'
+# alias gp-all='eachdir git push'
+# alias gs-all='eachdir git status'
 
 # open all changed files (that still actually exist) in the editor
-function ged() {
-  local files=()
-  for f in $(git diff --name-only "$@"); do
-    [[ -e "$f" ]] && files=("${files[@]}" "$f")
-  done
-  local n=${#files[@]}
-  echo "Opening $n $([[ "$@" ]] || echo "modified ")file$([[ $n != 1 ]] && \
-    echo s)${@:+ modified in }$@"
-  q "${files[@]}"
-}
+# function ged() {
+#   local files=()
+#   for f in $(git diff --name-only "$@"); do
+#     [[ -e "$f" ]] && files=("${files[@]}" "$f")
+#   done
+#   local n=${#files[@]}
+#   echo "Opening $n $([[ "$@" ]] || echo "modified ")file$([[ $n != 1 ]] && \
+#     echo s)${@:+ modified in }$@"
+#   q "${files[@]}"
+# }
 
 # add a github remote by github username
 function gra() {
@@ -79,19 +79,19 @@ AWK
 }
 
 # open last commit in GitHub, in the browser.
-function gfu() {
-  local n="${@:-1}"
-  n=$((n-1))
-  git web--browse  $(git log -n 1 --skip=$n --pretty=oneline | awk "{printf \"$(gurl)/commit/%s\", substr(\$1,1,7)}")
-}
+# function gfu() {
+#   local n="${@:-1}"
+#   n=$((n-1))
+#   git web--browse  $(git log -n 1 --skip=$n --pretty=oneline | awk "{printf \"$(gurl)/commit/%s\", substr(\$1,1,7)}")
+# }
 # open current branch + path in GitHub, in the browser.
-alias gpu='git web--browse $(gurlp)'
+# alias gpu='git web--browse $(gurlp)'
 
 # Just the last few commits, please!
 for n in {1..5}; do alias gf$n="gf -n $n"; done
 
-function gj() { git-jump "${@:-next}"; }
-alias gj-='gj prev'
+# function gj() { git-jump "${@:-next}"; }
+# alias gj-='gj prev'
 
 # Combine diff --name-status and --stat
 function gstat() {
@@ -142,22 +142,22 @@ function gstat() {
 }
 
 # OSX-specific Git shortcuts
-if is_osx; then
-  alias gdk='git ksdiff'
-  alias gdkc='gdk --cached'
-  function gt() {
-    local path repo
-    {
-      pushd "${1:-$PWD}"
-      path="$PWD"
-      repo="$(git rev-parse --show-toplevel)"
-      popd
-    } >/dev/null 2>&1
-    if [[ -e "$repo" ]]; then
-      echo "Opening git repo $repo."
-      gittower "$repo"
-    else
-      echo "Error: $path is not a git repo."
-    fi
-  }
-fi
+# if is_osx; then
+#   alias gdk='git ksdiff'
+#   alias gdkc='gdk --cached'
+#   function gt() {
+#     local path repo
+#     {
+#       pushd "${1:-$PWD}"
+#       path="$PWD"
+#       repo="$(git rev-parse --show-toplevel)"
+#       popd
+#     } >/dev/null 2>&1
+#     if [[ -e "$repo" ]]; then
+#       echo "Opening git repo $repo."
+#       gittower "$repo"
+#     else
+#       echo "Error: $path is not a git repo."
+#     fi
+#   }
+# fi
