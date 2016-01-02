@@ -13,8 +13,11 @@ packages=(
   git-core
   htop
   id3tool
+  i3
   libssl-dev
+  tmux
   tree
+  w3m
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
