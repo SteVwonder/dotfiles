@@ -196,4 +196,4 @@ bar {
 exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id volnoti
-exec --no-startup-id "~/.i3/local_config.sh"
+exec --no-startup-id "~/.i3/LOCAL_config.sh"
