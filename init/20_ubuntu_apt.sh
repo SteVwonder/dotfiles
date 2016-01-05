@@ -10,6 +10,7 @@ sudo apt-get -qq dist-upgrade
 packages=(
   build-essential
   emacs24
+  feh
   git-core
   htop
   id3tool
@@ -34,6 +35,19 @@ if [[ ! "$(type -P git-extras)" ]]; then
   e_header "Installing Git Extras"
   (
     cd $DOTFILES/vendor/git-extras &&
+    make &&
+    sudo make install
+  )
+fi
+
+# Install Volnoti
+if [[ ! "$(type -P git-extras)" ]]; then
+  e_header "Installing Volnoti"
+  (
+    cd $DOTFILES/vendor/volnoti &&
+    bash prepare.sh &&
+    ./configure --prefix=/usr/local &&
+    make &&
     sudo make install
   )
 fi
