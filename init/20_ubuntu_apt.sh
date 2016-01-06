@@ -1,6 +1,8 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
 is_ubuntu || return 1
 
+# Add git ppa
+sudo add-apt-repository -y ppa:git-core/ppa
 # Update APT.
 e_header "Updating APT"
 sudo apt-get -qq update
@@ -10,7 +12,6 @@ sudo apt-get -qq dist-upgrade
 packages=(
   autoconf
   build-essential
-  emacs24
   feh
   git-core
   htop
@@ -23,6 +24,24 @@ packages=(
   tmux
   tree
   w3m
+
+  # emacs dependencies
+  libx11-dev
+  xaw3dg-dev
+  libjpeg-dev
+  libpng12-dev
+  libgif-dev
+  libtiff4-dev
+  libxft-dev
+  librsvg2-dev
+  libmagickcore-dev
+  libmagick++-dev
+  libxml2-dev
+  libgpm-dev
+  libghc-gconf-dev
+  libotf-dev
+  libm17n-dev
+  libgnutls-dev
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
@@ -57,14 +76,28 @@ if [[ ! "$(type -P volnoti)" ]]; then
   )
 fi
 
-# Install Emacs
+function install_emacs() {
+    version="$1"
+
+    if [ ! -d emacs-"$version" ]; then
+        if [ ! -f emacs-"$version".tar.xz ]; then
+            wget http://ftp.gnu.org/gnu/emacs/emacs-"$version".tar.xz
+        fi
+        tar xvf emacs-"$version".tar.xz
+    fi
+
+    cd emacs-"$version"
+    ./configure \
+        --with-xft \
+        --with-x-toolkit=lucid \
+        --prefix=/usr/local/
+    make
+    sudo make install
+}
+
+# Install Latest Emacs
 e_header "Installing Emacs"
 (
     cd $DOTFILES/vendor/ &&
-        wget http://mirror.lug.udel.edu/pub/gnu/emacs/emacs-24.5.tar.xz &&
-        tar -xf ./emacs-24.5.tar.xz &&
-        cd emacs-24.5 &&
-        ./configure --prefix=/usr/local --without-x &&
-        make -j4 &&
-        sudo make install
+        install_emacs "24.5"
 )
