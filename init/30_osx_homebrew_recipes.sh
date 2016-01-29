@@ -14,6 +14,7 @@ recipes=(
   git
   git-extras
   htop-osx
+  reattach-to-user-namespace
   ssh-copy-id
   sshfs
   subversion
