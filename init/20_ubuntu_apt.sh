@@ -21,6 +21,7 @@ packages=(
   libgtk2.0-dev
   libncurses-dev
   libssl-dev
+  subversion
   tmux
   tree
   w3m
