@@ -7,3 +7,6 @@
 [submodule "vendor/volnoti"]
 	path = vendor/volnoti
 	url = https://github.com/stevwonder/volnoti.git
+[submodule "vendor/playerctl"]
+	path = vendor/playerctl
+	url = https://github.com/SteVwonder/playerctl

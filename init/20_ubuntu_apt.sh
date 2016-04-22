@@ -26,6 +26,10 @@ packages=(
   tree
   w3m
 
+  # playerctl dependencies
+  gtk-doc-tools
+  gobject-introspection
+
   # emacs dependencies
   libx11-dev
   xaw3dg-dev
@@ -71,6 +75,18 @@ if [[ ! "$(type -P volnoti)" ]]; then
     cd $DOTFILES/vendor/volnoti &&
         bash prepare.sh &&
         bash fix_headers.sh &&
+        ./configure --prefix=/usr/local &&
+        make &&
+        sudo make install
+  )
+fi
+
+# Install Playerctl
+if [[ ! "$(type -P playerctl)" ]]; then
+  e_header "Installing Playerctl"
+  (
+    cd $DOTFILES/vendor/playerctl &&
+        ./autogen.sh &&
         ./configure --prefix=/usr/local &&
         make &&
         sudo make install
