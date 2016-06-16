@@ -10,3 +10,6 @@
 [submodule "vendor/playerctl"]
 	path = vendor/playerctl
 	url = https://github.com/SteVwonder/playerctl
+[submodule "vendor/diff-so-fancy"]
+	path = vendor/diff-so-fancy
+	url = https://github.com/so-fancy/diff-so-fancy.git
