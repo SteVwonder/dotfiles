@@ -63,6 +63,8 @@
 (require 'setup-company)
 (require 'setup-helm)
 (require 'setup-tex)
+(require 'setup-irony)
+(require 'setup-flycheck)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
