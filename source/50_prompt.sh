@@ -22,6 +22,8 @@
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
 
+is_bash || return 1  # if not bash, skip this file
+
 if [[ ! "${prompt_colors[@]}" ]]; then
   prompt_colors=(
     "36" # information color
