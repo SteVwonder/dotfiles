@@ -1,6 +1,6 @@
 # Editing
 
-if [[ "$(type -P emacsclient)" ]]; then
+if ! type emacsclient > /dev/null; then
     EDITOR="emacsclient"
 else
     EDITOR="emacs"
