@@ -1,9 +1,11 @@
 # History settings
 
-# Allow use to re-edit a faild history substitution.
-shopt -s histreedit
-# History expansions will be verified before execution.
-shopt -s histverify
+if [ ! -z "$BASH" ]; then
+    # Allow use to re-edit a faild history substitution.
+    shopt -s histreedit
+    # History expansions will be verified before execution.
+    shopt -s histverify
+fi
 
 # Entries beginning with space aren't added into history, and duplicate
 # entries will be erased (leaving the most recent entry).
