@@ -51,6 +51,11 @@ function get_os() {
   done
 }
 
+# Shell detection
+function is_bash() {
+  [[ ! -z "$BASH" ]] || return 1
+}
+
 # Remove an entry from $PATH
 # Based on http://stackoverflow.com/a/2108540/142339
 function path_remove() {

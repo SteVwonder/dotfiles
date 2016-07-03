@@ -1,6 +1,6 @@
 # History settings
 
-if [ ! -z "$BASH" ]; then
+if is_bash; then
     # Allow use to re-edit a faild history substitution.
     shopt -s histreedit
     # History expansions will be verified before execution.
