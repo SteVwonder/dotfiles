@@ -16,3 +16,4 @@
 [submodule "vendor/zplug"]
 	path = vendor/zplug
 	url = https://github.com/zplug/zplug.git
+    ignore = dirty
