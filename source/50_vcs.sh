@@ -61,7 +61,7 @@ function gra() {
 function gurl() {
   local remotename="${@:-origin}"
   local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
-  [[ "$remote" ]] || return
+  [[ -n "$remote" ]] || return
   local user_repo="$(echo "$remote" | perl -pe 's/.*://;s/\.git$//')"
   echo "https://github.com/$user_repo"
 }
@@ -133,7 +133,7 @@ function gstat() {
       line="$(echo "$line" | perl -pe "s/(\{)/$r$e[${c[R]}m\$1$r$e[${c[D]}m/")"
     else
       mode=${modes["$file"]}
-      color=0; [[ "$mode" ]] && color=${c[$mode]}
+      color=0; [[ -n "$mode" ]] && color=${c[$mode]}
       line="$e[${color}m$line"
     fi
     echo "$line" | sed "s/\|/$e[0m$mode \|/"
