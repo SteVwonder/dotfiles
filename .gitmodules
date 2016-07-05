@@ -13,3 +13,6 @@
 [submodule "vendor/diff-so-fancy"]
 	path = vendor/diff-so-fancy
 	url = https://github.com/so-fancy/diff-so-fancy.git
+[submodule "vendor/zplug"]
+	path = vendor/zplug
+	url = https://github.com/zplug/zplug.git
