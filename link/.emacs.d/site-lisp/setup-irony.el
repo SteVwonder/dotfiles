@@ -29,4 +29,9 @@
   :config (add-to-list 'company-backends '(company-irony-c-headers))
   )
 
+(use-package irony-eldoc
+  :ensure t
+  (add-hook 'irony-mode-hook 'irony-eldoc)
+  )
+
 (provide 'setup-irony)
