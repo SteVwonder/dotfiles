@@ -25,6 +25,8 @@ font pango:Essential PragmataPro 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+new_window pixel 1
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -195,4 +197,4 @@ bar {
 exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id volnoti
-exec --no-startup-id "~/.i3/LOCAL_config.sh"
+exec --no-startup-id "bash ~/.i3/LOCAL_config.sh"
