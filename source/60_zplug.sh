@@ -25,8 +25,6 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 # completion for pip
 zplug "srijanshetty/zsh-pip-completion"
-# completion for docker
-zplug "felixr/docker-zsh-completion"
 
 ########
 # Themes
