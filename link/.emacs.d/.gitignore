@@ -1,2 +1,6 @@
-elpa
-auto-save-list
+/elpa
+/auto-save-list
+/recentf
+/.python-environments/
+/ac-comphist.dat
+/irony/

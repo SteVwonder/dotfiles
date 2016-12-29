@@ -31,6 +31,7 @@
 
 (use-package irony-eldoc
   :ensure t
+  :config
   (add-hook 'irony-mode-hook 'irony-eldoc)
   )
 

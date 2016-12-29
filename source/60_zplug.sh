@@ -1,10 +1,9 @@
 is_zsh || return 1 # only run under zsh
 
 export ZPLUG_HOME=${DOTFILES}/vendor/zplug
-
 source ${ZPLUG_HOME}/init.zsh
 
-zplug "zplug/zplug"
+#zplug "zplug/zplug"
 
 #####
 # Plugins
@@ -26,15 +25,13 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 # completion for pip
 zplug "srijanshetty/zsh-pip-completion"
-# completion for docker
-zplug "felixr/docker-zsh-completion"
 
 ########
 # Themes
 ########
 
-zplug "oskarkrawczyk/honukai-iterm-zsh"
-zplug "robbyrussell/oh-my-zsh", use:"lib/*", nice:-1
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14
+zplug "oskarkrawczyk/honukai-iterm-zsh", nice:15
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
