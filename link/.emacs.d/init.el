@@ -70,3 +70,18 @@
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
+
+;; If running in emacsclient, force a prompt before exiting client
+(defun my-save-buffers-kill-terminal ()
+  (if (frame-parameter nil 'client)
+      (if (yes-or-no-p "Really exit this Emacsclient? ")
+          (save-buffers-kill-terminal nil)
+        )
+    (save-buffers-kill-terminal nil)
+    )
+  )
+(global-set-key (kbd "C-x C-c")
+                (lambda () (interactive) (my-save-buffers-kill-terminal)))
+
+(provide 'init)
+;;; init.el ends here
