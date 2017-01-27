@@ -67,6 +67,7 @@
 (require 'setup-irony)
 (require 'setup-flycheck)
 (require 'setup-misc)
+(require 'setup-langtool)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
