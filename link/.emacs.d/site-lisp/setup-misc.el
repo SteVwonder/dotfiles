@@ -3,4 +3,8 @@
   :config (global-undo-tree-mode)
   )
 
+(use-package vlf
+  :ensure t
+  )
+
 (provide 'setup-misc)

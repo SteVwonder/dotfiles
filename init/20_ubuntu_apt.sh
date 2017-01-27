@@ -21,6 +21,7 @@ packages=(
   libgtk2.0-dev
   libncurses-dev
   libssl-dev
+  python-pip
   subversion
   tmux
   tree
@@ -118,3 +119,11 @@ e_header "Installing Emacs"
     cd $DOTFILES/vendor/ &&
         install_emacs "24.5"
 )
+
+# Install py3status
+if [[ ! "$(type -P py3status)" ]]; then
+  e_header "Installing Playerctl"
+  (
+      sudo pip install py3status
+  )
+fi
