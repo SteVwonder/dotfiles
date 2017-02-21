@@ -66,6 +66,7 @@
 (require 'setup-tex)
 (require 'setup-irony)
 (require 'setup-flycheck)
+(require 'setup-gnuplot)
 (require 'setup-misc)
 
 (load-theme 'herbein t)
