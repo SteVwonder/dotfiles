@@ -68,6 +68,7 @@
 (require 'setup-flycheck)
 (require 'setup-gnuplot)
 (require 'setup-misc)
+(require 'setup-langtool)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)

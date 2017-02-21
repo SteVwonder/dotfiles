@@ -17,3 +17,6 @@
 	path = vendor/zplug
 	url = https://github.com/zplug/zplug.git
     ignore = dirty
+[submodule "link/.tmux/plugins/tpm"]
+	path = link/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
