@@ -187,6 +187,9 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# Highlight the current location of my cursor
+bindsym $mod+Pause exec "~/.i3/find_cursor.sh"
+
 # Run the script to automatically fix monitors
 # bindsym $mod+Shift+p exec --no-startup-id "~/.i3/detect_displays.sh"
 
