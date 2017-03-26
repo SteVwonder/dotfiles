@@ -200,6 +200,11 @@ bar {
         status_command py3status -c ~/.i3/py3status.conf
 }
 
+assign [class="wmail"] "7"
+assign [class="Evolution"] "7"
+assign [class="Slack"] "8"
+assign [title=".*Wunderlist.*"] "8"
+for_window [class="Spotify"] move to workspace "9"
 for_window [title="Authy"] floating enable
 
 exec --no-startup-id nm-applet
