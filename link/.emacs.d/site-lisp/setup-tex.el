@@ -2,6 +2,7 @@
   :ensure auctex
   :init
   (setq TeX-PDF-mode t)
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
     )
 
 (use-package auctex-latexmk

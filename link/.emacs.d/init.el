@@ -51,15 +51,6 @@
   (setq win-switch-idle-time 1.25)
   )
 
-(use-package w3m
-  :ensure t
-  :config
-  ;;change default browser for 'browse-url'  to w3m
-  (setq browse-url-browser-function 'w3m-goto-url-new-session)
-  ;;change w3m user-agent to android
-  (setq w3m-user-agent "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.")
-)
-
 (require 'setup-org)
 (require 'setup-company)
 (require 'setup-helm)
