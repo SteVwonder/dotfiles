@@ -12,6 +12,7 @@ sudo apt-get -qq dist-upgrade
 packages=(
   autoconf
   build-essential
+  emacs
   feh
   git-core
   htop
@@ -25,29 +26,10 @@ packages=(
   subversion
   tmux
   tree
-  w3m
 
   # playerctl dependencies
   gtk-doc-tools
   gobject-introspection
-
-  # emacs dependencies
-  libx11-dev
-  xaw3dg-dev
-  libjpeg-dev
-  libpng12-dev
-  libgif-dev
-  libtiff4-dev
-  libxft-dev
-  librsvg2-dev
-  libmagickcore-dev
-  libmagick++-dev
-  libxml2-dev
-  libgpm-dev
-  libghc-gconf-dev
-  libotf-dev
-  libm17n-dev
-  libgnutls-dev
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
@@ -93,32 +75,6 @@ if [[ ! "$(type -P playerctl)" ]]; then
         sudo make install
   )
 fi
-
-function install_emacs() {
-    version="$1"
-
-    if [ ! -d emacs-"$version" ]; then
-        if [ ! -f emacs-"$version".tar.xz ]; then
-            wget http://ftp.gnu.org/gnu/emacs/emacs-"$version".tar.xz
-        fi
-        tar xvf emacs-"$version".tar.xz
-    fi
-
-    cd emacs-"$version"
-    ./configure \
-        --with-xft \
-        --with-x-toolkit=lucid \
-        --prefix=/usr/local/
-    make
-    sudo make install
-}
-
-# Install Latest Emacs
-e_header "Installing Emacs"
-(
-    cd $DOTFILES/vendor/ &&
-        install_emacs "24.5"
-)
 
 # Install py3status
 if [[ ! "$(type -P py3status)" ]]; then
