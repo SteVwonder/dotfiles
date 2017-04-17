@@ -9,7 +9,7 @@ fi
 
 # Entries beginning with space aren't added into history, and duplicate
 # entries will be erased (leaving the most recent entry).
-export HISTCONTROL="ignorespace:erasedups"
+export HISTCONTROL="ignorespace"
 # Common commands are ignored
 export HISTIGNORE='ls:bg:fg:history'
 # Give history timestamps.
@@ -19,7 +19,8 @@ export HISTSIZE=10000
 export HISTFILESIZE=1000000
 
 # Hist file for each terminal/day
-TODAYS_DIR=${HOME}/.history/$(date "+%Y")/$(date "+%m")/$(date "+%d")
+HIST_DIR=${HOME}/.history
+TODAYS_DIR=${HIST_DIR}/$(date "+%Y")/$(date "+%m")/$(date "+%d")
 mkdir -p ${TODAYS_DIR}
 if [ -z "$PS1" ]; then
     MYTTY="noniter"
@@ -33,3 +34,13 @@ export PROMPT_COMMAND='history -a'
 
 # Easily re-execute the last history command.
 # alias r="fc -s"
+
+# Usage: hist regex [time_selector]
+# time_selector is of the form [year[/month[/day]]]
+hist() {
+    if command -v rg &> /dev/null; then
+        rg "$1" "${HIST_DIR}/$2"
+    else
+        grep -R "$1" "${HIST_DIR}/$2"
+    fi
+}
