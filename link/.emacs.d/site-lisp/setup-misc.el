@@ -7,4 +7,8 @@
   :ensure t
   )
 
+(use-package lua-mode
+  :ensure t
+  )
+
 (provide 'setup-misc)
