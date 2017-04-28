@@ -28,7 +28,9 @@
 (unless (package-installed-p 'use-package)
         (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
 
 ;; refactoring goodness
 (use-package iedit

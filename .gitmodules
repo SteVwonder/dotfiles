@@ -20,3 +20,6 @@
 [submodule "link/.tmux/plugins/tpm"]
 	path = link/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "vendor/dmenu-frecency"]
+	path = vendor/dmenu-frecency
+	url = https://github.com/kspi/dmenu-frecency.git
