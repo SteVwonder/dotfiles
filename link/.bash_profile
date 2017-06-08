@@ -1,4 +1,4 @@
-if [ -f /etc/profile ]; then
+if [[ -f /etc/profile && ! -f ~/.no_etcprofile ]]; then
     . /etc/profile
 fi
 
