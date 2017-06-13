@@ -38,6 +38,9 @@ export PROMPT_COMMAND='history -a'
 # Usage: hist regex [time_selector]
 # time_selector is of the form [year[/month[/day]]]
 hist() {
+    if [[ -z "$2" ]]; then
+        2=$(date "+%Y/%m/%d")
+    fi
     if command -v rg &> /dev/null; then
         rg "$1" "${HIST_DIR}/$2"
     else
