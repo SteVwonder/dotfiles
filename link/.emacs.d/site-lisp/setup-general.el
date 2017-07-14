@@ -61,4 +61,15 @@
 ;; fingers/muscle memories are faster than my eyes/terminal)
 (defalias 'y-or-n-p 'yes-or-no-p)
 
+;;; Stefan Monnier - It is the opposite of fill-paragraph
+(defun unfill-paragraph (&optional region)
+  "Take a multi-line paragraph (REGION) and make it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+        ;; This would override `fill-column' if it's an integer.
+        (emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
+
+(define-key global-map "\M-Q" 'unfill-paragraph)
+
 (provide 'setup-general)
