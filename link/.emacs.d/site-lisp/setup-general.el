@@ -54,4 +54,11 @@
 (require 're-builder)
 (setq reb-re-syntax 'string)
 
+;; ediff should split the screen horizontally to put the buffers side-by-side
+(setq ediff-split-window-function 'split-window-horizontally)
+
+;; make all prompts require the full yes/no (for when my
+;; fingers/muscle memories are faster than my eyes/terminal)
+(defalias 'y-or-n-p 'yes-or-no-p)
+
 (provide 'setup-general)

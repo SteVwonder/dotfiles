@@ -11,4 +11,8 @@
   :ensure t
   )
 
+(use-package vdiff
+  :ensure t
+  )
+
 (provide 'setup-misc)
