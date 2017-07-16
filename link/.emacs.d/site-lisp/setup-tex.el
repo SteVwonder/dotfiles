@@ -13,9 +13,18 @@
   (setq TeX-source-correlate-mode t
         TeX-source-correlate-start-server t)
 
-  ;; ### Set Okular as the default PDF viewer.
-  (eval-after-load "tex"
-    '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular"))
+  (if (eq system-type 'darwin)
+      (setq TeX-source-correlate-method 'synctex)
+    (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+    (setq TeX-view-program-list
+          '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+    )
+  (if (eq system-type 'gnu/linux)
+      ;; ### Set Okular as the default PDF viewer.
+      (eval-after-load "tex"
+        '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular")
+        )
+    )
   )
 
 (use-package auctex-latexmk
