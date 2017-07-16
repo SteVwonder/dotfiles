@@ -10,21 +10,12 @@ source ${ZPLUG_HOME}/init.zsh
 #####
 
 # automatically sources (known/whitelisted) .autoenv.zsh files, typically used in project root directories
-zplug "Tarrasch/zsh-autoenv"
-# simple zsh calculator
-zplug "arzzen/calc.plugin.zsh"
+#zplug "Tarrasch/zsh-autoenv"
 # turns off running lines of input during pastes
-zplug "oz/safe-paste"
+#zplug "oz/safe-paste"
 # enables highlighing of commands whilst they are typed at a zsh prompt into an interactive terminal
 # must be sourced after all custom widgets have been created (i.e., after all zle -N calls and after running compinit)
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
-
-#############
-# Completions
-#############
-
-# completion for pip
-zplug "srijanshetty/zsh-pip-completion"
 
 ########
 # Themes
@@ -35,8 +26,9 @@ zplug "oskarkrawczyk/honukai-iterm-zsh", nice:15
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
-    zplug install
+   zplug install
 fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
+

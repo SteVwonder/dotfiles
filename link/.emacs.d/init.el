@@ -14,19 +14,20 @@
       '(
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("elpa" . "http://tromey.com/elpa/")
-        ("melpa-stable" . "http://stable.melpa.org/packages/")
+;;        ("melpa-stable" . "http://stable.melpa.org/packages/")
         ("melpa" . "http://melpa.org/packages/")
         ("gnu" . "http://elpa.gnu.org/packages/")
         ))
 (package-initialize)
 
-;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
 
 ;; install the missing packages
 (unless (package-installed-p 'use-package)
-        (package-install 'use-package))
+  (package-install 'use-package)
+  ;; fetch the list of packages available
+  (unless package-archive-contents
+    (package-refresh-contents))
+  )
 
 (eval-when-compile
   (require 'use-package))

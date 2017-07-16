@@ -46,6 +46,9 @@
  '(next-error ((t (:inherit (region)))))
  '(query-replace ((t (:inherit (isearch)))))
  '(font-latex-sectioning-5-face ((t (:foreground "blue" :weight bold))))
+ '(ediff-odd-diff-A ((t (:background "black"))))
+ '(ediff-odd-diff-B ((t (:background "black"))))
+ '(ediff-odd-diff-C ((t (:background "black"))))
 )
 
 (provide-theme 'herbein)
