@@ -29,6 +29,12 @@
     (package-refresh-contents))
   )
 
+
+
+(add-hook 'c-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-c"))))
+
 (eval-when-compile
   (require 'use-package))
 (require 'bind-key)
