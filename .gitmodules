@@ -13,13 +13,12 @@
 [submodule "vendor/diff-so-fancy"]
 	path = vendor/diff-so-fancy
 	url = https://github.com/so-fancy/diff-so-fancy.git
-[submodule "vendor/zplug"]
-	path = vendor/zplug
-	url = https://github.com/zplug/zplug.git
-    ignore = dirty
 [submodule "link/.tmux/plugins/tpm"]
 	path = link/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "vendor/dmenu-frecency"]
 	path = vendor/dmenu-frecency
 	url = https://github.com/kspi/dmenu-frecency.git
+[submodule "vendor/antigen"]
+	path = vendor/antigen
+	url = https://github.com/zsh-users/antigen.git
