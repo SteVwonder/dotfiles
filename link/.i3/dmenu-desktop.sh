@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=$HOME/.dotfiles/bin:$PATH
+
 if command -v dmenu-frecency; then
     exec dmenu-frecency
 elif command -v j4-dmenu-desktop && command -v rofi; then
