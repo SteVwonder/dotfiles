@@ -11,7 +11,7 @@ fi
 # entries will be erased (leaving the most recent entry).
 export HISTCONTROL="ignorespace"
 # Common commands are ignored
-export HISTIGNORE='ls:bg:fg:history'
+export HISTIGNORE='ls:bg:fg:history:hist'
 # Give history timestamps.
 export HISTTIMEFORMAT="[%F %T] "
 # Lots o' history.
