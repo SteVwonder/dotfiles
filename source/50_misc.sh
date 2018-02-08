@@ -34,3 +34,4 @@ function titlebar() {
 }
 
 alias htop="TERM=screen htop"
+alias stripcolors='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
