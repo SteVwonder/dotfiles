@@ -72,4 +72,8 @@
 
 (define-key global-map "\M-Q" 'unfill-paragraph)
 
+;; C-x C-n to set a column goal
+;; C-u C-x C-n to remove the goal
+(put 'set-goal-column 'disabled nil)
+
 (provide 'setup-general)
