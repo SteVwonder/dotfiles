@@ -10,7 +10,7 @@ fi
 REMOTE_HOST=$1
 RZGW_HOST="rzgw"
 CZGW_HOST="czgw"
-shift; shift
+shift
 
 PORT=22
 # Use -gt 1 to consume two arguments per pass in the loop (e.g. each
