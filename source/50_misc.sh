@@ -32,3 +32,5 @@ export LESS=-XR
 function titlebar() {
   echo -n $'\e]0;'"$*"$'\a'
 }
+
+alias htop="TERM=screen htop"
