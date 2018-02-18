@@ -1,0 +1,132 @@
+## NOTE(koekeishiya): A list of all built-in modifier and literal keywords can
+#                     be found at https://github.com/koekeishiya/skhd/issues/1
+#
+#                     A hotkey is written according to the following rules:
+#
+#                       hotkey   = <keysym> ':' <command> |
+#                                  <keysym> '->' ':' <command>
+#
+#                       keysym   = <mod> '-' <key> | <key>
+#
+#                       mod      = 'built-in mod keyword' | <mod> '+' <mod>
+#
+#                       key      = <literal> | <keycode>
+#
+#                       literal  = 'single letter or built-in keyword'
+#
+#                       keycode  = 'apple keyboard kVK_<Key> values (0x3C)'
+#
+#                       ->       = keypress is not consumed by skhd
+#
+#                       command  = command is executed through '$SHELL -c' and
+#                                  follows valid shell syntax. if the $SHELL environment
+#                                  variable is not set, it will default to '/bin/bash'.
+#                                  when bash is used, the ';' delimeter can be specified
+#                                  to chain commands.
+#
+#                                  to allow a command to extend into multiple lines,
+#                                  prepend '\' at the end of the previous line.
+#
+#                                  an EOL character signifies the end of the bind.
+
+
+cmd - return : open -n /Applications/Alacritty.app
+
+# close focused window
+#alt - w : chunkc tiling::window --close
+
+# focus window
+cmd - j : chunkc tiling::window --focus west
+cmd - k : chunkc tiling::window --focus south
+cmd - i : chunkc tiling::window --focus north
+cmd - l : chunkc tiling::window --focus east
+
+# equalize size of windows
+shift + alt - 0 : chunkc tiling::desktop --equalize
+
+# make floating window fill screen
+alt + shift - up     : chunkc tiling::window --grid-layout 1:1:0:0:1:1
+
+# make floating window fill left-half of screen
+alt + shift - left   : chunkc tiling::window --grid-layout 1:2:0:0:1:1
+
+# make floating window fill right-half of screen
+alt + shift - right  : chunkc tiling::window --grid-layout 1:2:1:0:1:1
+
+# increase region size
+alt + shift - a : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+alt + shift - s : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+alt + shift - w : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+alt + shift - d : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# float next window to be tiled
+alt + shift - f : chunkc set window_float_next 1
+
+# move window
+cmd + shift - j : chunkc tiling::window --warp west
+cmd + shift - k : chunkc tiling::window --warp south
+cmd + shift - i : chunkc tiling::window --warp north
+cmd + shift - l : chunkc tiling::window --warp east
+
+# send window to desktop
+cmd + shift - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
+cmd + shift - z : chunkc tiling::window --send-to-desktop prev
+cmd + shift - c : chunkc tiling::window --send-to-desktop next
+cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1
+cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2
+cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3
+cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4
+cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5
+cmd + shift - 6 : chunkc tiling::window --send-to-desktop 6
+
+# decrease region size
+cmd + shift - a : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+cmd + shift - s : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+cmd + shift - w : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+cmd + shift - d : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+
+cmd + shift - r : brew services restart chunkwm
+
+# float / unfloat window
+cmd + shift - f : chunkc tiling::window --toggle float
+
+# change layout of desktop
+cmd + alt - a : chunkc tiling::desktop --layout bsp
+cmd + alt - s : chunkc tiling::desktop --layout monocle
+cmd + alt - d : chunkc tiling::desktop --layout float
+
+# set insertion point for focused container
+ctrl + alt - f : chunkc tiling::window --use-insertion-point cancel
+ctrl + alt - h : chunkc tiling::window --use-insertion-point west
+ctrl + alt - j : chunkc tiling::window --use-insertion-point south
+ctrl + alt - k : chunkc tiling::window --use-insertion-point north
+ctrl + alt - l : chunkc tiling::window --use-insertion-point east
+
+# rotate tree
+#alt - r : chunkc tiling::desktop --rotate 90
+
+# mirror tree y-axis
+#alt - y : chunkc tiling::desktop --mirror vertical
+
+# mirror tree x-axis
+#alt - x : chunkc tiling::desktop --mirror horizontal
+
+# toggle desktop offset
+#alt - a : chunkc tiling::desktop --toggle offset
+
+# toggle window fullscreen
+cmd + alt - f : chunkc tiling::window --toggle fullscreen
+
+# toggle window native fullscreen
+# cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+
+# toggle window parent zoom
+#alt - d : chunkc tiling::window --toggle parent
+
+# toggle window split type
+#alt - e : chunkc tiling::window --toggle split
+
+# toggle sticky, float and resize to picture-in-picture size
+#alt - s : chunkc tiling::window --toggle sticky;\
+#          chunkc tiling::window --grid-layout 5:5:4:0:1:1
+
