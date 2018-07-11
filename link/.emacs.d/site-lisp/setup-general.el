@@ -76,4 +76,6 @@
 ;; C-u C-x C-n to remove the goal
 (put 'set-goal-column 'disabled nil)
 
+(setq-default fill-column 80)
+
 (provide 'setup-general)
