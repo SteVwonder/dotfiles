@@ -34,6 +34,7 @@ do
             ;;
         *)
             # unknown option
+            echo "Unkown option: $1"
             ;;
     esac
     shift # past argument or value
