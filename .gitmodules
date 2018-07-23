@@ -22,3 +22,6 @@
 [submodule "vendor/antigen"]
 	path = vendor/antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule "vendor/ssh-ident"]
+	path = vendor/ssh-ident
+	url = https://github.com/SteVwonder/ssh-ident.git
