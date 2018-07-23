@@ -9,19 +9,6 @@
   (add-hook 'shell-mode-hook #'company-mode)
 )
 
-(use-package jedi
-  :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :init (add-hook 'python-mode-hook 'jedi:setup)
-  )
-
-(use-package company-jedi
-  :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode)
-  :init (add-to-list 'company-backends 'company-jedi)
-  )
-
 (use-package company-web
   :ensure t
 )
