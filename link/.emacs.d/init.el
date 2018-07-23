@@ -63,12 +63,12 @@
 (require 'setup-org)
 (require 'setup-company)
 (require 'setup-helm)
-(require 'setup-tex)
 (require 'setup-irony)
 (require 'setup-flycheck)
 (require 'setup-gnuplot)
 (require 'setup-misc)
 (require 'setup-langtool)
+(require 'setup-yasnippet)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
