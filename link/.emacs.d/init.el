@@ -45,11 +45,6 @@
   :bind ("C-c ;" . iedit-mode)
 )
 
-(use-package magit
-  :ensure t
-  :init (setq magit-last-seen-setup-instructions "1.4.0")
-  )
-
 (use-package win-switch
   :ensure t
   :config (global-set-key "\C-xo" 'win-switch-mode)
