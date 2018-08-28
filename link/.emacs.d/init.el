@@ -64,6 +64,7 @@
 (require 'setup-misc)
 (require 'setup-langtool)
 (require 'setup-yasnippet)
+(require 'setup-tex)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
