@@ -12,7 +12,7 @@
 (require 'package)
 (setq package-archives
       '(
-        ("marmalade" . "http://marmalade-repo.org/packages/")
+;;        ("marmalade" . "http://marmalade-repo.org/packages/")
         ("elpa" . "http://tromey.com/elpa/")
 ;;        ("melpa-stable" . "http://stable.melpa.org/packages/")
         ("melpa" . "http://melpa.org/packages/")
@@ -63,7 +63,6 @@
 (require 'setup-gnuplot)
 (require 'setup-misc)
 (require 'setup-langtool)
-(require 'setup-yasnippet)
 (require 'setup-tex)
 
 (load-theme 'herbein t)
