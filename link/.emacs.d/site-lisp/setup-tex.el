@@ -17,9 +17,11 @@
     (dolist (dir '("/Applications/Skim.app/Contents/SharedSupport"))
       (add-to-list 'exec-path dir))
     (setq TeX-source-correlate-method 'synctex)
-    (setq TeX-view-program-selection '((output-pdf "displayline")))
+    (setq TeX-view-program-selection '((output-pdf "open")))
     (setq TeX-view-program-list
-          '(("displayline" "displayline -r -b -g %n %o %b")))
+          '(("displayline" "displayline -r -b -g %n %o %b")
+            ("open" "open %o"))
+          )
     ;; (add-hook 'LaTeX-mode-hook
     ;;           (lambda () (local-set-key (kbd "<S-s-mouse-1>") #'TeX-view))
     ;;           )

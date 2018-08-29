@@ -33,4 +33,9 @@
   :ensure t
   )
 
+(use-package adoc-mode
+  :ensure t
+  :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
+  )
+
 (provide 'setup-misc)
