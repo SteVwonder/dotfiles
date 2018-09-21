@@ -25,3 +25,6 @@
 [submodule "vendor/ssh-ident"]
 	path = vendor/ssh-ident
 	url = https://github.com/SteVwonder/ssh-ident.git
+[submodule "vendor/pyenv-installer"]
+	path = vendor/pyenv-installer
+	url = https://github.com/pyenv/pyenv-installer.git

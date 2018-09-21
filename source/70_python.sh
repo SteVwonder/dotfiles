@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export PYENV_ROOT="$DOTFILES/vendor/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 if [ -n "$(command -v pyenv)" ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
