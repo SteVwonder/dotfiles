@@ -3,11 +3,11 @@
   email = stephen272@gmail.com
 [core]
   autocrlf = input
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  whitespace = warn,space-before-tab,tab-in-indent,trailing-space
   excludesfile = ~/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
-  whitespace = fix
+  whitespace = warn
 [alias]
   br = branch
   ci = commit
