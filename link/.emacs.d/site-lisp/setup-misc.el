@@ -53,4 +53,8 @@
   :ensure t
   )
 
+(use-package yaml-mode
+  :ensure t
+  )
+
 (provide 'setup-misc)
