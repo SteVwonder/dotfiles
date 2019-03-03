@@ -57,4 +57,12 @@
   :ensure t
   )
 
+(use-package cmake-mode
+  :ensure t
+  )
+
+(use-package cython-mode
+  :ensure t
+  )
+
 (provide 'setup-misc)
