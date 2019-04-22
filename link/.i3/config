@@ -205,6 +205,7 @@ assign [class="Slack"] "8"
 assign [title=".*Wunderlist.*"] "8"
 for_window [title="^Figure [0-9]+" class="^ $"] floating enable
 for_window [class="Spotify"] move to workspace "9"
+for_window [class="Google Play Music Desktop Player"] move to workspace "9"
 for_window [title="Authy"] floating enable
 
 exec --no-startup-id nm-applet
