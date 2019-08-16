@@ -81,10 +81,10 @@ cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5
 cmd + shift - 6 : chunkc tiling::window --send-to-desktop 6
 
 # decrease region size
-cmd + shift - a : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
-cmd + shift - s : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
-cmd + shift - w : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
-cmd + shift - d : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+cmd + shift - a : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
+cmd + shift - s : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
+cmd + shift - w : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
+cmd + shift - d : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
 
 cmd + shift - r : brew services restart chunkwm
 
