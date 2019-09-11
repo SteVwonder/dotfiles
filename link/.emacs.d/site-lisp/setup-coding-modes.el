@@ -10,4 +10,7 @@
 (add-hook 'c-special-indent-hook 'infer-indentation-style)
 (add-hook 'python-mode-hook 'infer-indentation-style)
 
+(use-package rust-mode
+  :ensure t)
+
 (provide 'setup-coding-modes)
