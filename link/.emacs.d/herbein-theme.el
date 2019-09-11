@@ -49,6 +49,10 @@
  '(ediff-odd-diff-A ((t (:background "black"))))
  '(ediff-odd-diff-B ((t (:background "black"))))
  '(ediff-odd-diff-C ((t (:background "black"))))
-)
+ '(org-document-title ((t (:foreground "blue" :weight bold))))
+ '(org-document-info ((t (:foreground "blue"))))
+ '(org-table ((t (:background "color-235" :foreground "white"))))
+ '(stripe-highlight ((t (:background "#CCCCCC" :foreground "black"))))
+ )
 
 (provide-theme 'herbein)
