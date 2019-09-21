@@ -16,5 +16,9 @@
 /link/.rbenv/versions/
 /link/.rbenv/version
 
+# Don't commit Taskwarrior certs/data
+/link/.task/*.pem
+/link/.task/*.data
+
 # Ignore any file with LOCAL in the name (good for per-machine vars/functions)
 *LOCAL*

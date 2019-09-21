@@ -15,6 +15,7 @@ packages=(
   emacs
   feh
   git-core
+  global
   htop
   id3tool
   i3
@@ -26,6 +27,10 @@ packages=(
   subversion
   tmux
   tree
+  xclip
+
+  # dmenu-frecency dependency
+  python-docopt
 
   # playerctl dependencies
   gtk-doc-tools

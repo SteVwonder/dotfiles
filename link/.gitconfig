@@ -3,11 +3,11 @@
   email = stephen272@gmail.com
 [core]
   autocrlf = input
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  whitespace = warn,space-before-tab,tab-in-indent,trailing-space
   excludesfile = ~/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
-  whitespace = fix
+  whitespace = warn
 [alias]
   br = branch
   ci = commit
@@ -20,9 +20,6 @@
   rv = review
   st = status
   ksdiff = difftool -y -t Kaleidoscope
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
 [color]
   ui = auto
 [color "branch"]
@@ -54,3 +51,6 @@
   pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
+[alias]
+    br = for-each-ref --sort=-committerdate refs/heads/ \
+    --format='%(HEAD) %(color:cyan)%(align:15,left)(%(committerdate:relative))%(end)%(color:reset) %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - [%(color:blue)%(upstream:short)%(color:reset)]'

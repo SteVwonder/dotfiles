@@ -64,6 +64,8 @@
 (require 'setup-misc)
 (require 'setup-langtool)
 (require 'setup-tex)
+(require 'setup-pydev)
+(require 'setup-coding-modes)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
