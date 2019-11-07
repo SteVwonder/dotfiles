@@ -21,6 +21,7 @@ packages=(
   i3
   libncurses-dev
   libssl-dev
+  playerctl
   python-pip
   subversion
   tmux
