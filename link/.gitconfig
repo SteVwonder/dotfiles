@@ -54,3 +54,5 @@
 [alias]
     br = for-each-ref --sort=-committerdate refs/heads/ \
     --format='%(HEAD) %(color:cyan)%(align:15,left)(%(committerdate:relative))%(end)%(color:reset) %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - [%(color:blue)%(upstream:short)%(color:reset)]'
+[github]
+	user = Stevwonder
