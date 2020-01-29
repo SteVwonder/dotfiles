@@ -65,4 +65,12 @@
   :ensure t
   )
 
+(use-package whitespace
+  :init
+  (global-whitespace-mode t)
+  :config
+  (setq whitespace-line-column 79)
+  (setq whitespace-style (quote (face trailing tabs lines-tail)))
+  )
+
 (provide 'setup-misc)

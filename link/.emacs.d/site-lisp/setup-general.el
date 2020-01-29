@@ -44,7 +44,8 @@
 (put 'upcase-region 'disabled nil)
 
 ;; Highlight trailing whitespace
-(setq-default show-trailing-whitespace t)
+;; Now done through the whitespace package
+;; (setq-default show-trailing-whitespace t)
 
 (put 'erase-buffer 'disabled nil)
 
