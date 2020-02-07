@@ -13,4 +13,14 @@
 (use-package rust-mode
   :ensure t)
 
+;; Org Babel
+(setq
+ org-babel-load-languages
+ '((python . t)
+   (emacs-lisp . t)
+   (shell . t)
+   (awk . t)
+   (org . t)
+   ))
+
 (provide 'setup-coding-modes)
