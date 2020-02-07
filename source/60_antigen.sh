@@ -13,7 +13,7 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme stevwonder/honukai-iterm-zsh honukai
+antigen bundle agkozak/agkozak-zsh-prompt
 
 # Tell Antigen that you're done.
 antigen apply
