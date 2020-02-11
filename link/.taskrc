@@ -17,8 +17,14 @@ default.command=none
 
 include ~/.task/dark-yellow-green.theme
 include ~/.task/LOCAL.taskrc
+
+# Only show tasks due in the next week in `task next`
+report.next.filter = status:pending limit:page due.before:today+8days
+
+# Add custom `task share` report for plain text sharing with others
 report.share.columns=project,recur.indicator,due,description.count
-report.share.description=listing with columsn whose semantics are useful to share with others
+report.share.description=listing with columns whose semantics are useful to share with others
 report.share.filter=status:pending
 report.share.labels=Project,Recur,Due,Description
 report.share.sort=start-,due+,project+,urgency-
+
