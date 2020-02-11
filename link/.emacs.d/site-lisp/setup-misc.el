@@ -71,6 +71,7 @@
   :config
   (setq whitespace-line-column 79)
   (setq whitespace-style (quote (face trailing tabs lines-tail)))
+  (setq whitespace-global-modes (quote (not org-mode latex-mode LaTeX-mode)))
   )
 
 (provide 'setup-misc)

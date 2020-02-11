@@ -10,4 +10,6 @@
   (add-hook 'org-mode-hook 'turn-on-stripe-table-mode)
   )
 
+(add-hook 'org-mode-hook 'visual-line-mode)
+
 (provide 'setup-org)
