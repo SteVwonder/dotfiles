@@ -13,7 +13,12 @@
 data.location=~/.task
 
 # Change default from next/list to add to prevent missing new tasks
-default.command=add
+default.command=none
 
 include ~/.task/dark-yellow-green.theme
 include ~/.task/LOCAL.taskrc
+report.share.columns=project,recur.indicator,due,description.count
+report.share.description=listing with columsn whose semantics are useful to share with others
+report.share.filter=status:pending
+report.share.labels=Project,Recur,Due,Description
+report.share.sort=start-,due+,project+,urgency-
