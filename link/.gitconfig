@@ -91,3 +91,5 @@
         git remote add stevwonder $url; \
         echo \"Set stevwonder remote to $url.\"; \
     }; f"
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | cut -c 1-80
+
