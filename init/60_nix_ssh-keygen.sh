@@ -1,5 +1,5 @@
 key_directory="${HOME}/.ssh/keys/"
-key_titles=( id_rsa udel gclab github bitbucket llnl )
+key_titles=( id_rsa udel gclab github bitbucket llnl gitlab )
 e_header "Creating ssh keys (${key_titles[@]}) in ${key_directory} (if they don't already exist)"
 mkdir -p ${key_directory}
 
