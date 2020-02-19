@@ -200,7 +200,8 @@ bar {
         status_command py3status -c ~/.i3/py3status.conf
 }
 
-assign [class="wavebox"] "7"
+# To get the title and class info, run 'xprop'
+assign [class="Wavebox"] "7"
 assign [class="Slack"] "8"
 assign [title=".*Wunderlist.*"] "8"
 for_window [title="^Figure [0-9]+" class="^ $"] floating enable
