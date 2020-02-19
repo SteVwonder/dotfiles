@@ -22,11 +22,12 @@ export HISTFILESIZE=1000000
 HIST_DIR=${HOME}/.history
 TODAYS_DIR=${HIST_DIR}/$(date "+%Y")/$(date "+%m")/$(date "+%d")
 mkdir -p ${TODAYS_DIR}
-if [ -z "$PS1" ]; then
+if [ -z "$PS1" ] || ! tty -s; then
     MYTTY="noniter"
 else
     MYTTY=$(basename `tty`)
 fi
+
 export HISTFILE=${TODAYS_DIR}/"$(date "+%H-%M-%S")_${MYTTY}.hist"
 
 # record each command as it is executed, rather than at the end
