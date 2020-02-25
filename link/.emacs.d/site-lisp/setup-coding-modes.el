@@ -13,6 +13,9 @@
 (use-package rust-mode
   :ensure t)
 
+(use-package toml-mode
+  :ensure t)
+
 ;; Org Babel
 (setq
  org-babel-load-languages
