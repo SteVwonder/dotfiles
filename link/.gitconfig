@@ -39,8 +39,11 @@
   log = true
 [rerere]
   enabled = 1
+[url "https://github.com/"]
+  insteadOf = "gh-https:"
 [url "git@github.com:"]
   insteadOf = "gh:"
+  insteadOf = "gh-ssh:"
   pushInsteadOf = "github:"
   pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
@@ -57,13 +60,9 @@
     br = for-each-ref --sort=-committerdate refs/heads/ \
     --format='%(HEAD) %(color:cyan)%(align:15,left)(%(committerdate:relative))%(end)%(color:reset) %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - [%(color:blue)%(upstream:short)%(color:reset)]'
     setupstream = "!f() { \
-        local rem=$(git remote | grep -iv ':stevwonder/'); \
-        if [ \"$(wc -l <<<\"$rem\")\" -gt 1 ]; then \
-            echo 'Too many remotes.' >&2; \
-            return; \
-        fi; \
+        local rem=$(git remote | grep '^origin$'); \
         if [ -z \"$rem\" ]; then \
-            echo 'No non-stevwonder remote found.' >&2; \
+            echo 'No \"origin\" remote found.' >&2; \
             return; \
         fi; \
         if [ \"$rem\" = upstream ]; then \
@@ -73,7 +72,24 @@
         git remote rename \"$rem\" upstream; \
         echo \"Renamed $rem to upstream.\"; \
     }; f"
-    # addmyfork assume the github url format
+    # adds a fork of a github user
+    addfork = "!f() { \
+        if [ -z \"$(git remote | grep '^upstream$')\" ]; then \
+            echo 'No upstream remote found.' >&2; \
+            return; \
+        fi; \
+        if [ -n \"$(git remote | grep $1)\" ]; then \
+            echo \"$1 remote already exists.\"; \
+            return; \
+        fi; \
+        if [ -z \"$(git remote get-url upstream | grep 'github.com')\" ]; then \
+            echo '\"upstream\" is not a github remote'; \
+            return; \
+        fi; \
+        local url=$(git remote get-url upstream | sed -E 's$(github.com[:/])([^/]+)$\\1'$1'$'); \
+        git remote add $1 $url; \
+        echo \"Set $1 remote to $url.\"; \
+    }; f"
     addmyfork = "!f() { \
         if [ -z \"$(git remote | grep '^upstream$')\" ]; then \
             echo 'No upstream remote found.' >&2; \
@@ -87,7 +103,7 @@
             echo '\"upstream\" is not a github remote'; \
             return; \
         fi; \
-        local url=$(git remote get-url upstream | sed -E 's$(github.com[:/])([^/]+)$\\1SteVwonder$'); \
+        local url=$(git remote get-url upstream | sed -E 's$.*github.com[:/]([^/]+)$gh-ssh:SteVwonder$'); \
         git remote add stevwonder $url; \
         echo \"Set stevwonder remote to $url.\"; \
     }; f"
