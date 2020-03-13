@@ -17,7 +17,7 @@ try:
     tasks = json.loads(sys.stdin.readline())
 except:
     # No tasks added/modified. Sync not needed.
-    print("No modifications, skipping sync")
+    # print("No modifications, skipping sync")
     sys.exit(0)
 
 # Call the `sync` command
