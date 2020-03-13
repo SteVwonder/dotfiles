@@ -13,7 +13,7 @@ if is_bash; then
 
     # Prevent ctrl+s from freezing the terminal
     # For more info: http://superuser.com/questions/124845/can-you-disable-the-ctrl-s-xoff-keystroke-in-putty
-    if [ ! -z "$PS1" ]; then
+    if [ ! -z "$PS1" ] && tty -s; then
         stty -ixon
     fi
 
