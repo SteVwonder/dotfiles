@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE="$0 remote_host [-c|--czgw] [-p|--port=22]"
+USAGE="$0 remote_host [-p|--port=22]"
 
 if [[ -z "$1" ]]; then
     echo $USAGE
@@ -8,9 +8,7 @@ if [[ -z "$1" ]]; then
 fi
 
 REMOTE_HOST=$1
-RZGW_HOST="rzgw"
-CZGW_HOST="czgw"
-CZGW_ONLY="false"
+GW_HOST="izgw"
 shift
 
 PORT=22
@@ -28,9 +26,6 @@ do
         -p|--port)
             PORT="$2"
             shift # past argument
-            ;;
-        -c|--czgw)
-            CZGW_ONLY="true"
             ;;
         -h|--help)
             echo $USAGE
@@ -58,29 +53,12 @@ connect_to_remote_host() {
     exec ssh -S $CONTROL_PATH $GW_HOST nc $REMOTE_HOST $PORT
 }
 
-connect_through_czgw() {
-    CZ_CONTROL_PATH=$(ssh -TG $CZGW_HOST | grep -o 'controlpath .*' | awk '{print $2}')
-    if [[ ! -e $CZ_CONTROL_PATH ]]; then
-        establish_gw_connection $CZ_CONTROL_PATH $CZGW_HOST
+connect_through_gw() {
+    CONTROL_PATH=$(ssh -TG $GW_HOST | grep -o 'controlpath .*' | awk '{print $2}')
+    if [[ ! -e $CONTROL_PATH ]]; then
+        establish_gw_connection $CONTROL_PATH $GW_HOST
     fi
-    connect_to_remote_host $CZ_CONTROL_PATH $CZGW_HOST
+    connect_to_remote_host $CONTROL_PATH $GW_HOST
 }
 
-if [[ "$CZGW_ONLY" == "true" ]]; then
-    connect_through_czgw
-else
-    RZ_CONTROL_PATH=$(ssh -TG $RZGW_HOST | grep -o 'controlpath .*' | awk '{print $2}')
-    if [[ -e $RZ_CONTROL_PATH ]]; then
-        # RZGW connection already exists, doesn't matter if remote host is CZ/RZ
-        connect_to_remote_host $RZ_CONTROL_PATH $RZGW_HOST
-    else
-        if [[ "$REMOTE_HOST" == "rz"* ]]; then
-            # remote host is RZ and thus needs RZGW
-            establish_gw_connection $RZ_CONTROL_PATH $RZGW_HOST
-            connect_to_remote_host $RZ_CONTROL_PATH $RZGW_HOST
-        else
-            # remote host is CZ and CZGW will suffice
-            connect_through_czgw
-        fi
-    fi
-fi
+connect_through_gw
