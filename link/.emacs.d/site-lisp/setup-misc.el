@@ -45,10 +45,6 @@
   :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
   )
 
-(use-package projectile-ripgrep
-  :ensure t
-  )
-
 (use-package academic-phrases
   :ensure t
   )

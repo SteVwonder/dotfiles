@@ -66,6 +66,7 @@
 (require 'setup-tex)
 (require 'setup-pydev)
 (require 'setup-coding-modes)
+(require 'setup-projectile)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
