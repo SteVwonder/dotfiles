@@ -26,4 +26,7 @@
    (org . t)
    ))
 
+(use-package toml-mode
+  :ensure t)
+
 (provide 'setup-coding-modes)
