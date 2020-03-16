@@ -14,8 +14,7 @@ antigen bundle <<EOBUNDLES
  zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
-# Load the theme.
-antigen bundle agkozak/agkozak-zsh-prompt
+antigen theme agkozak/agkozak-zsh-prompt
 
 # Tell Antigen that you're done.
 antigen apply
