@@ -98,4 +98,8 @@
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
 
+;; C-c left and C-c right to undo and redo window configuration changes
+(when (fboundp 'winner-mode)
+      (winner-mode 1))
+
 (provide 'setup-general)
