@@ -8,7 +8,8 @@ if [[ -z "$1" ]]; then
 fi
 
 REMOTE_HOST=$1
-GW_HOST="izgw"
+IGW_HOST="izgw"
+EGW_HOST="czgw"
 shift
 
 PORT=22
@@ -54,6 +55,7 @@ connect_to_remote_host() {
 }
 
 connect_through_gw() {
+    GW_HOST="$1"
     CONTROL_PATH=$(ssh -TG $GW_HOST | grep -o 'controlpath .*' | awk '{print $2}')
     if [[ ! -e $CONTROL_PATH ]]; then
         establish_gw_connection $CONTROL_PATH $GW_HOST
@@ -61,4 +63,13 @@ connect_through_gw() {
     connect_to_remote_host $CONTROL_PATH $GW_HOST
 }
 
-connect_through_gw
+determine_gw() {
+   if nc -w 3 -z "$IGW_HOST" 22 &> /dev/null; then
+        echo "$IGW_HOST"
+    else
+        echo "$EGW_HOST"
+    fi
+}
+
+GW_HOST=$(determine_gw)
+connect_through_gw $GW_HOST
