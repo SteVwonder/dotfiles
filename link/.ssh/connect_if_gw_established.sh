@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE="$0 remote_host [-p|--port=22]"
+USAGE="$0 remote_host [-p|--port=22] [-i|--internal]"
 
 if [[ -z "$1" ]]; then
     echo $USAGE
@@ -12,6 +12,7 @@ IGW_HOST="izgw"
 EGW_HOST="czgw"
 shift
 
+INTERNAL="false"
 PORT=22
 # Use -gt 1 to consume two arguments per pass in the loop (e.g. each
 # argument has a corresponding value to go with it).
@@ -27,6 +28,9 @@ do
         -p|--port)
             PORT="$2"
             shift # past argument
+            ;;
+        -i|--internal)
+            INTERNAL="true"
             ;;
         -h|--help)
             echo $USAGE
@@ -64,12 +68,21 @@ connect_through_gw() {
 }
 
 determine_gw() {
-   if nc -w 3 -z "$IGW_HOST" 22 &> /dev/null; then
-        echo "$IGW_HOST"
-    else
-        echo "$EGW_HOST"
-    fi
+   nc -w 3 -z "$IGW_HOST" 22 &> /dev/null
+   if [[ $? -eq 0 ]]; then
+       echo "$IGW_HOST"
+   elif [[ "$INTERNAL" == "true" ]]; then
+       exit 1
+   else
+       echo "$EGW_HOST"
+   fi
 }
 
 GW_HOST=$(determine_gw)
-connect_through_gw $GW_HOST
+ret=$?
+if [[ $ret -gt 0 ]]; then
+    echo "Cannot connect to internal gateway ($IGW_HOST) to access internal-only resource ($REMOTE_HOST)" 1>&2
+    exit $ret
+else
+    connect_through_gw $GW_HOST
+fi
