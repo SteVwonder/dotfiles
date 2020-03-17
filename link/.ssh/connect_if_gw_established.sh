@@ -63,6 +63,11 @@ connect_through_gw() {
     CONTROL_PATH=$(ssh -TG $GW_HOST | grep -o 'controlpath .*' | awk '{print $2}')
     if [[ ! -e $CONTROL_PATH ]]; then
         establish_gw_connection $CONTROL_PATH $GW_HOST
+        ret=$?
+        if [[ $ret -gt 0 ]]; then
+            echo "Failed to connect to internal gateway ($IGW_HOST)" 1>&2
+            exit $ret
+        fi
     fi
     connect_to_remote_host $CONTROL_PATH $GW_HOST
 }
