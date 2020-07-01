@@ -9,7 +9,7 @@
 [apply]
   whitespace = warn
 [alias]
-  br = branch
+#  br = branch
   ci = commit
   co = checkout
   df = diff
@@ -57,8 +57,6 @@
 [github]
     user = SteVwonder
 [alias]
-    br = for-each-ref --sort=-committerdate refs/heads/ \
-    --format='%(HEAD) %(color:cyan)%(align:15,left)(%(committerdate:relative))%(end)%(color:reset) %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - [%(color:blue)%(upstream:short)%(color:reset)]'
     setupstream = "!f() { \
         local rem=$(git remote | grep '^origin$'); \
         if [ -z \"$rem\" ]; then \
@@ -109,3 +107,50 @@
     }; f"
     alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | cut -c 1-80
 
+    root = "rev-parse --show-toplevel"
+
+    bro = for-each-ref --sort=-committerdate refs/heads/ \
+           --format='%(HEAD) %(color:cyan)%(align:15,left)(%(committerdate:relative))%(end)%(color:reset) %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - [%(color:blue)%(upstream:short)%(color:reset)]'
+    # From Todd Gamblin's dotfiles: https://github.com/tgamblin/dotfiles/blob/master/home/.gitconfig
+    br = branch --sort=-committerdate \
+        --format '%(HEAD) %(color:red)%(objectname:short)%(color:reset)  %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - %(color:cyan)(%(committerdate:relative)%(if:notequals=Stephen Herbein)%(authorname)%(then), %(color:bold blue)by %(authorname)%(color:reset)%(color:cyan)%(end))%(color:reset)%(if)%(upstream)%(then) -> %(color:magenta)%(upstream:short) %(color:white)%(upstream:track)%(color:reset)%(end)'
+    #
+    # `git b` with no arguments shows branches ordered by commit date
+    # (most recent first)
+    #
+    # With arguments, it behaves like `git branch`
+    #
+    b = !"f() { \
+            if [ $# -ne 0 ]; then \
+                git branch \"$@\"; \
+            else \
+                git for-each-ref --sort=-committerdate refs/heads/ \
+                --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset)  %(if)%(HEAD)%(then)%(color:green)%(refname:short)%(color:reset)%(else)%(refname:short)%(end) - %(color:cyan)(%(committerdate:relative))%(color:reset)'; \
+            fi; \
+        }; f"
+
+    #
+    # Fancy logging: shows DAG in ascii with color alongside commits.
+    #
+    # - lg:  Fancy log for current branch.
+    # - lga: Fancy log for all branches.
+    #
+    lg = log --oneline --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%aN <%ae>%Creset' --abbrev-commit
+    lgm = log --first-parent  --oneline --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit
+    lgb = log --first-parent  --oneline --color --graph --pretty=format:'%s' --abbrev-commit
+    lga = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit --branches --remotes --tags
+
+    #
+    # These will purge branches that have already been merged.
+    #
+    # - bpurge:       uses git branch -d
+    # - bpurge-force: uses git branch -D
+    #
+    bpurge = "!git branch --merged | \
+               grep -v '^\\*|master|develop|release' | \
+               xargs -n 1 git branch -d"
+    bpurge-force = "!git branch --merged | \
+                     egrep -v '^\\*|master|develop|release' | \
+                     xargs -n 1 git branch -D"
+[pull]
+	ff = only
