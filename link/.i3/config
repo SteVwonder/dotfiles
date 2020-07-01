@@ -16,7 +16,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-font pango:Essential PragmataPro 16
+font pango:FiraCode 16
 #font pango:Monospace 8
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -25,7 +25,7 @@ font pango:Essential PragmataPro 16
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-new_window pixel 1
+new_window pixel 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -213,3 +213,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id volnoti
 exec --no-startup-id "bash ~/.i3/LOCAL_config.sh"
+exec --no-startup-id redshift -l 37.6:-121.7 -t 6500:2500
