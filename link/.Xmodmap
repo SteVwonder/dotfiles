@@ -1,3 +1,6 @@
 keycode 66 = Control_L
 clear Lock
 add Control = Control_L
+
+pointer = 3 2 1
+!pointer = 1 2 3
