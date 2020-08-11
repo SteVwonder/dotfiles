@@ -67,6 +67,7 @@
 (require 'setup-pydev)
 (require 'setup-coding-modes)
 (require 'setup-projectile)
+(require 'setup-linklings-mode)
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
