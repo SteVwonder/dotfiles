@@ -1,13 +1,13 @@
 (use-package elpy
   :ensure t
-  :init (elpy-enable)
+  :init
+  (elpy-enable)
+  (setq elpy-rpc-python-command "python3")
   )
 
-(use-package blacken
-  :ensure t
-  :config
-  (setq blacken-only-if-project-is-blackened t)
-  (add-hook 'python-mode-hook 'blacken-mode)
+(use-package python-black
+  :demand t
+  :after python
   )
 
 (setq python-fill-docstring-style 'django)
