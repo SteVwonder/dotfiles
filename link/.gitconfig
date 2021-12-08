@@ -1,6 +1,8 @@
+[include]
+  path = ~/.gitconfig_LOCAL
+
 [user]
   name = Stephen Herbein
-  email = stephen272@gmail.com
 [core]
   autocrlf = input
   whitespace = warn,space-before-tab,tab-in-indent,trailing-space
@@ -154,3 +156,5 @@
                      xargs -n 1 git branch -D"
 [pull]
 	ff = only
+[diff "sopsdiffer"]
+	textconv = sops -d
