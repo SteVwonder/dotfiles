@@ -29,4 +29,19 @@
 (use-package json-mode
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
+;; Copied from https://gist.github.com/robfig/5975784
+;; Modifed to only set gofmt-command, rather than hook
+(dolist (path exec-path)
+  (when (file-exists-p (concat path "/goimports"))
+    (setq gofmt-command "goimports")
+     (setq gofmt-args (quote ("-local" "git.nvda.ai")))
+    ))
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save nil t)))
+
 (provide 'setup-coding-modes)
