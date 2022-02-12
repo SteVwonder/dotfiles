@@ -13,28 +13,17 @@ packages=(
   autoconf
   build-essential
   emacs
-  feh
   git-core
   global
   htop
   id3tool
-  i3
   libncurses-dev
   libssl-dev
-  playerctl
   python-pip
   subversion
   tmux
   tree
-  xclip
   zsh
-
-  # volnoti
-  libdbus-glib-1-dev
-  libgtk2.0-dev
-
-  # dmenu-frecency dependency
-  python-docopt
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
@@ -53,26 +42,5 @@ if [[ ! "$(type -P git-extras)" ]]; then
     cd $DOTFILES/vendor/git-extras &&
     make &&
     sudo make install
-  )
-fi
-
-# Install Volnoti
-if [[ ! "$(type -P volnoti)" ]]; then
-  e_header "Installing Volnoti"
-  (
-    cd $DOTFILES/vendor/volnoti &&
-        bash prepare.sh &&
-        bash fix_headers.sh &&
-        ./configure --prefix=/usr/local &&
-        make &&
-        sudo make install
-  )
-fi
-
-# Install py3status
-if [[ ! "$(type -P py3status)" ]]; then
-  e_header "Installing Playerctl"
-  (
-      sudo pip install py3status
   )
 fi
