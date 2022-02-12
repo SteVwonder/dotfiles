@@ -24,10 +24,6 @@
   :ensure t
   )
 
-(use-package lua-mode
-  :ensure t
-  )
-
 (use-package vdiff
   :ensure t
   )
@@ -36,28 +32,7 @@
   :ensure t
   )
 
-(use-package markdown-mode
-  :ensure t
-  )
-
-(use-package adoc-mode
-  :ensure t
-  :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
-  )
-
 (use-package academic-phrases
-  :ensure t
-  )
-
-(use-package yaml-mode
-  :ensure t
-  )
-
-(use-package cmake-mode
-  :ensure t
-  )
-
-(use-package cython-mode
   :ensure t
   )
 
