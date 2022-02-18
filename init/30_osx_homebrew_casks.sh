@@ -18,38 +18,19 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 
 # Homebrew casks
 casks=(
-  alfred
-  bluestacks
-  crashplan
   dash
-  firefox
   flux
-  github-desktop
   google-chrome
-  istat-menus
   iterm2
   java
   keepassx
-  keka
   mactex
-  mendeley-desktop
-  nvalt
   osxfuse
-  qtpass
-  real-vnc
-  selfcontrol
-  skype
   slack
   spotify
   steam
-  teamviewer
-  texmaker
-  the-unarchiver
-  tigervnc-viewer
   unetbootin
-  viscosity
   vlc
-  vmware-fusion
   xquartz
 )
 
