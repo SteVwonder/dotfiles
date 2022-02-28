@@ -13,6 +13,7 @@ recipes=(
   git
   git-extras
   reattach-to-user-namespace
+  ripgrep
   ssh-copy-id
   sshfs
   subversion

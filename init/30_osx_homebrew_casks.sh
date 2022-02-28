@@ -26,6 +26,7 @@ casks=(
   keepassx
   mactex
   osxfuse
+  scroll-reverser
   slack
   spotify
   steam
