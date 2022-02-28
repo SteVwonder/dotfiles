@@ -158,3 +158,5 @@
 	ff = only
 [diff "sopsdiffer"]
 	textconv = sops -d
+[gitreview]
+    branch = main
