@@ -42,7 +42,7 @@ hist() {
     if [[ -z "$2" ]]; then
         2=$(date "+%Y/%m/%d")
     fi
-    if command -v rg &> /dev/null && ! is_blueos3 ; then
+    if command -v rg &> /dev/null; then
         rg "$1" "${HIST_DIR}/$2"
     else
         grep -R "$1" "${HIST_DIR}/$2"
