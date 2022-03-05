@@ -8,3 +8,10 @@ build:debug --@io_bazel_rules_go//go/config:debug
 
 # Silence debug logs when building
 build --ui_event_filters=-DEBUG
+
+# Make gopls work with bazel
+build --symlink_prefix=_bazel_
+test  --symlink_prefix=_bazel_
+# Also suppress the generation of the bazel-out symlink, which always appears,no
+# matter what you set --symlink_prefix to.
+build --experimental_no_product_name_out_symlink
