@@ -37,12 +37,19 @@
 (dolist (path exec-path)
   (when (file-exists-p (concat path "/goimports"))
     (setq gofmt-command "goimports")
-     (setq gofmt-args (quote ("-local" "git.nvda.ai")))
+     (setq gofmt-args (quote ("-local" "go.corp.nvidia.com")))
     ))
 
-(add-hook 'go-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save nil t)))
+;; Comment out to prevent conflict with lsp-mode
+;; (add-hook 'go-mode-hook
+;;          (lambda ()
+;;            (add-hook 'before-save-hook 'gofmt-before-save nil t)))
+
+(defun lsp-go-install-save-hooks ()
+  "Set up before-save hooks to format buffer and add/delete imports.
+Make sure you don't have other gofmt/goimports hooks enabled."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
 
 (use-package cmake-mode
   :ensure t
@@ -69,16 +76,19 @@
   :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
   )
 
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
-(setq lsp-keymap-prefix "C-c l")
 
 (use-package lsp-mode
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          ;; (XXX-mode . lsp)
          (rust-mode . lsp)
+         (go-mode . lsp)
+         (go-mode. lsp-go-install-save-hooks)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
+  (setq lsp-keymap-prefix "C-c l")
   :commands lsp)
 
 ;; optionally
