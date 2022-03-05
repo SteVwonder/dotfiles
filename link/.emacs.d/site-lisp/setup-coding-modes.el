@@ -112,4 +112,12 @@
 ;; responses are in 800k - 3M range.
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
+(use-package protobuf-mode
+  :ensure t
+  )
+
+(use-package cue-mode
+  :load-path "site-lisp/vendor"
+  )
+
 (provide 'setup-coding-modes)
