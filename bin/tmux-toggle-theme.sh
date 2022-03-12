@@ -6,7 +6,7 @@ set -e
 default_window_style='fg=white,bg=colour234'
 default_active_style='fg=white,bg=black'
 
-alternate_window_style='fg=black,bg=colour255'
+alternate_window_style='fg=black,bg=colour254'
 alternate_active_style='fg=black,bg=white'
 
 current_window_style=$(tmux show -Av window-style)
