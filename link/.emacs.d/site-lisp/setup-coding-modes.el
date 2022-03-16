@@ -83,7 +83,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
          ;; (XXX-mode . lsp)
          (rust-mode . lsp)
          (go-mode . lsp)
-         (go-mode. lsp-go-install-save-hooks)
+         (go-mode . lsp-go-install-save-hooks)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :init
@@ -122,6 +122,9 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; responses are in 800k - 3M range.
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
+(use-package lsp-treemacs
+  :ensure t)
+
 (use-package protobuf-mode
   :ensure t
   )
@@ -129,5 +132,8 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package cue-mode
   :load-path "site-lisp/vendor"
   )
+
+(use-package bazel
+  :ensure t)
 
 (provide 'setup-coding-modes)
