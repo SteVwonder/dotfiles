@@ -6,7 +6,7 @@
   :ensure t
   :init
   (yas-reload-all)
-  (add-hook 'python-mode-hook 'yas-minor-mode)
+  (yas-global-mode)
   )
 
 (provide 'setup-yasnippet)
