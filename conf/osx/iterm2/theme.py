@@ -9,9 +9,8 @@ async def update(connection, theme):
     # Themes have space-delimited attributes, one of which will be light or dark.
     parts = theme.split(" ")
     if "dark" in parts:
-        preset = await iterm2.ColorPreset.async_get(connection, "Dark Background")
+        preset = await iterm2.ColorPreset.async_get(connection, "MyDark")
     else:
-        #preset = await iterm2.ColorPreset.async_get(connection, "Light Background")
         preset = await iterm2.ColorPreset.async_get(connection, "MyLight")
 
     # Update the list of all profiles and iterate over them.
@@ -20,6 +19,7 @@ async def update(connection, theme):
         if partial.name in ["Default", "DropDown"]:
             # Fetch the full profile and then set the color preset in it.
             profile = await partial.async_get_full_profile()
+            # TODO: check if the profile is diff, and if so, trigger iterm flip
             await profile.async_set_color_preset(preset)
 
 async def main(connection):
