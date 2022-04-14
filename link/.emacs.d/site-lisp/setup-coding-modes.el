@@ -136,4 +136,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package bazel
   :ensure t)
 
+(use-package dockerfile-mode
+  :ensure t)
+
 (provide 'setup-coding-modes)
