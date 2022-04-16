@@ -52,4 +52,10 @@
 (use-package buffer-move
   :ensure t)
 
+(use-package vs-dark-theme
+  :ensure t)
+
+(use-package vs-light-theme
+  :ensure t)
+
 (provide 'setup-misc)
