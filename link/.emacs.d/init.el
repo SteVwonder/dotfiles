@@ -57,6 +57,7 @@
   (setq win-switch-idle-time 1.25)
   )
 
+(require 'setup-yasnippet)
 (require 'setup-org)
 (require 'setup-company)
 (require 'setup-helm)
