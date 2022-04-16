@@ -10,6 +10,10 @@
 (add-hook 'c-special-indent-hook 'infer-indentation-style)
 (add-hook 'python-mode-hook 'infer-indentation-style)
 
+(add-hook 'c-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-c"))))
+
 (use-package rust-mode
   :ensure t)
 

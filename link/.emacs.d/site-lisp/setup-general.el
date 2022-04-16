@@ -144,4 +144,13 @@ apps are not started from a shell."
 
 (set-exec-path-from-shell-PATH)
 
+;; If running in emacsclient, force a prompt before exiting client
+(defun my-save-buffers-kill-terminal ()
+  (if (yes-or-no-p "Really exit this Emacs? ")
+      (save-buffers-kill-terminal nil)
+    )
+  )
+(global-set-key (kbd "C-x C-c")
+                (lambda () (interactive) (my-save-buffers-kill-terminal)))
+
 (provide 'setup-general)

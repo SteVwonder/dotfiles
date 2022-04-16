@@ -33,29 +33,9 @@
 ;;(require 'benchmark-init)
 ;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
 
-(add-hook 'c-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-c C-c"))))
-
 (eval-when-compile
   (require 'use-package))
 (require 'bind-key)
-
-;; refactoring goodness
-(use-package iedit
-  :ensure t
-  :bind ("C-c ;" . iedit-mode)
-)
-
-(use-package win-switch
-  :ensure t
-  :config (global-set-key "\C-xo" 'win-switch-mode)
-  (global-set-key "\C-xn" 'win-switch-next-window)
-  (global-set-key "\C-xp" 'win-switch-previous-window)
-  (win-switch-add-key "n" 'next-window)
-  (setq win-switch-other-window-first nil)
-  (setq win-switch-idle-time 1.25)
-  )
 
 (require 'setup-yasnippet)
 (require 'setup-org)
@@ -74,15 +54,6 @@
 
 (load-theme 'herbein t)
 (enable-theme 'herbein)
-
-;; If running in emacsclient, force a prompt before exiting client
-(defun my-save-buffers-kill-terminal ()
-  (if (yes-or-no-p "Really exit this Emacs? ")
-      (save-buffers-kill-terminal nil)
-    )
-  )
-(global-set-key (kbd "C-x C-c")
-                (lambda () (interactive) (my-save-buffers-kill-terminal)))
 
 (provide 'init)
 ;;; init.el ends here

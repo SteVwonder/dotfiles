@@ -58,4 +58,20 @@
 (use-package vs-light-theme
   :ensure t)
 
+(use-package win-switch
+  :ensure t
+  :config (global-set-key "\C-xo" 'win-switch-mode)
+  (global-set-key "\C-xn" 'win-switch-next-window)
+  (global-set-key "\C-xp" 'win-switch-previous-window)
+  (win-switch-add-key "n" 'next-window)
+  (setq win-switch-other-window-first nil)
+  (setq win-switch-idle-time 1.25)
+  )
+
+;; refactoring goodness
+(use-package iedit
+  :ensure t
+  :bind ("C-c ;" . iedit-mode)
+)
+
 (provide 'setup-misc)
