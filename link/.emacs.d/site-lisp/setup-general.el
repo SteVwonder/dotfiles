@@ -126,6 +126,12 @@
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 
+;; Copied from https://emacs.stackexchange.com/questions/45419/get-file-name-relative-to-projectile-root
+(defun kill-relative-path ()
+  "Kill the current buffer's absolute file name relative to its projectile root."
+  (interactive)
+  (kill-new (file-relative-name buffer-file-name (projectile-project-root))))
+
 ;; Copied from https://www.emacswiki.org/emacs/ExecPath
 ;; Currently used when trying to figure if gofmt vs goimports should be used
 (defun set-exec-path-from-shell-PATH ()
