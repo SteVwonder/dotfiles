@@ -122,9 +122,6 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; responses are in 800k - 3M range.
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-(use-package lsp-treemacs
-  :ensure t)
-
 (use-package protobuf-mode
   :ensure t
   )
