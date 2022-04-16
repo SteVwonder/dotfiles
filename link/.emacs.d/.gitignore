@@ -4,3 +4,9 @@
 /.python-environments/
 /ac-comphist.dat
 /irony/
+/elpy
+/undo
+/.cache
+/.lsp-session-v1
+/eln-cache
+/transient
