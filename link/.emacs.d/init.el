@@ -29,7 +29,9 @@
   (package-install 'use-package)
   )
 
-
+;; Uncomment to benchmark startup
+;;(require 'benchmark-init)
+;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 (add-hook 'c-mode-hook
           (lambda()
