@@ -140,4 +140,15 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package dockerfile-mode
   :ensure t)
 
+(use-package docker-compose-mode
+  :ensure t)
+
+(use-package tree-sitter
+  :ensure t
+  :hook (tree-sitter-after-on-hook. tree-sitter-hl-mode)
+  :init (global-tree-sitter-mode)
+  )
+(use-package tree-sitter-langs
+  :ensure t)
+
 (provide 'setup-coding-modes)
