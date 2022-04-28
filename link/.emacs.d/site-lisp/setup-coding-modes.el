@@ -94,7 +94,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
   (setq lsp-keymap-prefix "C-c l")
   :config
-  (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-testlogs" "-node_modules"])
+  (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
   (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
   (setq lsp-enable-file-watchers nil)
   :commands lsp)
