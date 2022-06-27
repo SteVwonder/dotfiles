@@ -42,7 +42,7 @@
   :init
   (global-whitespace-mode t)
   :config
-  (setq whitespace-line-column 79)
+  (setq whitespace-line-column 100)
   (setq whitespace-style (quote (face trailing lines-tail)))
   (setq whitespace-global-modes (quote (not org-mode latex-mode LaTeX-mode)))
   :hook
