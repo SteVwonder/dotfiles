@@ -1,9 +1,8 @@
-(use-package elpy
+(use-package lsp-pyright
   :ensure t
-  :init
-  (elpy-enable)
-  (setq elpy-rpc-python-command "python3")
-  )
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
 (use-package python-black
   :demand t
