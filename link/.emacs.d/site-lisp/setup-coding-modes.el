@@ -155,4 +155,8 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package tree-sitter-langs
   :ensure t)
 
+(use-package markdown-preview-mode
+  :ensure t
+  )
+
 (provide 'setup-coding-modes)
