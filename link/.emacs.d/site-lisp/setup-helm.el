@@ -62,11 +62,4 @@
   (setq-local helm-dash-docsets '("Python 2")))
 (add-hook 'python-mode-hook 'helm-dash-python)
 
-(use-package perspective
-  :ensure t
-  :bind
-  ;;("C-x C-b" . persp-list-buffers)   ; or use a nicer switcher, see below
-  :init
-  (persp-mode))
-
 (provide 'setup-helm)

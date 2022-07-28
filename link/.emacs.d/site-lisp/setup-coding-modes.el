@@ -80,7 +80,24 @@ Make sure you don't have other gofmt/goimports hooks enabled."
   :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
   )
 
+; (use-package lsp-pyright
+;   :ensure t
+;   :hook (python-mode . (lambda ()
+;                           (require 'lsp-pyright)
+;                           (lsp))))  ; or lsp-deferred
+; (use-package lsp-python-ms
+;   :ensure t
+;   :init (setq lsp-python-ms-auto-install-server t))
 
+(use-package python-black
+  :demand t
+  :after python
+  )
+
+(setq python-fill-docstring-style 'django)
+
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
+(setq lsp-keymap-prefix "C-c l")
 (use-package lsp-mode
   :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
@@ -88,16 +105,18 @@ Make sure you don't have other gofmt/goimports hooks enabled."
          (rust-mode . lsp)
          (go-mode . lsp)
          (go-mode . lsp-go-install-save-hooks)
+         ; (python-mode . (lambda ()
+         ;                  (require 'lsp-python-ms)
+         ;                  (lsp)))
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
-  (setq lsp-keymap-prefix "C-c l")
   :config
   (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
   (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
   (setq lsp-enable-file-watchers nil)
-  :commands lsp)
+  ; (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+  :commands lsp
+  )
 
 ;; optionally
 (use-package lsp-ui

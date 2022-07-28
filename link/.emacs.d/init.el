@@ -47,7 +47,6 @@
 (require 'setup-misc)
 (require 'setup-langtool)
 (require 'setup-tex)
-(require 'setup-pydev)
 (require 'setup-coding-modes)
 (require 'setup-projectile)
 (require 'setup-linklings-mode)
