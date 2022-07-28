@@ -27,6 +27,12 @@ function prompt_for_commit_diff {
 
 current_branch=$(git symbolic-ref --short HEAD)
 
+if [ "$current_branch" != "main" ]; then
+    echo "This script should be run from the main branch" >&2
+    exit 1
+fi
+
+
 for branch in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
     if [ "$branch" == "$current_branch" ]; then
         continue
@@ -57,6 +63,11 @@ for branch in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
     done
     if [ $branch_differs -eq 0 ]; then
         read -p "$branch fully merged. Delete? [yN] " answer
+        if [[ "${answer}" =~ ^(y|yes)$ ]]; then
+            git branch -D $branch
+        fi
+    elif [[ "$branch" =~ ^review/[^s][^h].*  ]]; then
+        read -p "$branch is a gerrit review branch. Delete? [yN] " answer
         if [[ "${answer}" =~ ^(y|yes)$ ]]; then
             git branch -D $branch
         fi
