@@ -6,7 +6,7 @@ else
     EDITOR="emacs"
 fi
 
-export EDITOR="${EDITOR} -nw"
+export EDITOR="${EDITOR}"
 export SUDO_EDITOR=$EDITOR
 export ALTERNATE_EDITOR=""
 export VISUAL="$EDITOR"
