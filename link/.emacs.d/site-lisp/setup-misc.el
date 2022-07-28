@@ -74,4 +74,11 @@
   :bind ("C-c ;" . iedit-mode)
 )
 
+
+(use-package vterm
+  :ensure t
+  :config
+  (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
+  )
+
 (provide 'setup-misc)

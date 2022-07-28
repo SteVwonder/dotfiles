@@ -18,3 +18,6 @@ antigen theme agkozak/agkozak-zsh-prompt
 
 # Tell Antigen that you're done.
 antigen apply
+
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ vterm_set_directory }
