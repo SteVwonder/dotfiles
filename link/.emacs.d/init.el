@@ -37,6 +37,7 @@
   (require 'use-package))
 (require 'bind-key)
 
+(require 'setup-quelpa)
 (require 'setup-yasnippet)
 (require 'setup-org)
 (require 'setup-company)

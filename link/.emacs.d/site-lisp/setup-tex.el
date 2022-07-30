@@ -1,3 +1,8 @@
+(quelpa '(auctex-latexmk
+           :fetcher github
+           :repo "smile13241324/auctex-latexmk"
+           :commit "c1eedac3458a48da62d0bc59b86cf0529cc3920b"))
+
 (use-package tex
   :ensure auctex
   :init
@@ -35,9 +40,13 @@
   )
 
 (use-package auctex-latexmk
-  :ensure t
+  :ensure nil
   :init (auctex-latexmk-setup)
   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :quelpa (auctex-latexmk
+           :fetcher github
+           :repo "smile13241324/auctex-latexmk"
+           :commit "c1eedac3458a48da62d0bc59b86cf0529cc3920b")
   )
 
 (use-package company-auctex
