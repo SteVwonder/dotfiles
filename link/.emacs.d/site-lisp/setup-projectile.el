@@ -1,13 +1,7 @@
-(use-package projectile
-  :ensure t
-  )
+(use-package projectile)
 
-(use-package helm-projectile
-  :ensure t
-  )
+(use-package helm-projectile)
 
-(use-package projectile-ripgrep
-  :ensure t
-  )
+(use-package projectile-ripgrep)
 
 (provide 'setup-projectile)

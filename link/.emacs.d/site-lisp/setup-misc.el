@@ -5,7 +5,6 @@
   (setq fill-column 72))
 
 (use-package magit
-  :ensure t
   :init
   (setq magit-last-seen-setup-instructions "1.4.0")
   :config
@@ -16,27 +15,18 @@
   )
 
 (use-package undo-tree
-  :ensure t
   :config (global-undo-tree-mode)
   ;; Prevent undo tree files from polluting your git repo
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
   )
 
-(use-package vlf
-  :ensure t
-  )
+(use-package vlf)
 
-(use-package vdiff
-  :ensure t
-  )
+(use-package vdiff)
 
-(use-package transpose-frame
-  :ensure t
-  )
+(use-package transpose-frame)
 
-(use-package academic-phrases
-  :ensure t
-  )
+(use-package academic-phrases)
 
 (use-package whitespace
   :init
@@ -49,17 +39,13 @@
   (rust-mode . (lambda () (setq whitespace-line-column 100)))
   )
 
-(use-package buffer-move
-  :ensure t)
+(use-package buffer-move)
 
-(use-package vs-dark-theme
-  :ensure t)
+(use-package vs-dark-theme)
 
-(use-package vs-light-theme
-  :ensure t)
+(use-package vs-light-theme)
 
 (use-package win-switch
-  :ensure t
   :config (global-set-key "\C-xo" 'win-switch-mode)
   (global-set-key "\C-xn" 'win-switch-next-window)
   (global-set-key "\C-xp" 'win-switch-previous-window)
@@ -70,12 +56,10 @@
 
 ;; refactoring goodness
 (use-package iedit
-  :ensure t
   :bind ("C-c ;" . iedit-mode)
 )
 
 (use-package perspective
-  :ensure t
   :bind
   ;;("C-x C-b" . persp-list-buffers)   ; or use a nicer switcher, see below
   :init
@@ -83,7 +67,6 @@
 
 
 (use-package vterm
-  :ensure t
   :config
   (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
   )

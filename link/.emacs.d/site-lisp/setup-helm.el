@@ -1,5 +1,4 @@
 (use-package helm
-  :ensure t
   :config
   (require 'helm-config)
   ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
@@ -30,7 +29,6 @@
 )
 
 (use-package helm-gtags
-  :ensure t
   :commands helm-gtags-mode
   :init
   (add-hook 'dired-mode-hook 'helm-gtags-mode)
@@ -48,9 +46,7 @@
    )
   )
 
-(use-package helm-dash
-  :ensure t
-  )
+(use-package helm-dash)
 
 (defun helm-dash-shell ()
   (interactive)

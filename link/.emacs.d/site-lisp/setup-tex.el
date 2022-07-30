@@ -49,9 +49,7 @@
            :commit "c1eedac3458a48da62d0bc59b86cf0529cc3920b")
   )
 
-(use-package company-auctex
-  :ensure t
-  )
+(use-package company-auctex)
 
 ;; ##### Don't forget to configure
 ;; ##### Okular to use emacs in

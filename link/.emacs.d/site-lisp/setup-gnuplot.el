@@ -1,9 +1,5 @@
-(use-package gnuplot
-  :ensure t
-)
+(use-package gnuplot)
 
-(use-package gnuplot-mode
-  :ensure t
-)
+(use-package gnuplot-mode)
 
 (provide 'setup-gnuplot)

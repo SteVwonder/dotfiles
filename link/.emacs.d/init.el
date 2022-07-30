@@ -20,7 +20,6 @@
         ))
 (package-initialize)
 
-
 ;; install the missing packages
 (unless (package-installed-p 'use-package)
   ;; fetch the list of packages available
@@ -34,7 +33,10 @@
 ;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+  )
 (require 'bind-key)
 
 (require 'setup-quelpa)

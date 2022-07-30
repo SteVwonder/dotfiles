@@ -1,6 +1,5 @@
 ;; complete anything goodness
 (use-package company
-  :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (setq company-backends (delete 'company-semantic company-backends))
@@ -9,8 +8,6 @@
   (add-hook 'shell-mode-hook #'company-mode)
 )
 
-(use-package company-web
-  :ensure t
-)
+(use-package company-web)
 
 (provide 'setup-company)

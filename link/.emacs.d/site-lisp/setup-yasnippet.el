@@ -8,8 +8,6 @@
   (progn
     (yas-reload-all)))
 
-(use-package yasnippet-snippets
-  :ensure t
-  )
+(use-package yasnippet-snippets)
 
 (provide 'setup-yasnippet)

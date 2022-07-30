@@ -1,6 +1,5 @@
 
 (use-package irony
-  :ensure t
   :config
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
@@ -16,7 +15,6 @@
     'irony-completion-at-point-async))
 
 (use-package company-irony
-  :ensure t
   :config
   (add-to-list 'company-backends '(company-irony))
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
@@ -25,12 +23,10 @@
   )
 
 (use-package company-irony-c-headers
-  :ensure t
   :config (add-to-list 'company-backends '(company-irony-c-headers))
   )
 
 (use-package irony-eldoc
-  :ensure t
   :config
   (add-hook 'irony-mode-hook 'irony-eldoc)
   )

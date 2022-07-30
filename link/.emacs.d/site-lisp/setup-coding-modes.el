@@ -14,11 +14,9 @@
           (lambda()
             (local-unset-key (kbd "C-c C-c"))))
 
-(use-package rust-mode
-  :ensure t)
+(use-package rust-mode)
 
-(use-package toml-mode
-  :ensure t)
+(use-package toml-mode)
 
 ;; Org Babel
 (setq
@@ -30,11 +28,9 @@
    (org . t)
    ))
 
-(use-package json-mode
-  :ensure t)
+(use-package json-mode)
 
-(use-package go-mode
-  :ensure t)
+(use-package go-mode)
 
 ;; Copied from https://gist.github.com/robfig/5975784
 ;; Modifed to only set gofmt-command, rather than hook
@@ -55,38 +51,27 @@ Make sure you don't have other gofmt/goimports hooks enabled."
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 
-(use-package cmake-mode
-  :ensure t
-  )
+(use-package cmake-mode)
 
-(use-package cython-mode
-  :ensure t
-  )
+(use-package cython-mode)
 
-(use-package lua-mode
-  :ensure t
-  )
+(use-package lua-mode)
 
-(use-package yaml-mode
-  :ensure t
-  )
+(use-package yaml-mode)
 
-(use-package markdown-mode
-  :ensure t
-  )
+(use-package markdown-mode)
 
 (use-package adoc-mode
-  :ensure t
   :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
   )
 
 ; (use-package lsp-pyright
-;   :ensure t
+;   
 ;   :hook (python-mode . (lambda ()
 ;                           (require 'lsp-pyright)
 ;                           (lsp))))  ; or lsp-deferred
 ; (use-package lsp-python-ms
-;   :ensure t
+;   
 ;   :init (setq lsp-python-ms-auto-install-server t))
 
 (use-package python-black
@@ -99,7 +84,6 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
 (setq lsp-keymap-prefix "C-c l")
 (use-package lsp-mode
-  :ensure t
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          ;; (XXX-mode . lsp)
          (rust-mode . lsp)
@@ -120,11 +104,9 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 
 ;; optionally
 (use-package lsp-ui
-  :ensure t
   :commands lsp-ui-mode)
 ;; if you are helm user
 (use-package helm-lsp
-  :ensure t
   :commands helm-lsp-workspace-symbol)
 ;; if you are ivy user
 ;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
@@ -136,7 +118,6 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 
 ;; optional if you want which-key integration
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode))
 
@@ -149,33 +130,24 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; responses are in 800k - 3M range.
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-(use-package protobuf-mode
-  :ensure t
-  )
+(use-package protobuf-mode)
 
 (use-package cue-mode
   :load-path "site-lisp/vendor"
   )
 
-(use-package bazel
-  :ensure t)
+(use-package bazel)
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-mode)
 
-(use-package docker-compose-mode
-  :ensure t)
+(use-package docker-compose-mode)
 
 (use-package tree-sitter
-  :ensure t
   :hook (tree-sitter-after-on-hook. tree-sitter-hl-mode)
   :init (global-tree-sitter-mode)
   )
-(use-package tree-sitter-langs
-  :ensure t)
+(use-package tree-sitter-langs)
 
-(use-package markdown-preview-mode
-  :ensure t
-  )
+(use-package markdown-preview-mode)
 
 (provide 'setup-coding-modes)
