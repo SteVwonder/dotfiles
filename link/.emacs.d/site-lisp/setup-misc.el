@@ -72,6 +72,7 @@
 (use-package vterm
   :config
   (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
+  (setq vterm-buffer-name-string "vterm %s")
   )
 
 (provide 'setup-misc)
