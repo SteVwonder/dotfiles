@@ -132,6 +132,21 @@
   (interactive)
   (kill-new (file-relative-name buffer-file-name (projectile-project-root))))
 
+(defun kill-absolute-path ()
+  "Kill the current buffer's absolute file name relative to its projectile root."
+  (interactive)
+  (kill-new (buffer-file-name)))
+
+(defun gerrit-link ()
+  (interactive)
+  (kill-new
+   (concat
+    "https://git-av.nvidia.com/r/plugins/gitiles/maglev/+/main/"
+    (file-relative-name buffer-file-name (projectile-project-root))
+    "#"
+    (number-to-string (line-number-at-pos))
+    )))
+
 ;; Copied from https://www.emacswiki.org/emacs/ExecPath
 ;; Currently used when trying to figure if gofmt vs goimports should be used
 (defun set-exec-path-from-shell-PATH ()
