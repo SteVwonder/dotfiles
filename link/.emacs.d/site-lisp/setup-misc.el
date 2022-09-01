@@ -63,7 +63,10 @@
   :bind
   ;;("C-x C-b" . persp-list-buffers)   ; or use a nicer switcher, see below
   :init
-  (persp-mode))
+  (persp-mode)
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))
+  )
 
 
 (use-package vterm
