@@ -13,7 +13,7 @@ vterm_printf(){
     fi
 }
 vterm_prompt_end() {
-    vterm_printf "51;A";
+    vterm_printf "51;A"
 }
 
 # Directory tracking (note: the vterm_set_directory is added as a hook in 60_antigen.sh)

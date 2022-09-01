@@ -25,12 +25,11 @@
 AGKOZAK_PROMPT_DIRTRIM=4
 AGKOZAK_BLANK_LINES=1
 AGKOZAK_LEFT_PROMPT_ONLY=1
-#AGKOZAK_CUSTOM_RPROMPT='%* (${SPACK_ENV##*/})'
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then 
-    AGKOZAK_PROMPT_CHAR=( "❯$(vterm_prompt_end)" ❯ ❮ )
-else
-    AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
-fi
+#if [[ "$INSIDE_EMACS" = 'vterm' ]]; then 
+#    AGKOZAK_PROMPT_CHAR=( "❯$(vterm_prompt_end)" ❯ ❮ )
+#else
+AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+#fi
 AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
 
 is_bash || return 1  # if not bash, skip the rest of this file
