@@ -133,7 +133,8 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package protobuf-mode)
 
 (use-package cue-mode
-  :load-path "site-lisp/vendor"
+  :config
+  (add-hook 'before-save-hook 'cue-reformat-buffer nil t)
   )
 
 (use-package bazel)
