@@ -208,9 +208,10 @@ for_window [title="^Figure [0-9]+" class="^ $"] floating enable
 for_window [class="Spotify"] move to workspace "9"
 for_window [class="Google Play Music Desktop Player"] move to workspace "9"
 for_window [title="Authy"] floating enable
+for_window [class="obsidian"] move to workspace "8"
 
 exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id volnoti
 exec --no-startup-id "bash ~/.i3/LOCAL_config.sh"
-exec --no-startup-id redshift -l 37.6:-121.7 -t 6500:2500
+exec --no-startup-id redshift -l 34.3:-78.0 -t 6500:2500
