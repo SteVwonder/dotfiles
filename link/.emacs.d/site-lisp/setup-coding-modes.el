@@ -89,6 +89,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
          (rust-mode . lsp)
          (go-mode . lsp)
          (go-mode . lsp-go-install-save-hooks)
+         (python-mode . lsp)
          ; (python-mode . (lambda ()
          ;                  (require 'lsp-python-ms)
          ;                  (lsp)))
@@ -98,6 +99,8 @@ Make sure you don't have other gofmt/goimports hooks enabled."
   (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
   (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
   (setq lsp-enable-file-watchers nil)
+  (setq lsp-pylsp-plugins-yapf-enabled t)
+  (setq lsp-pylsp-plugins-rope-completion-enabled t)
   ; (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   :commands lsp
   )
