@@ -42,8 +42,12 @@
 (use-package buffer-move)
 
 (use-package vs-dark-theme)
-
-(use-package vs-light-theme)
+(use-package auto-dark
+  :init
+  (setq auto-dark-light-theme 'herbein)
+  (setq auto-dark-dark-theme 'vs-dark)
+  (auto-dark-mode t)
+  )
 
 (use-package win-switch
   :config (global-set-key "\C-xo" 'win-switch-mode)

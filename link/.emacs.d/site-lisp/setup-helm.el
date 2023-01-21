@@ -1,6 +1,5 @@
 (use-package helm
   :config
-  (require 'helm-config)
   ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))

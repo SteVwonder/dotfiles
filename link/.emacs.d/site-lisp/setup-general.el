@@ -174,4 +174,22 @@ apps are not started from a shell."
 (global-set-key (kbd "C-x C-c")
                 (lambda () (interactive) (my-save-buffers-kill-terminal)))
 
+;; https://www.reddit.com/r/emacs/comments/xfhnzz/weird_errors_with_latest_build_of_emacs/
+(when (eq system-type 'darwin) (customize-set-variable 'native-comp-driver-options '("-Wl,-w")))
+
+;; https://www.emacswiki.org/emacs/GccEmacs#h5o-18
+(setq package-native-compile t)
+
+;; https://stackoverflow.com/questions/6154545/emacs-change-case-of-a-rectangle
+(defun upcase-rectangle (b e)
+  "change chars in rectangle to uppercase"
+  (interactive "r")
+  (apply-on-rectangle 'upcase-rectangle-line b e))
+
+(defun upcase-rectangle-line (startcol endcol)
+  (when (= (move-to-column startcol) startcol)
+    (upcase-region (point)
+                   (progn (move-to-column endcol 'coerce)
+                          (point)))))
+
 (provide 'setup-general)
