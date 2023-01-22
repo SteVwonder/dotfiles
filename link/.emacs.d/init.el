@@ -6,38 +6,24 @@
 (load custom-file 'noerror)
 
 ;; Package management goodness
-(require 'setup-package)
+;;(require 'setup-package)
+(load (concat site-lisp-dir "/setup-straight.el"))
 
 ;; Setup "general" emacs settings
 (require 'setup-general)
 
 ;; Uncomment to benchmark startup
-;;(require 'benchmark-init)
-;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
+;; (require 'benchmark-init)
+;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
-(eval-when-compile
-  (require 'use-package)
-  (require 'use-package-ensure)
-  (setq use-package-always-ensure t)
-  )
 (require 'bind-key)
 
-(require 'setup-helm)
-
-(require 'setup-coding-modes)
-(require 'setup-flycheck)
-(require 'setup-misc)
-(require 'setup-org)
-(require 'setup-projectile)
-(require 'setup-lsp)
-(require 'setup-company)
-;;(require 'setup-yasnippet)
-;;(require 'setup-langtool)
-;;(require 'setup-linklings-mode)
-;;(require 'setup-tex)
-
-;;(load-theme 'herbein t)
-;;(enable-theme 'herbein)
+(let ((init-features '("setup-helm" "setup-coding-modes" "setup-flycheck" "setup-misc"
+                       "setup-org" "setup-projectile" "setup-lsp" "setup-company"
+                       ;;"setup-yasnippet" "setup-langtool" "setup-linklings-mode" "setup-tex"
+                       )))
+  (mapc #'load init-features)
+  )
 
 (provide 'init)
 ;;; init.el ends here

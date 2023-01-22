@@ -20,5 +20,8 @@
 /link/.task/*.pem
 /link/.task/*.data
 
+/link/.emacs.d/straight
+/link/.emacs.d/straight-cache.el
+
 # Ignore any file with LOCAL in the name (good for per-machine vars/functions)
 *LOCAL*
