@@ -14,9 +14,6 @@
   (add-hook 'git-commit-mode-hook #'setup-commit-mode)
   (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
   (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
-  :custom
-  ;; Supposedly this help performance?
-  (magit-git-executable "/usr/local/bin/git")
   )
 
 (use-package undo-tree
