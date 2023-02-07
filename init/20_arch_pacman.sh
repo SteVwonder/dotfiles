@@ -25,6 +25,7 @@ packages=(
   eog
   firefox
   fish
+  fisher
   htop
   i3-wm
   kitty
