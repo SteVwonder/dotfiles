@@ -57,19 +57,26 @@ packages=(
 e_header "Installing Arch packages: ${packages[*]}"
 sudo pacman -Sq --needed "${packages[@]}"
 
+e_header "Installing Yay AUR Helper"
+(
+    cd $TMP
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
+)
+
 aur_packages=(
   1password
   dmenu-frecency-git
   google-chrome
   nordvpn-bin
-  rua
   spideroak-one
   syncthing-gtk
 )
 
-if type "rua" > /dev/null; then
-    e_header "Installing AUR packages via rua: ${packages[*]}"
-    rua install "${aur_packages[@]}"
+if type "yay" > /dev/null; then
+    e_header "Installing AUR packages via yay: ${packages[*]}"
+    yay -S --needed "${aur_packages[@]}"
 else
-    e_header "Unable to install AUR packages. Missing rua command"
+    e_header "Unable to install AUR packages. Missing yay command"
 fi
