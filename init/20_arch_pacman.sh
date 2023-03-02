@@ -28,6 +28,8 @@ packages=(
   fisher
   htop
   i3-wm
+  iotop
+  j4-dmenu-desktop
   kitty
   libvterm
   make
@@ -42,6 +44,7 @@ packages=(
   py3status
   pyright
   redshift
+  rofi
 #  smartmontools
   starship
   syncthing
