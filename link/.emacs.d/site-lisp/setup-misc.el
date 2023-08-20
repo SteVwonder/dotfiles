@@ -43,12 +43,14 @@
 
 (use-package buffer-move)
 
-(use-package vs-dark-theme)
-(use-package auto-dark
-  :init
-  (setq auto-dark-light-theme 'herbein)
-  (setq auto-dark-dark-theme 'vs-dark)
-  (auto-dark-mode t)
+(when (eq system-type 'darwin)
+  (use-package vs-dark-theme)
+  (use-package auto-dark
+    :init
+    (setq auto-dark-light-theme 'herbein)
+    (setq auto-dark-dark-theme 'vs-dark)
+    (auto-dark-mode t)
+    )
   )
 
 (use-package win-switch
