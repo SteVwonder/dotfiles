@@ -92,4 +92,6 @@
 
 (use-package markdown-preview-mode)
 
+(use-package fish-mode)
+
 (provide 'setup-coding-modes)
