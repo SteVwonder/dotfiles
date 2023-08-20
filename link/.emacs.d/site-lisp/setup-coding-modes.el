@@ -92,6 +92,18 @@
 
 (use-package markdown-preview-mode)
 
+;; Syntax highlighting etc for django development
+;; (use-package nXhtml)
+;; (use-package django-mode
+;;   :init (add-to-list 'auto-mode-alist '("\\.djhtml$" . django-html-mode))
+;;   )
+
+(use-package easy-hugo
+  :init
+  (setq easy-hugo-basedir "~/Repositories/stevwonder.github.io/stevwonder/")
+  (setq easy-hugo-previewtime "300")
+  :bind ("C-c C-e" . easy-hugo))
+
 (use-package fish-mode)
 
 (provide 'setup-coding-modes)
