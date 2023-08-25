@@ -106,4 +106,7 @@
 
 (use-package fish-mode)
 
+(use-package groovy-mode)
+(use-package jenkinsfile-mode)
+
 (provide 'setup-coding-modes)
