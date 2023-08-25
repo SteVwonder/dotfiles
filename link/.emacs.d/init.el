@@ -1,5 +1,6 @@
 (setq site-lisp-dir (expand-file-name "site-lisp" user-emacs-directory))
 (add-to-list 'load-path site-lisp-dir)
+(add-to-list 'load-path (expand-file-name "vendor" site-lisp-dir))
 
 ;; Load custom settings
 (setq custom-file "~/.emacs.d/LOCAL-custom.el")

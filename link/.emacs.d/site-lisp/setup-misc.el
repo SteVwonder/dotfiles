@@ -83,4 +83,6 @@
   (setq vterm-buffer-name-string "vterm %s")
   )
 
+(require 'multi-scratch)
+
 (provide 'setup-misc)
