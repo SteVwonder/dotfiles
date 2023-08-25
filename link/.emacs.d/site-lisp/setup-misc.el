@@ -12,8 +12,6 @@
                     "^Enter passphrase for .*: ?$"))
     (add-to-list 'magit-process-password-prompt-regexps regexp))
   (add-hook 'git-commit-mode-hook #'setup-commit-mode)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
   )
 
 (use-package undo-tree
