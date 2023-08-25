@@ -3,7 +3,9 @@
                                         ; using any means: via a hook or by user
   :init ; stuff to do before requiring the package
   (progn
-    (add-hook 'prog-mode-hook #'yas-minor-mode))
+    (add-hook 'prog-mode-hook #'yas-minor-mode)
+    (add-hook 'lsp-mode-hook #'yas-minor-mode)
+    )
   :config ; stuff to do after requiring the package
   (progn
     (yas-reload-all)))
