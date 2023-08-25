@@ -1,6 +1,7 @@
 (setq straight-check-for-modifications '(check-on-save))
 (setq straight-use-package-by-default t)
 (setq package-enable-at-startup nil)
+(setq straight-host-usernames '((github . "stevwonder")))
 
 (setf straight-build-dir "~/.emacs.d/straight"
       straight-profiles `((nil . ,"~/.emacs.d/straight.lockfile.el")))

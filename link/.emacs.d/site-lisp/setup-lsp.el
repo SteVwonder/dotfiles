@@ -10,27 +10,37 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l", "s-l")
 (setq lsp-keymap-prefix "C-c l")
+(straight-use-package
+ '(lsp-mode
+   :type git
+   :host github
+   :repo "emacs-lsp/lsp-mode"
+   :fork t
+   )
+ )
+
 (use-package lsp-mode
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         ;; (XXX-mode . lsp)
-         (rust-mode . lsp)
-         (go-mode . lsp)
-         (go-mode . lsp-go-install-save-hooks)
-         (python-mode . lsp)
-         ; (python-mode . (lambda ()
-         ;                  (require 'lsp-python-ms)
-         ;                  (lsp)))
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :config
-  (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
-  (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
-  (setq lsp-enable-file-watchers nil)
-  (setq lsp-pylsp-plugins-yapf-enabled t)
-  (setq lsp-pylsp-plugins-rope-completion-enabled t)
-  ; (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
-  :commands lsp
-  )
+   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+          ;; (XXX-mode . lsp)
+          (rust-mode . lsp)
+          (go-mode . lsp)
+          (go-mode . lsp-go-install-save-hooks)
+          (go-mode . yas-minor-mode)
+          (python-mode . lsp)
+                                        ; (python-mode . (lambda ()
+                                        ;                  (require 'lsp-python-ms)
+                                        ;                  (lsp)))
+          ;; if you want which-key integration
+          (lsp-mode . lsp-enable-which-key-integration))
+   :config
+   (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
+   (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
+   (setq lsp-enable-file-watchers nil)
+   (setq lsp-pylsp-plugins-yapf-enabled t)
+   (setq lsp-pylsp-plugins-rope-completion-enabled t)
+                                        ; (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+   :commands lsp
+ )
 
 ;; ;; optionally
 (use-package lsp-ui
