@@ -137,13 +137,13 @@
   (interactive)
   (kill-new (buffer-file-name)))
 
-(defun gerrit-link ()
+(defun delve-breakpoint ()
   (interactive)
   (kill-new
    (concat
-    "https://git-av.nvidia.com/r/plugins/gitiles/maglev/+/main/"
+    "break "
     (file-relative-name buffer-file-name (projectile-project-root))
-    "#"
+    ":"
     (number-to-string (line-number-at-pos))
     )))
 
