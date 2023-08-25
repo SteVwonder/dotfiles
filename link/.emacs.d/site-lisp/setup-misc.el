@@ -14,6 +14,51 @@
   (add-hook 'git-commit-mode-hook #'setup-commit-mode)
   )
 
+(defun get-branch-sha (branch)
+  (let ((repo (magit-toplevel)))
+    (when repo
+      (with-temp-buffer
+        (cd repo)
+        (magit-git-insert "rev-parse" branch)
+        (string-trim (buffer-string)))))
+  )
+
+(defun get-current-branch-sha ()
+  "Get the SHA of the current branch in the Git repository."
+  (get-branch-sha "HEAD")
+  )
+
+(defun get-gerrit-link (branch)
+  "Generate a Gerrit link for the current file and line number.
+   BRANCH specifies the Git branch to use in the link.
+   If BRANCH is an empty string, 'main' is used as the default."
+   (concat
+    "https://git-av.nvidia.com/r/plugins/gitiles/maglev/+/"
+    branch
+    "/"
+    (file-relative-name buffer-file-name (projectile-project-root))
+    "#"
+    (number-to-string (line-number-at-pos))
+    )
+  )
+
+(defun gerrit-link-current-branch-sha ()
+  "Generate a Gerrit link for the current file, line number, and current git branch SHA."
+  (interactive)
+  (kill-new (get-gerrit-link (get-current-branch-sha)))
+  )
+
+(defun gerrit-link (branch)
+  "Adds to the kill ring a Gerrit link for the current file and line number.
+   Interactive function.
+   BRANCH specifies the Git branch to use in the link.
+   If BRANCH is an empty string, 'main' is used as the default."
+  (interactive (list (read-string "Enter the Git branch name (default: main): " "main")))
+  (kill-new (get-gerrit-link
+             (if (not (string-equal branch "main")) (get-branch-sha branch) "main")
+             ))
+  )
+
 (use-package undo-tree
   :config (global-undo-tree-mode)
   ;; Prevent undo tree files from polluting your git repo
