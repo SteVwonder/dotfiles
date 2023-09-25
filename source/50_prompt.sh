@@ -22,6 +22,17 @@
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
 
+if type starship &> /dev/null; then
+    if is_bash; then
+        eval "$(starship init bash)"
+    elif is_zsh; then
+        eval "$(starship init zsh)"
+    else
+        echo "Only support starship on bash/zsh" >&2
+    fi
+    return 1
+fi
+
 AGKOZAK_PROMPT_DIRTRIM=4
 AGKOZAK_BLANK_LINES=1
 AGKOZAK_LEFT_PROMPT_ONLY=1
