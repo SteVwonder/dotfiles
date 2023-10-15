@@ -2,5 +2,8 @@ keycode 66 = Control_L
 clear Lock
 add Control = Control_L
 
-pointer = 3 2 1
+!Uncomment below to set user-level mouse config
+!Alternatively can set device-specific config via /etc/X11/xorg.conf.d
+!  with a `Option "ButtonMapping" "3 2 1"`
+!pointer = 3 2 1
 !pointer = 1 2 3
