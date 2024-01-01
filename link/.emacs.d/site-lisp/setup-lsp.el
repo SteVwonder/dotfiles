@@ -23,6 +23,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
           ;; (XXX-mode . lsp)
           (rust-mode . lsp)
+          (rust-mode . yas-minor-mode)
           (go-mode . lsp)
           (go-mode . lsp-go-install-save-hooks)
           (go-mode . yas-minor-mode)
