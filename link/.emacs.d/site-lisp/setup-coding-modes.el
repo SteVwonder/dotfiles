@@ -109,4 +109,10 @@
 (use-package groovy-mode)
 (use-package jenkinsfile-mode)
 
+(use-package terraform-mode
+  :custom (terraform-format-on-save t)
+  )
+
+(use-package ini-mode)
+
 (provide 'setup-coding-modes)

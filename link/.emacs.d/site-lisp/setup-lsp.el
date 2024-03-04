@@ -31,6 +31,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
                                         ; (python-mode . (lambda ()
                                         ;                  (require 'lsp-python-ms)
                                         ;                  (lsp)))
+          (terraform-mode . lsp)
           ;; if you want which-key integration
           (lsp-mode . lsp-enable-which-key-integration))
    :config
