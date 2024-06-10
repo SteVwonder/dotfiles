@@ -128,4 +128,6 @@
 
 (require 'multi-scratch)
 
+(use-package avy)
+
 (provide 'setup-misc)
