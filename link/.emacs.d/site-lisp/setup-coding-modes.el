@@ -115,4 +115,6 @@
 
 (use-package ini-mode)
 
+(use-package jsonnet-mode)
+
 (provide 'setup-coding-modes)
