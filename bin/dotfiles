@@ -266,6 +266,13 @@ function do_stuff() {
     # Do stuff.
     "$1_do" "$base" "$file"
   done
+
+  # Make sure we don't lock ourselves out of a VM
+  local auth_keys="${backup_dir}/.ssh/authorized_keys"
+  if [[ -f "$auth_keys" ]]; then
+      e_header "Restoring authorized keys"
+      cp "$auth_keys" "$HOME/.ssh/authorized_keys"
+  fi
 }
 
 # Enough with the functions, let's do stuff.
