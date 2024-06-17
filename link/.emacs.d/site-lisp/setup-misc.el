@@ -130,4 +130,18 @@
 
 (use-package avy)
 
+(straight-use-package
+ '(clipetty
+   :type git
+   :host github
+   :repo "spudlyo/clipetty"
+   :fork t
+   )
+ )
+
+(use-package clipetty
+  :ensure t
+  :bind ("M-w" . clipetty-kill-ring-save)
+  )
+
 (provide 'setup-misc)
