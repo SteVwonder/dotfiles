@@ -147,4 +147,8 @@
   :bind ("M-w" . clipetty-kill-ring-save)
   )
 
+(use-package wgrep
+  :ensure t
+  )
+
 (provide 'setup-misc)
