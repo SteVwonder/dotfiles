@@ -128,7 +128,10 @@
 
 (require 'multi-scratch)
 
-(use-package avy)
+(use-package avy
+  :bind ("M-g w" . 'avy-goto-word-1)
+  ("M-g c" . 'avy-goto-char)
+  )
 
 (straight-use-package
  '(clipetty
