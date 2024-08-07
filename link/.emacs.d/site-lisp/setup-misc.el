@@ -45,7 +45,7 @@
 (defun gerrit-link-current-branch-sha ()
   "Generate a Gerrit link for the current file, line number, and current git branch SHA."
   (interactive)
-  (kill-new (get-gerrit-link (get-current-branch-sha)))
+  (clipetty-cut 'kill-new (get-gerrit-link (get-current-branch-sha)))
   )
 
 (defun gerrit-link (branch)
@@ -54,7 +54,7 @@
    BRANCH specifies the Git branch to use in the link.
    If BRANCH is an empty string, 'main' is used as the default."
   (interactive (list (read-string "Enter the Git branch name (default: main): " "main")))
-  (kill-new (get-gerrit-link
+  (clipetty-cut 'kill-new (get-gerrit-link
              (if (not (string-equal branch "main")) (get-branch-sha branch) "main")
              ))
   )
