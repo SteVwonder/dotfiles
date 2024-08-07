@@ -1,5 +1,3 @@
-echo "sourcing .bash_profile"
-
 if [[ -f /etc/profile && ! -f ~/.no_etcprofile ]]; then
     . /etc/profile
 fi
