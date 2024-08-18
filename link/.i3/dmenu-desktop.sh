@@ -6,9 +6,9 @@ PATH=$HOME/.dotfiles/bin:$PATH
     #exec dmenu-frecency
 #el
 if command -v j4-dmenu-desktop && command -v rofi; then
-    exec j4-dmenu-desktop --usage-log=~/.cache/j4-usage.log --dmenu='rofi -dmenu -i'
+    exec j4-dmenu-desktop --usage-log=$HOME/.cache/j4-usage.log --dmenu='rofi -dmenu -i'
 elif command -v j4-dmenu-desktop; then
-    exec j4-dmenu-desktop --usage-log=~/.cache/j4-usage.log
+    exec j4-dmenu-desktop --usage-log=$HOME/.cache/j4-usage.log
 else
     exec i3-dmenu-desktop
 fi
