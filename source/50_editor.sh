@@ -1,7 +1,7 @@
 # Editing
 
 if type emacsclient > /dev/null; then
-    EDITOR="emacsclient"
+    EDITOR="emacsclient -c"
 else
     EDITOR="emacs"
 fi
