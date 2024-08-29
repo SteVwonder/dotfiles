@@ -3,7 +3,9 @@
 
 (use-package chatgpt-shell
   :requires shell-maker
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el")))
+  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
+  :config (setq chatgpt-shell-model-versions '("gpt-4o" "gpt-4o-mini"))
+  )
 
 ;; or if using auth-sources, e.g., so the file ~/.authinfo has this line:
 ;;  machine api.openai.com password OPENAI_KEY
