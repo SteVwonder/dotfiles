@@ -192,4 +192,6 @@ apps are not started from a shell."
                    (progn (move-to-column endcol 'coerce)
                           (point)))))
 
+(setq smerge-command-prefix (kbd "C-c v"))
+
 (provide 'setup-general)
