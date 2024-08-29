@@ -144,6 +144,7 @@
 
 (use-package clipetty
   :ensure t
+  :init (global-clipetty-mode)
   :bind ("M-w" . clipetty-kill-ring-save)
   )
 
