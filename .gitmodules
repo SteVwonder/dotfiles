@@ -1,24 +1,6 @@
-[submodule "git-extras"]
-	path = vendor/git-extras
-	url = https://github.com/tj/git-extras.git
-[submodule "z"]
-	path = vendor/z
-	url = https://github.com/rupa/z.git
-[submodule "vendor/volnoti"]
-	path = vendor/volnoti
-	url = https://github.com/stevwonder/volnoti.git
-[submodule "vendor/playerctl"]
-	path = vendor/playerctl
-	url = https://github.com/SteVwonder/playerctl
-[submodule "vendor/diff-so-fancy"]
-	path = vendor/diff-so-fancy
-	url = https://github.com/so-fancy/diff-so-fancy.git
 [submodule "link/.tmux/plugins/tpm"]
 	path = link/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "vendor/antigen"]
 	path = vendor/antigen
 	url = https://github.com/zsh-users/antigen.git
-[submodule "vendor/ssh-ident"]
-	path = vendor/ssh-ident
-	url = https://github.com/SteVwonder/ssh-ident.git
