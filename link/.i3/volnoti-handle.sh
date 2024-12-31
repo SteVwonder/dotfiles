@@ -18,8 +18,8 @@ case "$1" in
           ;;
 esac
 
-VOLUME=$(amixer get Master | grep -oE '\[[0-9]+%\]' | sed -r 's/\[([0-9]+)%]/\1/')
 STATE=$(amixer get Master | grep 'Mono:' | grep -o "\[on\]")
+VOLUME=$(amixer get Master | grep -oE '\[[0-9]+%\]' | sed -r 's/\[([0-9]+)%]/\1/' | head -n1)
 
 # Show volume with volnoti
 if [[ -n $STATE ]]; then
