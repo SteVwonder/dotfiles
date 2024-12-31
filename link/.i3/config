@@ -216,3 +216,5 @@ exec --no-startup-id redshift -l 34.3:-78.0 -t 6500:2500
 exec --no-startup-id pasystray
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id xset dpms 300 300 300
+exec --no-startup-id 1password --silent
+exec --no-startup-id syncthing-gtk -m
