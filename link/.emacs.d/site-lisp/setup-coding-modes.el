@@ -117,4 +117,11 @@
 
 (use-package jsonnet-mode)
 
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
 (provide 'setup-coding-modes)
