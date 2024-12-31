@@ -192,8 +192,8 @@ bindsym $mod+Pause exec "~/.i3/find_cursor.sh"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -c ~/.i3/i3status.conf
-        #status_command py3status -c ~/.i3/py3status.conf
+        #status_command i3status -c ~/.i3/i3status.conf
+        status_command py3status -c ~/.i3/py3status.conf
 }
 
 # To get the title and class info, run 'xprop'
@@ -214,3 +214,5 @@ exec --no-startup-id volnoti
 exec --no-startup-id "bash ~/.i3/LOCAL_startup.sh"
 exec --no-startup-id redshift -l 34.3:-78.0 -t 6500:2500
 exec --no-startup-id pasystray
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xset dpms 300 300 300
