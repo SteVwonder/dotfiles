@@ -1,25 +1,19 @@
 # Dotfiles
 
-My OSX / Ubuntu dotfiles.
+My dotfiles repo.
 
 ## About this project
 
-I've been using bash on-and-off for a long time (since Slackware Linux was distributed on 1.44MB floppy disks). In all that time, every time I've set up a new Linux or OS X machine, I've copied over my `.bashrc` file and my `~/bin` folder to each machine manually. And I've never done a very good job of actually maintaining these files. It's been a total mess.
-
-I finally decided that I wanted to be able to execute a single command to "bootstrap" a new system to pull down all of my dotfiles and configs, as well as install all the tools I commonly use. In addition, I wanted to be able to re-execute that command at any time to synchronize anything that might have changed. Finally, I wanted to make it easy to re-integrate changes back in, so that other machines could be updated.
-
-That command is [dotfiles][dotfiles], and this is my "dotfiles" Git repo.
-
-[dotfiles]: bin/dotfiles
+My fork of [@cowboy's](https://github.com/cowboy) dotfiles.
 
 ## How the "dotfiles" command works
 
 When [dotfiles][dotfiles] is run for the first time, it does a few things:
 
-1. In Ubuntu, Git is installed if necessary via APT (it's already there in OSX).
 1. This repo is cloned into your user directory, under `~/.dotfiles`.
 1. Files in `/copy` are copied into `~/`. ([read more](#the-copy-step))
 1. Files in `/link` are symlinked into `~/`. ([read more](#the-link-step))
+1. Files in `/conf` are copied/symlinked into various per-app config directories.
 1. You are prompted to choose scripts in `/init` to be executed. The installer attempts to only select relevant scripts, based on the detected OS and the script filename.
 1. Your chosen init scripts are executed (in alphanumeric order, hence the funky names). ([read more](#the-init-step))
 
@@ -30,7 +24,7 @@ On subsequent runs, step 1 is skipped, step 2 just updates the already-existing 
 * The `/backups` directory gets created when necessary. Any files in `~/` that would have been overwritten by files in `/copy` or `/link` get backed up there.
 * The `/bin` directory contains executable shell scripts (including the [dotfiles][dotfiles] script) and symlinks to executable shell scripts. This directory is added to the path.
 * The `/caches` directory contains cached files, used by some scripts or functions.
-* The `/conf` directory just exists. If a config file doesn't **need** to go in `~/`, reference it from the `/conf` directory.
+* The `/conf` directory just exists. If a config file doesn't **need** to go in `~/`, reference it from the `/conf` directory.  Some of the files here are also copied/symlinked into per-app conf dirs by init scripts
 * The `/source` directory contains files that are sourced whenever a new shell is opened (in alphanumeric order, hence the funky names).
 * The `/test` directory contains unit tests for especially complicated bash functions.
 * The `/vendor` directory contains third-party libraries.
@@ -55,16 +49,12 @@ Scripts in the `/init` subdirectory will be executed. A whole bunch of things wi
 #### Ubuntu
 * APT packages and git-extras via the [init/20_ubuntu_apt.sh](init/20_ubuntu_apt.sh) script
 
-#### Both
-* Node.js, npm and nave via the [init/50_node.sh](init/50_node.sh) script
-* Ruby, gems and rbenv via the [init/50_ruby.sh](init/50_ruby.sh) script
-* Vim plugins via the [init/50_vim.sh](init/50_vim.sh) script
+#### Arch
+* Pacman packages via the [init/20_arch_pacman.sh](init/20_arch_pacman.sh) script
 
 ## Hacking my dotfiles
 
 Because the [dotfiles][dotfiles] script is completely self-contained, you should be able to delete everything else from your dotfiles repo fork, and it will still work. The only thing it really cares about are the `/copy`, `/link` and `/init` subdirectories, which will be ignored if they are empty or don't exist.
-
-If you modify things and notice a bug or an improvement, [file an issue](https://github.com/cowboy/dotfiles/issues) or [a pull request](https://github.com/cowboy/dotfiles/pulls) and let me know.
 
 Also, before installing, be sure to [read my gently-worded note](#heed-this-critically-important-warning-before-you-install).
 
@@ -75,8 +65,6 @@ Also, before installing, be sure to [read my gently-worded note](#heed-this-crit
 You need to have [XCode](https://developer.apple.com/downloads/index.action?=xcode) or, at the very minimum, the [XCode Command Line Tools](https://developer.apple.com/downloads/index.action?=command%20line%20tools), which are available as a much smaller download.
 
 The easiest way to install the XCode Command Line Tools in OSX 10.9+ is to open up a terminal, type `xcode-select --install` and [follow the prompts](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
-
-_Tested in OSX 10.10_
 
 ### Ubuntu Notes
 
@@ -115,7 +103,11 @@ bash -c "$(curl -fsSL https://herbein.net/dotfiles)" && source ~/.bashrc
 ```
 
 ## Aliases and Functions
-To keep things easy, the `~/.bashrc` and `~/.bash_profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `source` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](source). I even have a [fancy prompt](source/50_prompt.sh) that shows the current directory, time and current git/svn repo status.
+To keep things easy, the `~/.bashrc` and `~/.bash_profile` files are extremely
+simple, and should never need to be modified. Instead, add your aliases,
+functions, settings, etc into one of the files in the `source` subdirectory, or
+add a new file. They're all automatically sourced when a new shell is
+opened. Take a look, I have [a lot of aliases and functions](source).
 
 ## Scripts
 In addition to the aforementioned [dotfiles][dotfiles] script, there are a few other [bin scripts](bin). This includes [nave](https://github.com/isaacs/nave), which is a [git submodule](vendor).
@@ -124,30 +116,7 @@ In addition to the aforementioned [dotfiles][dotfiles] script, there are a few o
 * [src](link/.bashrc#L8-18) - (re)source all files in `/source` directory
 * Look through the [bin](bin) subdirectory for a few more.
 
-## Prompt
-I think [my bash prompt](source/50_prompt.sh) is awesome. It shows git and svn repo status, a timestamp, error exit codes, and even changes color depending on how you've logged in.
-
-Git repos display as **[branch:flags]** where flags are:
-
-**?** untracked files  
-**!** changed (but unstaged) files  
-**+** staged files
-
-SVN repos display as **[rev1:rev2]** where rev1 and rev2 are:
-
-**rev1** last changed revision  
-**rev2** revision
-
-Check it out:
-
-![My awesome bash prompt](http://farm8.staticflickr.com/7142/6754488927_563dd73553_b.jpg)
-
-## Inspiration
-<https://github.com/gf3/dotfiles>  
-<https://github.com/mathiasbynens/dotfiles>  
-(and 15+ years of accumulated crap)
-
 ## License
-Copyright (c) 2014 "Cowboy" Ben Alman  
-Licensed under the MIT license.  
-<http://benalman.com/about/license/>
+Copyright (c) 2024 Stephen Herbein
+Licensed under the MIT license.
+
