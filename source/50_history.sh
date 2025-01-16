@@ -18,17 +18,12 @@ export HISTTIMEFORMAT="[%F %T] "
 export HISTSIZE=10000
 export HISTFILESIZE=1000000
 
-# Hist file for each terminal/day
+# Hist file for each month
 HIST_DIR=${HOME}/.history
-TODAYS_DIR=${HIST_DIR}/$(date "+%Y")/$(date "+%m")/$(date "+%d")
-mkdir -p ${TODAYS_DIR}
-if [ -z "$PS1" ] || ! tty -s; then
-    MYTTY="noniter"
-else
-    MYTTY=$(basename `tty`)
-fi
+MONTH_HIST_DIR=${HIST_DIR}/$(date "+%Y")/$(date "+%m")
+mkdir -p ${MONTH_HIST_DIR}
 
-export HISTFILE=${TODAYS_DIR}/"$(date "+%H-%M-%S")_${MYTTY}.hist"
+export HISTFILE="${MONTH_HIST_DIR}/hist"
 
 # record each command as it is executed, rather than at the end
 export PROMPT_COMMAND='history -a'
