@@ -8,19 +8,16 @@ is_osx || return 1
 recipes=(
   autoconf
   automake
-  emacs
+  #emacs
   gcc
   git
-  git-extras
-  reattach-to-user-namespace
+  #reattach-to-user-namespace
   ripgrep
   ssh-copy-id
-  sshfs
-  subversion
-  tmux
+  #sshfs
+  #tmux
   tree
   wget
-  zsh
 )
 
 brew_install_recipes

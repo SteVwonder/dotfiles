@@ -18,14 +18,12 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 
 # Homebrew casks
 casks=(
-  dash
-  flux
+  ghostty
   google-chrome
-  iterm2
+  istat-menus
   java
-  keepassx
-  mactex
-  osxfuse
+  nikitabobko/tap/aerospace
+  obsidian
   scroll-reverser
   slack
   spotify
