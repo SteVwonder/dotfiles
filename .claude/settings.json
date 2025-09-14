@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(curl:*)",
+      "Read(./backups)",
+      "Read(./caches)",
+      "Read(./link/.ssh/keys)"
+      "Read(./link/.emacs.d/site-lisp/vendor)"
+    ]
+  }
+}
