@@ -202,13 +202,26 @@ automatically-unhide-macos-hidden-apps = false
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
+# Keep on-window-detected blocks in alphabetical order by workspace letter
 [[on-window-detected]]
-    if.app-id = 'com.mitchellh.ghostty'
-    run = 'move-node-to-workspace Y' # mnemonics Y - ttY
+    if.app-id = 'ai.perplexity.mac'
+    run = 'move-node-to-workspace A' # mnemonics A - AI
 
 [[on-window-detected]]
-    if.app-id = 'com.google.Chrome'
-    run = 'move-node-to-workspace W' # mnemonics W - Web browser
+    if.app-id = 'com.anthropic.claudefordesktop'
+    run = 'move-node-to-workspace A' # mnemonics A - AI
+
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    run = 'move-node-to-workspace C' # mnemonics C - Chat
+
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace C' # mnemonics C - Chat
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    run = 'move-node-to-workspace I' # mnemonics I - IDE
 
 [[on-window-detected]]
     if.app-id = 'com.todesktop.230313mzl4w4u92'
@@ -219,21 +232,29 @@ automatically-unhide-macos-hidden-apps = false
     run = 'move-node-to-workspace M' # mnemonics M - Music
 
 [[on-window-detected]]
-    if.app-id = 'com.sunsama.native-app'
-    run = 'move-node-to-workspace T' # mnemonics T - Tasks/TODOs
-
-[[on-window-detected]]
-    if.app-id = 'ai.perplexity.mac'
-    run = 'move-node-to-workspace A' # mnemonics A - AI
-
-[[on-window-detected]]
-    if.app-id = 'com.tinyspeck.slackmacgap'
-    run = 'move-node-to-workspace S' # mnemonics S - Slack
-
-[[on-window-detected]]
     if.app-id = 'com.microsoft.Outlook'
     run = 'move-node-to-workspace O' # mnemonics O - Outlook
 
 [[on-window-detected]]
+    if.app-id = 'com.sunsama.native-app'
+    run = 'move-node-to-workspace T' # mnemonics T - Tasks
+
+[[on-window-detected]]
+    if.app-id = 'com.TickTick.task.mac'
+    run = 'move-node-to-workspace T' # mnemonics T - Tasks
+
+[[on-window-detected]]
     if.app-id = 'com.microsoft.teams2'
     run = 'move-node-to-workspace V' # mnemonics V - Video
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari'
+    run = 'move-node-to-workspace W' # mnemonics W - Web browser
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace W' # mnemonics W - Web browser
+
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = 'move-node-to-workspace Y' # mnemonics Y - ttY
