@@ -1,6 +1,6 @@
 # Editing
 
-if type emacsclient > /dev/null; then
+if type emacsclient &> /dev/null; then
     EDITOR="emacsclient"
     alias emacs="emacsclient -c"
 else
