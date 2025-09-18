@@ -22,6 +22,12 @@
 # 32  42  green     36  46  cyan
 # 33  43  yellow    37  47  white
 
+if [ "$TERM" == "dumb" ]; then
+    # Cursor starting setting this and starship doesn't like it.
+    # Keep the terminal output clean for cursor.
+    return 1
+fi
+
 if type starship &> /dev/null; then
     if is_bash; then
         eval "$(starship init bash)"
