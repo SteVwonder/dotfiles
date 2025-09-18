@@ -6,6 +6,18 @@ if is_bash; then
     # update the values of LINES and COLUMNS.
     shopt -s checkwinsize
 
+    if ! type -t __load_completion > /dev/null; then
+        if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
+            source /usr/share/bash-completion/bash_completion
+        else
+            echo "WARN: bash-completion not installed"
+        fi
+    fi
+
+    if type -t kubectl > /dev/null; then
+        source <(kubectl completion bash)
+    fi
+
     # SSH auto-completion based on entries in known_hosts.
     if [[ -e ~/.ssh/known_hosts ]]; then
         complete -o default -W "$(cat ~/.ssh/known_hosts | sed 's/[, ].*//' | sort | uniq | grep -v '[0-9]')" ssh scp sftp
