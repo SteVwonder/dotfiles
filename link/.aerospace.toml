@@ -84,7 +84,7 @@ automatically-unhide-macos-hidden-apps = false
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
     # You can uncomment the following lines to open up terminal with alt + enter shortcut
     # (like in i3)
-    alt-shift-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+    alt-shift-enter = 'exec-and-forget open -n ~/.dotfiles/bin/launch_iTerm.app'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-shift-slash = 'layout tiles horizontal vertical'
@@ -203,6 +203,7 @@ automatically-unhide-macos-hidden-apps = false
     shift-down = ['volume set 0', 'mode main']
 
 # Keep on-window-detected blocks in alphabetical order by workspace letter
+# You can get the app-ids with `aerospace list-apps`
 [[on-window-detected]]
     if.app-id = 'ai.perplexity.mac'
     run = 'move-node-to-workspace A' # mnemonics A - AI
@@ -217,7 +218,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = 'move-node-to-workspace C' # mnemonics C - Chat
+    run = 'move-node-to-workspace S' # mnemonics S - Slack
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.VSCode'
@@ -257,4 +258,8 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.mitchellh.ghostty'
+    run = 'move-node-to-workspace Y' # mnemonics Y - ttY
+
+[[on-window-detected]]
+    if.app-id = 'com.googlecode.iterm2'
     run = 'move-node-to-workspace Y' # mnemonics Y - ttY
