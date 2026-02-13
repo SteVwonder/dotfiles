@@ -263,3 +263,9 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
     if.app-id = 'com.googlecode.iterm2'
     run = 'move-node-to-workspace Y' # mnemonics Y - ttY
+
+[[on-window-detected]]
+    if.app-id = 'com.silverfort.client'
+    run = [
+        'exec-and-forget sleep 0.1; osascript /Users/sherbein/.dotfiles/bin/silverfort-fix-position.applescript',
+    ]
