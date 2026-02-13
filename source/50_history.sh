@@ -15,9 +15,11 @@ export HISTIGNORE='ls:bg:fg:history:hist:set'
 export HISTSIZE=10000
 export HISTFILESIZE=1000000
 
-# Hist file for each year
-HIST_DIR=${HOME}/.history
-export HISTFILE="${HIST_DIR}/hist"
+if [[ "$CURSOR_AGENT" == "1" ]]; then
+    export HISTFILE="${HOME}/.hist_cursor"
+else
+    export HISTFILE="${HOME}/.hist"
+fi
 
 # record each command as it is executed, rather than at the end
 export PROMPT_COMMAND='history -a'
