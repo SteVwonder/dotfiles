@@ -4,6 +4,7 @@
  ("avy" . "933d1f36cca0f71e4acb5fac707e9ae26c536264")
  ("bind-key" . "e9ead409b17d8cf7c221f6c28e115a8c051be9e3")
  ("buffer-move" . "e7800b3ab1bd76ee475ef35507ec51ecd5a3f065")
+ ("claude-code-ide.el" . "5f12e60c6d2d1802c8c1b7944bbdf935d5db1364")
  ("clipetty" . "80b240c877e07559e3bf48df8cb3fd23f6116c2f")
  ("cmake" . "16c8ec8ec79a0039b31b0bb34798a2dbd4e3394c")
  ("company-mode" . "fad9f207e00a851c0d96dd532c1b175326ac3e3d")
