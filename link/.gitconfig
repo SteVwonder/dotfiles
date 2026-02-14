@@ -8,6 +8,7 @@
   whitespace = warn,space-before-tab,tab-in-indent,trailing-space
   excludesfile = ~/.gitignore_global
   fsmonitor = true
+  untrackedcache = true
 [apply]
   whitespace = warn
 [alias]
