@@ -18,7 +18,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
+;; Use the built-in use-package (Emacs 29+) and integrate it with straight
+(straight-use-package '(use-package :type built-in))
 
 
 (provide 'setup-straight)
