@@ -21,7 +21,7 @@
 
 (let ((init-features '("setup-helm" "setup-coding-modes" "setup-flycheck" "setup-misc"
                        "setup-org" "setup-projectile" "setup-lsp" "setup-company"
-                       "setup-yasnippet" "setup-ai"
+                       "setup-ai"
                        ;;"setup-langtool" "setup-linklings-mode" "setup-tex"
                        )))
   (mapc #'load init-features)

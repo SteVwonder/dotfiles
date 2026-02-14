@@ -104,8 +104,6 @@
   (setq easy-hugo-previewtime "300")
   :bind ("C-c C-e" . easy-hugo))
 
-(use-package fish-mode)
-
 (use-package groovy-mode)
 (use-package jenkinsfile-mode)
 
