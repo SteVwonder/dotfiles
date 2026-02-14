@@ -15,7 +15,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
    :type git
    :host github
    :repo "emacs-lsp/lsp-mode"
-   :fork t
+;;   :fork t
    )
  )
 
