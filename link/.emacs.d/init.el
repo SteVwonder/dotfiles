@@ -2,8 +2,6 @@
 (add-to-list 'load-path site-lisp-dir)
 (add-to-list 'load-path (expand-file-name "vendor" site-lisp-dir))
 
-(setq package-enable-at-startup nil)
-
 ;; Load custom settings
 (setq custom-file "~/.emacs.d/LOCAL-custom.el")
 (load custom-file 'noerror)

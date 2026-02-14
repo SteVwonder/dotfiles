@@ -1,6 +1,5 @@
 (setq straight-check-for-modifications '(check-on-save))
 (setq straight-use-package-by-default t)
-(setq package-enable-at-startup nil)
 (setq straight-host-usernames '((github . "stevwonder")))
 
 (setf straight-build-dir "~/.emacs.d/straight"
@@ -20,5 +19,6 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
+
 
 (provide 'setup-straight)
