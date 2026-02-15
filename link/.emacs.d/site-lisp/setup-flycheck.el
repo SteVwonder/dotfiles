@@ -8,6 +8,6 @@
   (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
   )
 
-(use-package helm-flycheck)
+(use-package consult-flycheck)
 
 (provide 'setup-flycheck)

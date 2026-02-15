@@ -10,8 +10,4 @@
 (define-key minibuffer-local-map (kbd "<up>") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "<down>") 'next-complete-history-element)
 
-(use-package helm-projectile)
-
-(use-package projectile-ripgrep)
-
 (provide 'setup-projectile)

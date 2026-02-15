@@ -47,12 +47,11 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; ;; optionally
 (use-package lsp-ui
    :commands lsp-ui-mode)
-;; ;; if you are helm user
- (use-package helm-lsp
-   :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
-;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package consult-lsp
+  :after (consult lsp-mode)
+  :bind (:map lsp-mode-map
+              ("M-s s" . consult-lsp-symbols)
+              ("M-s d" . consult-lsp-diagnostics)))
 
 ;; optionally if you want to use debugger
 ;; (use-package dap-mode)
