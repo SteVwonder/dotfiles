@@ -22,12 +22,10 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 (use-package lsp-mode
    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
           ;; (XXX-mode . lsp)
-          (rust-mode . lsp)
-          (rust-mode . yas-minor-mode)
-          (go-mode . lsp)
+          (rust-mode . lsp-deferred)
+          (go-mode . lsp-deferred)
           (go-mode . lsp-go-install-save-hooks)
-          (go-mode . yas-minor-mode)
-          (python-mode . lsp)
+          (python-mode . lsp-deferred)
                                         ; (python-mode . (lambda ()
                                         ;                  (require 'lsp-python-ms)
                                         ;                  (lsp)))
@@ -40,7 +38,7 @@ Make sure you don't have other gofmt/goimports hooks enabled."
    (setq lsp-enable-file-watchers nil)
    (setq lsp-pylsp-plugins-yapf-enabled t)
    (setq lsp-pylsp-plugins-rope-completion-enabled t)
-                                        ; (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
    :commands lsp
  )
 
