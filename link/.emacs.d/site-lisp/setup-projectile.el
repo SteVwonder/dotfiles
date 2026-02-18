@@ -7,7 +7,10 @@
   (setq projectile-indexing-method 'alien)
   )
 
-(define-key minibuffer-local-map (kbd "<up>") 'previous-complete-history-element)
-(define-key minibuffer-local-map (kbd "<down>") 'next-complete-history-element)
+(use-package projectile-git-autofetch
+  :ensure t
+  :after projectile
+  :config
+  (projectile-git-autofetch-mode 1))
 
 (provide 'setup-projectile)
