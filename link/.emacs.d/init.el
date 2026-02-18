@@ -2,6 +2,9 @@
 (add-to-list 'load-path site-lisp-dir)
 (add-to-list 'load-path (expand-file-name "vendor" site-lisp-dir))
 
+(when (display-graphic-p)
+  (tool-bar-mode -1))
+
 ;; Load custom settings
 (setq custom-file "~/.emacs.d/LOCAL-custom.el")
 (load custom-file 'noerror)
