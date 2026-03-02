@@ -111,4 +111,14 @@
   :ensure t
   )
 
+(use-package rainbow-csv
+  :ensure t
+  :straight (rainbow-csv
+             :type git
+             :host github
+             :repo "emacs-vs/rainbow-csv")
+  :hook ((csv-mode . rainbow-csv-mode)
+         (tsv-mode . rainbow-csv-mode))
+  )
+
 (provide 'setup-misc)
