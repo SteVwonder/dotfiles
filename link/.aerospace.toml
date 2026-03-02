@@ -237,7 +237,7 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace O' # mnemonics O - Outlook
 
 [[on-window-detected]]
-    if.app-id = 'com.sunsama.native-app'
+    if.app-id = 'com.google.Chrome.app.jijnmpkkfkjaihbhffejemnpbbglahim' # Trello Chrome Web App
     run = 'move-node-to-workspace T' # mnemonics T - Tasks
 
 [[on-window-detected]]
