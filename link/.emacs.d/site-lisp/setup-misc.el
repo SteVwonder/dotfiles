@@ -69,13 +69,15 @@
   :bind ("C-c ;" . iedit-mode)
 )
 
-(use-package perspective
-  :bind
-  ;;("C-x C-b" . persp-list-buffers)   ; or use a nicer switcher, see below
+(use-package persp-mode
+  :straight (persp-mode
+             :type git
+             :host github
+             :repo "Bad-ptr/persp-mode.el")
   :init
-  (persp-mode)
-  :custom
-  (persp-mode-prefix-key (kbd "C-c M-p"))
+  (setq persp-keymap-prefix (kbd "C-c M-p"))
+  :config
+  (persp-mode 1)
   )
 
 
