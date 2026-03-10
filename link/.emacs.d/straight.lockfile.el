@@ -18,6 +18,7 @@
  ("dash.el" . "d3a84021dbe48dba63b52ef7665651e0cf02e915")
  ("docker-compose-mode" . "abaa4f3aeb5c62d7d16e186dd7d77f4e846e126a")
  ("dockerfile-mode" . "97733ce074b1252c1270fd5e8a53d178b66668ed")
+ ("dtrt-indent" . "7c372bec8d84c247e4bd0d5599024d66ee300429")
  ("el-get" . "0a926aa106f677d6c27275bb8d95a5be0acf4612")
  ("eldoc" . "3fc1a6b854691b69715ff8073278431ec41636c8")
  ("elisp-tree-sitter" . "8f0bd387ad7a1cf7e8fdd5977d386a17ea70a82d")
@@ -84,4 +85,4 @@
  ("win-switch" . "954eb5e4c5737f0c06368c42a7f1c3dd374d782f")
  ("with-editor" . "64211dcb815f2533ac3d2a7e56ff36ae804d8338")
  ("yaml-mode" . "d91f878729312a6beed77e6637c60497c5786efa"))
-:gamma
+:epsilon
