@@ -12,3 +12,6 @@
 /transient
 /chatgpt
 /.chatgpt-shell.el
+/.claude/
+/persp-confs/
+/projectile-bookmarks.eld
