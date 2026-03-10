@@ -9,4 +9,11 @@
   (setq claude-code-ide-window-width 150)
   )
 
+(defun my/vterm-skip-claude-rename (orig-fn title)
+  "Don't let vterm rename claude-code-ide buffers."
+  (unless (string-prefix-p "*claude-code[" (buffer-name))
+    (funcall orig-fn title)))
+
+(advice-add 'vterm--set-title :around #'my/vterm-skip-claude-rename)
+
 (provide 'setup-ai)
