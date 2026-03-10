@@ -78,6 +78,21 @@
   (setq persp-keymap-prefix (kbd "C-c M-p"))
   :config
   (persp-mode 1)
+
+  (defun delete-persp-auto-save-and-kill-emacs ()
+    "Backup the persp-mode auto-save file and kill Emacs.
+The save file is renamed to <name>.bak.<timestamp> so persp-mode
+starts fresh next time."
+    (interactive)
+    (when (yes-or-no-p "Backup persp auto-save and kill Emacs? ")
+      (let ((save-file (expand-file-name persp-auto-save-fname persp-save-dir)))
+        (when (file-exists-p save-file)
+          (rename-file save-file
+                       (concat save-file ".bak."
+                               (format-time-string "%Y%m%d-%H%M%S"))
+                       t)))
+      (let ((persp-auto-save-opt 0))
+        (kill-emacs))))
   )
 
 
