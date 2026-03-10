@@ -138,4 +138,7 @@ starts fresh next time."
          (tsv-mode . rainbow-csv-mode))
   )
 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "open")
+
 (provide 'setup-misc)
