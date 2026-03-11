@@ -98,7 +98,11 @@ starts fresh next time."
 
 (use-package vterm
   :bind (:map vterm-mode-map
-              ("C-c v" . vterm-copy-mode))
+              ("C-c C-v" . vterm-copy-mode)
+              ("C-c C-e" . vterm-send-escape)
+              ("C-q" . vterm-send-next-key)
+         :map vterm-copy-mode-map
+              ("C-c C-v" . vterm-copy-mode))
   :config
   (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
   (setq vterm-buffer-name-string "vterm %s")
