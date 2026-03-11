@@ -33,8 +33,24 @@ Make sure you don't have other gofmt/goimports hooks enabled."
           ;; if you want which-key integration
           (lsp-mode . lsp-enable-which-key-integration))
    :config
-   (setq lsp-go-directory-filters ["-bazel-out" "-bazel-bin" "-bazel-main" "-bazel-development" "-bazel-testlogs" "-node_modules"])
-   (setq lsp-file-watch-ignored-directories (append '("bazel-out" "bazel-bin" "bazel-main" "bazel-testlogs" "third_party") lsp-file-watch-ignored-directories))
+  (setq lsp-go-directory-filters
+        ["-bazel-out"
+         "-bazel-bin"
+         "-bazel-main"
+         "-bazel-development"
+         "-bazel-testlogs"
+         "-node_modules"
+         "-third_party"])
+  (setq lsp-file-watch-ignored-directories
+        (append '("[/\\\\]bazel-out\\'"
+                  "[/\\\\]bazel-bin\\'"
+                  "[/\\\\]bazel-main\\'"
+                  "[/\\\\]bazel-development\\'"
+                  "[/\\\\]bazel-testlogs\\'"
+                  "[/\\\\]third_party\\'"
+                  "[/\\\\]node_modules\\'")
+                lsp-file-watch-ignored-directories))
+
    (setq lsp-enable-file-watchers nil)
    (setq lsp-pylsp-plugins-yapf-enabled t)
    (setq lsp-pylsp-plugins-rope-completion-enabled t)
