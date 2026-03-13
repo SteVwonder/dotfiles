@@ -101,6 +101,7 @@
 (use-package clipetty
   :ensure t
   :init (global-clipetty-mode)
+  :config (setq clipetty-tmux-ssh-tty "tmux show-environment SSH_TTY")
   :bind ("M-w" . clipetty-kill-ring-save)
   )
 
