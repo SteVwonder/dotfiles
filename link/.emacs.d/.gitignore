@@ -15,3 +15,5 @@
 /.claude/
 /persp-confs/
 /projectile-bookmarks.eld
+/projects
+/tabsession.el

@@ -126,14 +126,13 @@
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 
-;; Copied from https://emacs.stackexchange.com/questions/45419/get-file-name-relative-to-projectile-root
 (defun kill-relative-path ()
-  "Kill the current buffer's absolute file name relative to its projectile root."
+  "Kill the current buffer's file name relative to the project root."
   (interactive)
-  (kill-new (file-relative-name buffer-file-name (projectile-project-root))))
+  (kill-new (file-relative-name buffer-file-name (project-root (project-current t)))))
 
 (defun kill-absolute-path ()
-  "Kill the current buffer's absolute file name relative to its projectile root."
+  "Kill the current buffer's absolute file name."
   (interactive)
   (kill-new (buffer-file-name)))
 
@@ -142,7 +141,7 @@
   (kill-new
    (concat
     "break "
-    (file-relative-name buffer-file-name (projectile-project-root))
+    (file-relative-name buffer-file-name (project-root (project-current t)))
     ":"
     (number-to-string (line-number-at-pos))
     )))

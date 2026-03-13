@@ -21,7 +21,7 @@
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 (let ((init-features '("setup-completion" "setup-coding-modes" "setup-flycheck" "setup-magit" "setup-misc"
-                       "setup-org" "setup-projectile" "setup-lsp"
+                       "setup-org" "setup-tabspaces" "setup-lsp"
                        "setup-ai"
                        ;;"setup-langtool" "setup-linklings-mode" "setup-tex"
                        )))

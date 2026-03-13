@@ -36,7 +36,7 @@
     "https://git-av.nvidia.com/r/plugins/gitiles/maglev/+/"
     branch
     "/"
-    (file-relative-name buffer-file-name (projectile-project-root))
+    (file-relative-name buffer-file-name (project-root (project-current t)))
     "#"
     (number-to-string (line-number-at-pos))
     )
