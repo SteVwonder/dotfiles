@@ -76,11 +76,12 @@
 
 (use-package docker-compose-mode)
 
-(use-package tree-sitter
-  :hook (tree-sitter-after-on-hook. tree-sitter-hl-mode)
-  :init (global-tree-sitter-mode)
-  )
-(use-package tree-sitter-langs)
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
 (use-package markdown-preview-mode)
 
@@ -109,9 +110,8 @@
 
 (use-package lsp-pyright
   :ensure t
+  :demand t  ;; load eagerly so pyright's LSP client is registered before lsp-deferred fires
   :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
+  )
 
 (provide 'setup-coding-modes)
