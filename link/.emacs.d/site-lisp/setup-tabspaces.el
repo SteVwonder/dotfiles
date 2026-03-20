@@ -22,7 +22,7 @@
       (delete-other-windows)
       (split-window-right)
       (other-window 1)
-      (vterm)
+      (vterm t)
       (set-frame-parameter nil 'buffer-list
                            (delq old-buf (frame-parameter nil 'buffer-list)))))
   (setq tabspaces-project-switch-commands #'my/project-open-magit-and-vterm)
