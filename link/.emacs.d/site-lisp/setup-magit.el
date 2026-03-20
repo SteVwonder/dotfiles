@@ -2,7 +2,12 @@
   ;; setup git commit mode
   ;; turns on auto fill and sets fill column
   (turn-on-auto-fill)
-  (setq fill-column 72))
+  (setq fill-column 72)
+  ;; teach M-q to treat markdown-style list items as paragraph boundaries
+  (setq-local paragraph-start "\f\\|[ \t]*$\\|[ \t]*[-*+] ")
+  (setq-local paragraph-separate "[ \t\f]*$")
+  (setq-local adaptive-fill-regexp "[ \t]*\\([-*+] \\)?")
+  (setq-local adaptive-fill-first-line-regexp "[ \t]*[-*+] "))
 
 (use-package magit
   :init
@@ -11,7 +16,7 @@
   (dolist (regexp '("^Bad passphrase, try again for .*: ?$"
                     "^Enter passphrase for .*: ?$"))
     (add-to-list 'magit-process-password-prompt-regexps regexp))
-  (add-hook 'git-commit-mode-hook #'setup-commit-mode)
+  (add-hook 'git-commit-mode-hook #'setup-commit-mode 90)
   )
 
 (defun get-branch-sha (branch)
