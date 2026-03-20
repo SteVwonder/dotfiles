@@ -5,9 +5,13 @@
   :config
   (claude-code-ide-emacs-tools-setup)
   :init
-  (setq claude-code-ide-terminal-backend 'vterm)
-  (setq claude-code-ide-window-width 150)
-  )
+  (setq claude-code-ide-switch-tab-on-ediff nil)
+  (setq claude-code-ide-prevent-reflow-glitch nil)
+  :config
+  (defun my/claude-code-update-window-width (&rest _)
+    (setq claude-code-ide-window-width (floor (* 0.33 (frame-width)))))
+  (my/claude-code-update-window-width)
+  (add-hook 'window-size-change-functions #'my/claude-code-update-window-width))
 
 (defun my/vterm-skip-claude-rename (orig-fn title)
   "Don't let vterm rename claude-code-ide buffers."
