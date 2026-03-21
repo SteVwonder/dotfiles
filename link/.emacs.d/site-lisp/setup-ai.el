@@ -1,5 +1,6 @@
 (use-package claude-code-ide
   :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :demand t
   :bind
   ("C-c c" . claude-code-ide-menu)
   :config

@@ -11,8 +11,8 @@
   :init
   (setq tabspaces-keymap-prefix "M-p")
   :config
-  (defun my/project-open-magit-and-vterm ()
-    "Open magit status and a vterm in the current project."
+  (defun my/project-open-buffers ()
+    "Open magit status, a vterm, and claude-code-ide in the current project."
     (interactive)
     ;; Remove the carried-over buffer from this workspace so it
     ;; doesn't get killed when the workspace is closed
@@ -20,12 +20,11 @@
       (set-window-parameter (selected-window) 'quit-restore nil)
       (magit-project-status)
       (delete-other-windows)
-      (split-window-right)
-      (other-window 1)
-      (vterm t)
+      (save-window-excursion (vterm t))
       (set-frame-parameter nil 'buffer-list
-                           (delq old-buf (frame-parameter nil 'buffer-list)))))
-  (setq tabspaces-project-switch-commands #'my/project-open-magit-and-vterm)
+                           (delq old-buf (frame-parameter nil 'buffer-list)))
+      (claude-code-ide--start-session)))
+  (setq tabspaces-project-switch-commands #'my/project-open-buffers)
   ;; Integrate with consult: show workspace-filtered buffers by default
   (with-eval-after-load 'consult
     (consult-customize consult--source-buffer :hidden t :default nil)
