@@ -72,10 +72,6 @@ Make sure you don't have other gofmt/goimports hooks enabled."
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
-;; The default setting is too low for lsp-mode’s needs due to the fact that
-;; client/server communication generates a lot of memory/garbage.
-(setq gc-cons-threshold 100000000)
-
 ;; Increase the amount of data which Emacs reads from the process. Again the
 ;; emacs default is too low 4k considering that the some of the language server
 ;; responses are in 800k - 3M range.

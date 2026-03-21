@@ -1,5 +1,10 @@
 (setq package-enable-at-startup nil)
 
+;; Crank GC threshold during init to avoid repeated GC pauses while loading
+(setq gc-cons-threshold most-positive-fixnum)
+(add-hook 'emacs-startup-hook
+          (lambda () (setq gc-cons-threshold 100000000)))
+
 (setq default-frame-alist
       (append
        '((tool-bar-lines . 0)        ; disable tool bar on GUI frames

@@ -1,13 +1,11 @@
-
 (use-package flycheck
-  :init (global-flycheck-mode)
-  )
+  :hook (after-init . global-flycheck-mode))
 
 (use-package flycheck-irony
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
-  )
+  :after flycheck
+  :hook (flycheck-mode . flycheck-irony-setup))
 
-(use-package consult-flycheck)
+(use-package consult-flycheck
+  :after (consult flycheck))
 
 (provide 'setup-flycheck)

@@ -10,14 +10,14 @@
   (setq-local adaptive-fill-first-line-regexp "[ \t]*[-*+] "))
 
 (use-package magit
+  :commands (magit-status magit-dispatch magit-file-dispatch magit-project-status)
   :init
   (setq magit-last-seen-setup-instructions "1.4.0")
   :config
   (dolist (regexp '("^Bad passphrase, try again for .*: ?$"
                     "^Enter passphrase for .*: ?$"))
     (add-to-list 'magit-process-password-prompt-regexps regexp))
-  (add-hook 'git-commit-mode-hook #'setup-commit-mode 90)
-  )
+  (add-hook 'git-commit-mode-hook #'setup-commit-mode 90))
 
 (defun get-branch-sha (branch)
   (let ((repo (magit-toplevel)))

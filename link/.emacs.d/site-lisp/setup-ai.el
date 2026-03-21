@@ -1,14 +1,13 @@
 (use-package claude-code-ide
   :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
-  :demand t
+  :commands (claude-code-ide--start-session)
   :bind
   ("C-c c" . claude-code-ide-menu)
-  :config
-  (claude-code-ide-emacs-tools-setup)
   :init
   (setq claude-code-ide-switch-tab-on-ediff nil)
   (setq claude-code-ide-prevent-reflow-glitch nil)
   :config
+  (claude-code-ide-emacs-tools-setup)
   (defun my/claude-code-update-window-width (&rest _)
     (setq claude-code-ide-window-width (floor (* 0.50 (frame-width)))))
   (my/claude-code-update-window-width)

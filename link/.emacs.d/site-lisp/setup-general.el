@@ -52,8 +52,8 @@
 ;; Scroll until the first error in compilation window
 (setq compilation-scroll-output 'first-error)
 
-(require 're-builder)
-(setq reb-re-syntax 'string)
+(with-eval-after-load 're-builder
+  (setq reb-re-syntax 'string))
 
 ;; ediff should split the screen horizontally to put the buffers side-by-side
 (setq ediff-split-window-function 'split-window-horizontally)
@@ -162,7 +162,10 @@ apps are not started from a shell."
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
-(set-exec-path-from-shell-PATH)
+;; On Linux, Emacs inherits PATH from the environment — only call this on macOS
+;; where GUI apps don't get the shell PATH
+(when (eq system-type 'darwin)
+  (set-exec-path-from-shell-PATH))
 
 ;; If running in emacsclient, force a prompt before exiting client
 (defun my-save-buffers-kill-terminal ()

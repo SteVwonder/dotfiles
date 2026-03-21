@@ -1,16 +1,15 @@
 (use-package undo-tree
-  :config (global-undo-tree-mode)
-  ;; Prevent undo tree files from polluting your git repo
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
-  )
+  :hook (after-init . global-undo-tree-mode)
+  :config
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 
-(use-package vlf)
+(use-package vlf :defer t)
 
-(use-package vdiff)
+(use-package vdiff :defer t)
 
-(use-package transpose-frame)
+(use-package transpose-frame :defer t)
 
-(use-package academic-phrases)
+(use-package academic-phrases :defer t)
 
 (use-package whitespace
   :init
@@ -23,7 +22,7 @@
   (rust-mode . (lambda () (setq whitespace-line-column 100)))
   )
 
-(use-package buffer-move)
+(use-package buffer-move :defer t)
 
 (use-package doom-themes
   :ensure t
@@ -108,10 +107,9 @@
 
 (use-package clipetty
   :ensure t
-  :init (global-clipetty-mode)
+  :hook (after-init . global-clipetty-mode)
   :config (setq clipetty-tmux-ssh-tty "tmux show-environment SSH_TTY")
-  :bind ("M-w" . clipetty-kill-ring-save)
-  )
+  :bind ("M-w" . clipetty-kill-ring-save))
 
 (use-package wgrep
   :ensure t
