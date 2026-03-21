@@ -2,6 +2,8 @@
   :config
   (dtrt-indent-global-mode 1))
 
+(add-hook 'prog-mode-hook 'visual-line-mode)
+
 (add-hook 'c-mode-hook
           (lambda()
             (local-unset-key (kbd "C-c C-c"))))
@@ -45,7 +47,9 @@
 
 (use-package yaml-mode)
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :hook ((markdown-mode . (lambda () (electric-indent-local-mode -1)))
+         (markdown-mode . visual-line-mode)))
 
 (use-package adoc-mode
   :init (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
