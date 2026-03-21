@@ -80,6 +80,14 @@
   :config
   (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
   (setq vterm-buffer-name-string "vterm %s")
+
+  (defun my/strip-trailing-whitespace-from-kill (&rest _)
+    "Strip trailing whitespace from the latest kill ring entry when in vterm."
+    (when (and kill-ring (derived-mode-p 'vterm-mode))
+      (setcar kill-ring
+              (replace-regexp-in-string "[ \t]+$" "" (car kill-ring)))))
+
+  (advice-add 'kill-new :after #'my/strip-trailing-whitespace-from-kill)
   )
 
 (require 'multi-scratch)
