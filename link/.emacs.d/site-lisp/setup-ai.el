@@ -9,7 +9,7 @@
   (setq claude-code-ide-prevent-reflow-glitch nil)
   :config
   (defun my/claude-code-update-window-width (&rest _)
-    (setq claude-code-ide-window-width (floor (* 0.33 (frame-width)))))
+    (setq claude-code-ide-window-width (floor (* 0.50 (frame-width)))))
   (my/claude-code-update-window-width)
   (add-hook 'window-size-change-functions #'my/claude-code-update-window-width))
 
