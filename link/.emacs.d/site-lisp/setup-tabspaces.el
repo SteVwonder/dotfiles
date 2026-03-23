@@ -27,7 +27,6 @@
   (setq tabspaces-project-switch-commands #'my/project-open-buffers)
   ;; Integrate with consult: show workspace-filtered buffers by default
   (with-eval-after-load 'consult
-    (consult-customize consult--source-buffer :hidden t :default nil)
     (defvar consult--source-workspace
       (list :name "Workspace Buffers"
             :narrow ?w
