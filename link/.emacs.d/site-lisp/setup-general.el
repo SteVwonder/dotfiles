@@ -58,6 +58,11 @@
 ;; ediff should split the screen horizontally to put the buffers side-by-side
 (setq ediff-split-window-function 'split-window-horizontally)
 
+;; Allow splitting windows that are at least 80 columns wide (default 160).
+;; Needed so magit can show commit message + diff side-by-side when a side
+;; window (e.g. claude-code-ide) is consuming half the frame.
+(setq split-width-threshold 80)
+
 ;; make all prompts require the full yes/no (for when my
 ;; fingers/muscle memories are faster than my eyes/terminal)
 (defalias 'y-or-n-p 'yes-or-no-p)
