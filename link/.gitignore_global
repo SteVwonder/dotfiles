@@ -64,3 +64,4 @@ Desktop.ini
 .*.swo
 
 *-tabspaces-session.el
+.worktrees
