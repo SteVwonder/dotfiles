@@ -66,11 +66,25 @@
 
 (use-package magit-gerrit
   :after magit
+  :init
+  ;; magit-gerrit's top-level code tries to insert at "%" in
+  ;; magit-dispatch, but modern magit removed that suffix. Temporarily
+  ;; suppress the error during package load, then re-insert correctly.
+  (defun setup-magit--suppress-gerrit-percent (orig-fn prefix loc &rest args)
+    "Suppress magit-gerrit's broken insertion at \"%\" in magit-dispatch."
+    (unless (and (eq prefix 'magit-dispatch) (equal loc "%"))
+      (apply orig-fn prefix loc args)))
+  (advice-add 'transient-append-suffix :around
+              #'setup-magit--suppress-gerrit-percent)
   :config
+  (advice-remove 'transient-append-suffix
+                 #'setup-magit--suppress-gerrit-percent)
   ;; Name of your Gerrit remote, e.g. "gerrit" or "origin"
   (setq-default magit-gerrit-remote "gerrit")
   ;; Usually you want to push for review (refs/for/...)
   (setq-default magit-gerrit-push-to 'for)
-  )
+  ;; Insert the Gerrit popup at the correct location.
+  (transient-append-suffix 'magit-dispatch "!"
+    (list magit-gerrit-popup-prefix "Gerrit" 'magit-gerrit-popup)))
 
 (provide 'setup-magit)
