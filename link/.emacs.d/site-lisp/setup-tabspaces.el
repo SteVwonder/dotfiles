@@ -25,6 +25,19 @@
                            (delq old-buf (frame-parameter nil 'buffer-list)))
       (claude-code-ide--start-session)))
   (setq tabspaces-project-switch-commands #'my/project-open-buffers)
+
+  (defun my/worktree-open-in-tabspace ()
+    "Create a new branch in a worktree and open it as a tabspace.
+Prompts for a starting point and branch name.  The worktree is
+created at <repo-root>/.worktrees/<branch>."
+    (interactive)
+    (let* ((start-point (magit-read-branch-or-commit "Starting point"))
+           (branch (read-string (format "New branch name (from %s): " start-point)))
+           (directory (expand-file-name
+                       branch
+                       (expand-file-name ".worktrees" (magit-toplevel)))))
+      (when (zerop (magit-run-git "worktree" "add" "-b" branch directory start-point))
+        (tabspaces-open-or-create-project-and-workspace directory))))
   ;; Integrate with consult: show workspace-filtered buffers by default
   (with-eval-after-load 'consult
     (defvar consult--source-workspace
