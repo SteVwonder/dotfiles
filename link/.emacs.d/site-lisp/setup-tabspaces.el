@@ -9,7 +9,7 @@
   (tabspaces-include-buffers '("*scratch*"))
   (tabspaces-session t)
   :init
-  (setq tabspaces-keymap-prefix "M-p")
+  (setq tabspaces-keymap-prefix "M-t")
   :config
   (defun my/project-open-buffers ()
     "Open magit status, a vterm, and claude-code-ide in the current project."
