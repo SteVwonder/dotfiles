@@ -3,6 +3,29 @@
 (unless (server-running-p)
   (server-start))
 
+;; Restore window configuration after finishing a server edit (C-x #).
+;; Without this, server-edit replaces the buffer with an unrelated one
+;; instead of returning to what was displayed before the edit request.
+(defvar my/pre-server-window-config nil
+  "Window configuration saved before a server buffer is displayed.")
+
+(defvar my/server-edit-in-progress nil
+  "Non-nil while `server-edit' is running, to suppress saving window config
+from `server-switch-buffer' calls inside `server-edit'.")
+
+(advice-add 'server-switch-buffer :before
+            (lambda (&rest _)
+              (unless my/server-edit-in-progress
+                (setq my/pre-server-window-config (current-window-configuration)))))
+
+(advice-add 'server-edit :around
+            (lambda (orig-fn &rest args)
+              (let ((my/server-edit-in-progress t))
+                (apply orig-fn args))
+              (when my/pre-server-window-config
+                (set-window-configuration my/pre-server-window-config)
+                (setq my/pre-server-window-config nil))))
+
 ;;; General modes
 (delete-selection-mode t)
 (recentf-mode 1)
