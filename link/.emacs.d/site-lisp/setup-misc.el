@@ -79,6 +79,7 @@
   :config
   (add-to-list 'vterm-eval-cmds '("update-pwd" (lambda (path) (setq default-directory path))))
   (setq vterm-buffer-name-string "vterm %s")
+  (setq vterm-shell (or (getenv "SHELL") "/bin/bash"))
 
   (defun my/strip-trailing-whitespace-from-kill (&rest _)
     "Strip trailing whitespace from the latest kill ring entry when in vterm."
