@@ -2,11 +2,13 @@
 is_ubuntu || return 1
 
 # Add git ppa
-sudo add-apt-repository -y ppa:git-core/ppa
+if command -v add-apt-repository &>/dev/null; then
+  maybe_sudo add-apt-repository -y ppa:git-core/ppa
+fi
 # Update APT.
 e_header "Updating APT"
-sudo apt-get -qq update
-sudo apt-get -qq dist-upgrade
+maybe_sudo apt-get -qq update
+maybe_sudo apt-get -qq dist-upgrade
 
 # Install APT packages.
 packages=(
@@ -31,7 +33,7 @@ packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstal
 if (( ${#packages[@]} > 0 )); then
   e_header "Installing APT packages: ${packages[*]}"
   for package in "${packages[@]}"; do
-    sudo apt-get -qq install "$package"
+    maybe_sudo apt-get -qq install "$package"
   done
 fi
 
@@ -41,6 +43,6 @@ if [[ ! "$(type -P git-extras)" ]]; then
   (
     cd $DOTFILES/vendor/git-extras &&
     make &&
-    sudo make install
+    maybe_sudo make install
   )
 fi

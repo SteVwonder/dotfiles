@@ -5,8 +5,8 @@ is_arch || return 1
 # Update the keying (to avoid signing issues) and then update the whole system
 # https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
 e_header "Updating via Pacman"
-sudo pacman -Sqy --needed archlinux-keyring &&
-    sudo pacman -Squ || \
+maybe_sudo pacman -Sqy --needed archlinux-keyring &&
+    maybe_sudo pacman -Squ || \
         e_header "Failed to update Arch system. Exiting." && return 1
 
 
@@ -58,7 +58,7 @@ packages=(
 )
 
 e_header "Installing Arch packages: ${packages[*]}"
-sudo pacman -Sq --needed "${packages[@]}"
+maybe_sudo pacman -Sq --needed "${packages[@]}"
 
 e_header "Installing Yay AUR Helper"
 (

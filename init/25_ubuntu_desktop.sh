@@ -16,7 +16,7 @@ packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstal
 if (( ${#packages[@]} > 0 )); then
   e_header "Installing APT packages: ${packages[*]}"
   for package in "${packages[@]}"; do
-    sudo apt-get -qq install "$package"
+    maybe_sudo apt-get -qq install "$package"
   done
 fi
 
@@ -24,6 +24,6 @@ fi
 if [[ ! "$(type -P py3status)" ]]; then
   e_header "Installing py3status"
   (
-      sudo pip install py3status
+      maybe_sudo pip install py3status
   )
 fi
