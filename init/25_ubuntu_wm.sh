@@ -29,10 +29,6 @@ packages=(
   playerctl
   xclip
 
-  # volnoti
-  libdbus-glib-1-dev
-  libgtk2.0-dev
-
   # dmenu-frecency dependency
   python-docopt
 )
@@ -46,22 +42,9 @@ if (( ${#packages[@]} > 0 )); then
   done
 fi
 
-# Install Volnoti
-if [[ ! "$(type -P volnoti)" ]]; then
-  e_header "Installing Volnoti"
-  (
-    cd $DOTFILES/vendor/volnoti &&
-        bash prepare.sh &&
-        bash fix_headers.sh &&
-        ./configure --prefix=/usr/local &&
-        make &&
-        sudo make install
-  )
-fi
-
 # Install py3status
 if [[ ! "$(type -P py3status)" ]]; then
-  e_header "Installing Playerctl"
+  e_header "Installing py3status"
   (
       sudo pip install py3status
   )
