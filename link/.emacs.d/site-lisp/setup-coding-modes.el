@@ -37,8 +37,6 @@
 ;;          (lambda ()
 ;;            (add-hook 'before-save-hook 'gofmt-before-save nil t)))
 
-(use-package cmake-mode :defer t)
-
 (use-package cython-mode :defer t)
 
 (use-package lua-mode :defer t)
