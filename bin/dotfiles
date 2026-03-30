@@ -52,7 +52,7 @@ function is_linux() {
   [[ "$OSTYPE" =~ ^linux ]] || return 1
 }
 function get_os() {
-  for os in osx ubuntu; do
+  for os in osx ubuntu arch; do
     is_$os; [[ $? == ${1:-0} ]] && echo $os
   done
 }
