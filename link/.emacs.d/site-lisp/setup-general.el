@@ -26,6 +26,11 @@ from `server-switch-buffer' calls inside `server-edit'.")
                 (set-window-configuration my/pre-server-window-config)
                 (setq my/pre-server-window-config nil))))
 
+;; UTF-8 everywhere — many systems default to POSIX/ASCII locale, which
+;; causes multibyte characters (emoji, box-drawing, etc.) to render as "?".
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+
 ;;; General modes
 (delete-selection-mode t)
 (recentf-mode 1)
