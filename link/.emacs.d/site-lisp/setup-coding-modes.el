@@ -73,7 +73,7 @@
 
 (use-package treesit-auto
   :custom
-  (treesit-auto-install 'prompt)
+  (treesit-auto-install t)
   :hook (after-init . global-treesit-auto-mode)
   :config
   (treesit-auto-add-to-auto-mode-alist 'all))
