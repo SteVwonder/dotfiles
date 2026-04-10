@@ -36,6 +36,11 @@ from `server-switch-buffer' calls inside `server-edit'.")
 (recentf-mode 1)
 (setq recentf-max-saved-items 2000)
 
+;; Auto-revert buffers when files change on disk
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
 ;; Prevents the starting splash screen from opening. One less window to close
 (setq inhibit-splash-screen t)
 
