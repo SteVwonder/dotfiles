@@ -97,7 +97,7 @@
   ("M-g c" . 'avy-goto-char)
   )
 
-(when (getenv "SSH_CONNECTION")
+(when (and (getenv "SSH_CONNECTION") (executable-find "lemonade"))
   (setq interprogram-cut-function
         (lambda (text)
           (let ((process-connection-type nil))
@@ -124,7 +124,7 @@
   )
 
 (setq browse-url-browser-function 'browse-url-generic)
-(if (getenv "SSH_CONNECTION")
+(if (and (getenv "SSH_CONNECTION") (executable-find "lemonade"))
     (setq browse-url-generic-program "lemonade"
           browse-url-generic-args '("open"))
   (setq browse-url-generic-program "open"))
