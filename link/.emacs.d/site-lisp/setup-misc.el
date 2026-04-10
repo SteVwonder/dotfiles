@@ -97,20 +97,17 @@
   ("M-g c" . 'avy-goto-char)
   )
 
-(straight-use-package
- '(clipetty
-   :type git
-   :host github
-   :repo "spudlyo/clipetty"
-   :fork t
-   )
- )
-
-(use-package clipetty
-  :ensure t
-  :hook (after-init . global-clipetty-mode)
-  :config (setq clipetty-tmux-ssh-tty "tmux show-environment SSH_TTY")
-  :bind ("M-w" . clipetty-kill-ring-save))
+(when (getenv "SSH_CONNECTION")
+  (setq interprogram-cut-function
+        (lambda (text)
+          (let ((process-connection-type nil))
+            (let ((proc (start-process "lemonade-copy" nil "lemonade" "copy")))
+              (process-send-string proc text)
+              (process-send-eof proc)))))
+  (setq interprogram-paste-function
+        (lambda ()
+          (let ((output (shell-command-to-string "lemonade paste")))
+            (unless (string-empty-p output) output)))))
 
 (use-package wgrep
   :ensure t
@@ -126,7 +123,10 @@
          (tsv-mode . rainbow-csv-mode))
   )
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "open")
+(setq browse-url-browser-function 'browse-url-generic)
+(if (getenv "SSH_CONNECTION")
+    (setq browse-url-generic-program "lemonade"
+          browse-url-generic-args '("open"))
+  (setq browse-url-generic-program "open"))
 
 (provide 'setup-misc)

@@ -11,6 +11,7 @@ recipes=(
   #emacs
   gcc
   git
+  go
   #reattach-to-user-namespace
   ripgrep
   ssh-copy-id

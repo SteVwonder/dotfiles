@@ -17,6 +17,7 @@ packages=(
   emacs
   git-core
   global
+  golang
   htop
   id3tool
   libncurses-dev
