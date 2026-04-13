@@ -74,4 +74,19 @@ show/hide its cursor appropriately."
 ;; Window-level focus changes (e.g. switching between Emacs windows)
 (add-hook 'window-selection-change-functions #'my/claude-update-focus)
 
+(use-package agent-shell
+  :straight (:type git :host github :repo "xenodium/agent-shell")
+  :commands (agent-shell agent-shell-toggle agent-shell-new-shell)
+  :init
+  (setq agent-shell-show-context-usage-indicator t))
+
+(use-package agent-shell-sidebar
+  :straight (:type git :host github :repo "cmacrae/agent-shell-sidebar")
+  :commands (agent-shell-sidebar-toggle agent-shell-sidebar-toggle-focus
+             agent-shell-sidebar-change-provider agent-shell-sidebar-reset))
+
+(use-package agent-shell-workspace
+  :straight (:type git :host github :repo "gveres/agent-shell-workspace")
+  :commands (agent-shell-workspace-toggle))
+
 (provide 'setup-ai)
