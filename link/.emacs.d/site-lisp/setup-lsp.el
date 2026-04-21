@@ -24,10 +24,13 @@ Make sure you don't have other gofmt/goimports hooks enabled."
           ;; (XXX-mode . lsp)
           (rust-mode . lsp-deferred)
           (rust-ts-mode . lsp-deferred)
-          (go-mode . lsp-deferred)
-          (go-mode . lsp-go-install-save-hooks)
-          (go-ts-mode . lsp-deferred)
-          (go-ts-mode . lsp-go-install-save-hooks)
+          ;; Go LSP disabled by default — gopls uses too much memory when
+          ;; running AI agents continuously. Start manually with M-x lsp when
+          ;; needed; `lsp-go-install-save-hooks' can be added back then.
+          ;; (go-mode . lsp-deferred)
+          ;; (go-mode . lsp-go-install-save-hooks)
+          ;; (go-ts-mode . lsp-deferred)
+          ;; (go-ts-mode . lsp-go-install-save-hooks)
           (python-mode . lsp-deferred)
           (python-ts-mode . lsp-deferred)
           (terraform-mode . lsp)
