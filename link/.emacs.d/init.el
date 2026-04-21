@@ -22,7 +22,7 @@
 
 (let ((init-features '("setup-completion" "setup-coding-modes" "setup-flycheck" "setup-magit" "setup-misc"
                        "setup-org" "setup-tabspaces" "setup-lsp"
-                       "setup-ai"
+                       "setup-ai" "setup-cc-notify"
                        ;;"setup-langtool" "setup-linklings-mode" "setup-tex"
                        )))
   (mapc #'load init-features)
