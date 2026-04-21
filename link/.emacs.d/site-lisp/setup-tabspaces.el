@@ -28,16 +28,28 @@
                            (delq old-buf (frame-parameter nil 'buffer-list))))) ; workspace so it won't be killed with it
   (setq tabspaces-project-switch-commands #'my/project-open-buffers)
 
+  (defun my/git-main-worktree-root ()
+    "Return the main worktree's top directory, even from a linked worktree.
+Uses `--git-common-dir' (the shared `.git' dir for all worktrees); its
+parent is the main worktree root."
+    (when-let ((common-dir (magit-git-string
+                            "rev-parse" "--path-format=absolute"
+                            "--git-common-dir")))
+      (file-name-as-directory
+       (file-name-directory (directory-file-name common-dir)))))
+
   (defun my/worktree-open-in-tabspace ()
     "Create a new branch in a worktree and open it as a tabspace.
 Prompts for a starting point and branch name.  The worktree is
-created at <repo-root>/.worktrees/<branch>."
+created at <main-repo-root>/.worktrees/<branch>, even when invoked
+from within an existing worktree."
     (interactive)
     (let* ((start-point (magit-read-branch-or-commit "Starting point"))
            (branch (read-string (format "New branch name (from %s): " start-point)))
            (directory (expand-file-name
                        branch
-                       (expand-file-name ".worktrees" (magit-toplevel)))))
+                       (expand-file-name ".worktrees"
+                                         (my/git-main-worktree-root)))))
       (when (zerop (magit-run-git "worktree" "add" "-b" branch directory start-point))
         (tabspaces-open-or-create-project-and-workspace directory))))
 
@@ -51,10 +63,7 @@ Only works when the current tabspace's root lives under a
                    (string-match-p "/\\.worktrees/[^/]+/?\\'" worktree))
         (user-error "Not inside a .worktrees tabspace"))
       (when (yes-or-no-p (format "Close tabspace and remove worktree %s? " worktree))
-        (let ((default-directory (file-name-directory
-                                  (directory-file-name
-                                   (file-name-directory
-                                    (directory-file-name worktree))))))
+        (let ((default-directory (my/git-main-worktree-root)))
           (tabspaces-kill-buffers-close-workspace)
           (magit-run-git "worktree" "remove" worktree)))))
   ;; Integrate with consult: show workspace-filtered buffers by default
