@@ -113,6 +113,14 @@
   :ensure t
   )
 
+(use-package trust-manager
+  :straight (trust-manager
+             :type git
+             :host github
+             :repo "eshelyaron/trust-manager")
+  :config
+  (trust-manager-mode 1))
+
 (use-package rainbow-csv
   :ensure t
   :straight (rainbow-csv
