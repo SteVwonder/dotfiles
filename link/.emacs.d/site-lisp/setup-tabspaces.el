@@ -40,6 +40,23 @@ created at <repo-root>/.worktrees/<branch>."
                        (expand-file-name ".worktrees" (magit-toplevel)))))
       (when (zerop (magit-run-git "worktree" "add" "-b" branch directory start-point))
         (tabspaces-open-or-create-project-and-workspace directory))))
+
+  (defun my/worktree-close-tabspace-and-remove ()
+    "Close the current tabspace and remove its associated worktree.
+Only works when the current tabspace's root lives under a
+`.worktrees/' directory."
+    (interactive)
+    (let ((worktree (magit-toplevel)))
+      (unless (and worktree
+                   (string-match-p "/\\.worktrees/[^/]+/?\\'" worktree))
+        (user-error "Not inside a .worktrees tabspace"))
+      (when (yes-or-no-p (format "Close tabspace and remove worktree %s? " worktree))
+        (let ((default-directory (file-name-directory
+                                  (directory-file-name
+                                   (file-name-directory
+                                    (directory-file-name worktree))))))
+          (tabspaces-kill-buffers-close-workspace)
+          (magit-run-git "worktree" "remove" worktree)))))
   ;; Integrate with consult: show workspace-filtered buffers by default
   (with-eval-after-load 'consult
     (defvar consult--source-workspace
