@@ -14,5 +14,8 @@ fi
 e_header "Installing cc-emacs-notify hooks"
 bash "$DOTFILES/conf/claude/hooks/cc-emacs-notify/install.sh"
 
-e_header "Installing Claude iTerm2 tab-state hooks"
-bash "$DOTFILES/conf/claude/hooks/iterm-tab-state/install.sh"
+e_header "Installing Claude Tabtint plugin marketplace"
+claude plugin marketplace add stevwonder/tabtint
+
+e_header "Installing Claude Tabtint iTerm2 plugin"
+claude plugin install tabtint-iterm2@tabtint
