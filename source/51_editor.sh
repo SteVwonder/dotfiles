@@ -2,11 +2,9 @@
 
 if type emacsclient &> /dev/null; then
     EDITOR="emacsclient"
-    alias emacsclient="TERM=$TERM emacsclient"
     alias emacs="emacsclient -c"
 else
     EDITOR="emacs"
-    alias emacs="TERM=$TERM emacs"
 fi
 
 magit() {
