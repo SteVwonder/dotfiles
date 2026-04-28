@@ -15,12 +15,8 @@
   :init
   (global-whitespace-mode t)
   :config
-  (setq whitespace-line-column 100)
-  (setq whitespace-style (quote (face trailing lines-tail)))
-  (setq whitespace-global-modes (quote (not org-mode latex-mode LaTeX-mode)))
-  :hook
-  (rust-mode . (lambda () (setq whitespace-line-column 100)))
-  )
+  (setq whitespace-style (quote (face trailing)))
+  (setq whitespace-global-modes (quote (not org-mode latex-mode LaTeX-mode))))
 
 (use-package buffer-move :defer t)
 
