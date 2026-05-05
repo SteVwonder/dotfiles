@@ -20,6 +20,21 @@ sshfwd() {
     && echo "Forwarded ${direction#-} ${local_port} <-> ${host}:${remote_port}"
 }
 
+persistent-ssh() {
+  local host="$1"
+  if [[ -z "$host" ]]; then
+    echo "Usage: persistent-ssh <host>"
+    return 1
+  fi
+
+  autossh -M 0 -t \
+    -o ServerAliveInterval=30 \
+    -o ServerAliveCountMax=3 \
+    -o ExitOnForwardFailure=yes \
+    "$host" \
+    "tmux -CC new-session -A -s main"
+}
+
 # IP addresses
 alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
 
