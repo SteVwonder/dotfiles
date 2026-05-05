@@ -8,7 +8,7 @@ else
 fi
 
 magit() {
-    MAGIT_REPO="${1:-$PWD}" emacs -t -u -a "" -e '(progn (magit-status (getenv "MAGIT_REPO")) (delete-other-windows))'
+    MAGIT_REPO="${1:-$PWD}" command emacs -nw --eval '(progn (magit-status (getenv "MAGIT_REPO")) (delete-other-windows))'
 }
 
 export EDITOR="${EDITOR}"
