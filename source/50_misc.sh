@@ -1,3 +1,5 @@
+is_interactive || return 1
+
 if is_bash; then
     # Case-insensitive globbing (used in pathname expansion)
     shopt -s nocaseglob
