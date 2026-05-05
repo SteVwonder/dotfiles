@@ -66,3 +66,4 @@ Desktop.ini
 *-tabspaces-session.el
 .worktrees
 .agent-shell
+.dir-locals.el
