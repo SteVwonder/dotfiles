@@ -229,6 +229,10 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace I' # mnemonics I - IDE
 
 [[on-window-detected]]
+    if.app-id = 'com.googlecode.iterm2'
+    run = 'move-node-to-workspace I' # mnemonics I - iTerm2
+
+[[on-window-detected]]
     if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace M' # mnemonics M - Music
 
@@ -258,10 +262,6 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
     if.app-id = 'com.mitchellh.ghostty'
-    run = 'move-node-to-workspace Y' # mnemonics Y - ttY
-
-[[on-window-detected]]
-    if.app-id = 'com.googlecode.iterm2'
     run = 'move-node-to-workspace Y' # mnemonics Y - ttY
 
 [[on-window-detected]]
