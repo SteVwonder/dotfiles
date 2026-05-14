@@ -1,8 +1,11 @@
-# OSX already has pbcopy and pbpaste
-is_osx && return 1
+# Use lemonade aliases on remote shells.
+[[ -n "$SSH_TTY$SSH_CONNECTION$SSH_CLIENT" ]] || return 1
+command -v lemonade >/dev/null 2>&1 || return 1
 
-alias pbcopy="xclip -i -selection clipboard"
-alias pbpaste="xclip -o -selection clipboard"
+for name in xdg-open pbcopy pbpaste; do
+  unalias "$name" 2>/dev/null || true
+done
 
-# Trim new lines and copy to clipboard
-# alias c="tr -d '\n' | pbcopy"
+alias xdg-open="lemonade open"
+alias pbcopy="lemonade copy"
+alias pbpaste="lemonade paste"
