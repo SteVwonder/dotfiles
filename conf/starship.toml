@@ -9,13 +9,13 @@ success_symbol = "[❯](bold green) "
 error_symbol = "[❯](bold red) "
 
 [custom.iterm2_prompt_start]
-when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
+when = '[ "$TERM_PROGRAM" = "iTerm.app" ] || [ "$LC_TERMINAL" = "iTerm2" ]'
 command = 'printf "\033]133;A\007"'
 shell = ["sh", "--norc", "--noprofile"]
 format = '$output'
 
 [custom.iterm2_prompt_end]
-when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
+when = '[ "$TERM_PROGRAM" = "iTerm.app" ] || [ "$LC_TERMINAL" = "iTerm2" ]'
 command = 'printf "\033]133;B\007"'
 shell = ["sh", "--norc", "--noprofile"]
 format = '$output'
