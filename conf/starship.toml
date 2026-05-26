@@ -1,6 +1,28 @@
+####
+# iTerm2 shell integration handling
+# Add OSC codes so that iterm2 knows where the prompt begins and ends
+####
+format = """${custom.iterm2_prompt_start}$all$character${custom.iterm2_prompt_end}"""
+
+[character]
+success_symbol = "[❯](bold green) "
+error_symbol = "[❯](bold red) "
+
+[custom.iterm2_prompt_start]
+when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
+command = 'printf "\033]133;A\007"'
+shell = ["sh", "--norc", "--noprofile"]
+format = '$output'
+
+[custom.iterm2_prompt_end]
+when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
+command = 'printf "\033]133;B\007"'
+shell = ["sh", "--norc", "--noprofile"]
+format = '$output'
+
 [kubernetes]
 format = 'on [⛵ $context](dimmed green) '
-disabled = false
+disabled = true
 
 [git_branch]
 symbol = '🌱 '
