@@ -47,7 +47,7 @@ function titlebar() {
   echo -n $'\e]0;'"$*"$'\a'
 }
 
-alias htop="TERM=screen htop"
+alias htop="HTOPRC=$HOME/.htoprc TERM=screen htop"
 alias stripcolors='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 alias ccat="pygmentize -g"
 
