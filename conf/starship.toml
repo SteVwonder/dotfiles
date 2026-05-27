@@ -5,16 +5,16 @@
 format = """${custom.iterm2_prompt_start}$all$character${custom.iterm2_prompt_end}"""
 
 [character]
-success_symbol = "[❯](bold green) "
-error_symbol = "[❯](bold red) "
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
 
 [custom.iterm2_prompt_start]
-when = '[ "$TERM_PROGRAM" = "iTerm.app" ] || [ "$LC_TERMINAL" = "iTerm2" ]'
+when = '[ "$ITERM2_SQUELCH_MARK" = "1" ]'
 command = 'printf "\033]133;A\007"'
 format = '$output'
 
 [custom.iterm2_prompt_end]
-when = '[ "$TERM_PROGRAM" = "iTerm.app" ] || [ "$LC_TERMINAL" = "iTerm2" ]'
+when = '[ "$ITERM2_SQUELCH_MARK" = "1" ]'
 command = 'printf "\033]133;B\007"'
 format = '$output'
 

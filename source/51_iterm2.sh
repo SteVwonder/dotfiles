@@ -1,4 +1,6 @@
-if is_bash; then
+if is_bash \
+    && test -e "${HOME}/.iterm2_shell_integration.bash" \
+    && { [ "$TERM_PROGRAM" = "iTerm.app" ] || [ "$LC_TERMINAL" = "iTerm2" ]; }; then
     export ITERM2_SQUELCH_MARK=1
-    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    source "${HOME}/.iterm2_shell_integration.bash"
 fi
