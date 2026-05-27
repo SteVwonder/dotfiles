@@ -165,3 +165,8 @@
 	textconv = sops -d
 [gitreview]
     branch = main
+
+[alias]
+  push-gerrit = push gerrit HEAD:refs/for/main
+  push-for-review = push gerrit HEAD:refs/for/main%ready
+  push-for-wip = push gerrit HEAD:refs/for/main%wip
