@@ -93,17 +93,31 @@
   ("M-g c" . 'avy-goto-char)
   )
 
+(defun my/lemonade-copy (text)
+  "Copy TEXT with lemonade, ignoring connection failures."
+  (condition-case nil
+      (let ((process-connection-type nil)
+            (proc (start-process "lemonade-copy" nil "lemonade" "copy")))
+        (process-send-string proc text)
+        (process-send-eof proc))
+    (error nil)))
+
+(defun my/lemonade-paste ()
+  "Return lemonade clipboard text, or nil when lemonade is unavailable."
+  (let ((buffer (generate-new-buffer " *lemonade-paste*")))
+    (unwind-protect
+        (let ((status (condition-case nil
+                          (call-process "lemonade" nil buffer nil "paste")
+                        (error nil))))
+          (when (eq status 0)
+            (with-current-buffer buffer
+              (let ((output (buffer-string)))
+                (unless (string= output "") output)))))
+      (kill-buffer buffer))))
+
 (when (and (getenv "SSH_CONNECTION") (executable-find "lemonade"))
-  (setq interprogram-cut-function
-        (lambda (text)
-          (let ((process-connection-type nil))
-            (let ((proc (start-process "lemonade-copy" nil "lemonade" "copy")))
-              (process-send-string proc text)
-              (process-send-eof proc)))))
-  (setq interprogram-paste-function
-        (lambda ()
-          (let ((output (shell-command-to-string "lemonade paste")))
-            (unless (string-empty-p output) output)))))
+  (setq interprogram-cut-function #'my/lemonade-copy)
+  (setq interprogram-paste-function #'my/lemonade-paste))
 
 (use-package wgrep
   :ensure t
