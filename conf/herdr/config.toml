@@ -1,0 +1,4 @@
+[keys]
+prefix = "ctrl+t"
+split_vertical = "prefix+|"
+split_horizontal = "prefix+_"
