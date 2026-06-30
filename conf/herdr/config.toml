@@ -1,4 +1,6 @@
 [keys]
 prefix = "ctrl+t"
+new_tab = "prefix+c"
+new_workspace = "prefix+shift+c"
 split_vertical = "prefix+|"
 split_horizontal = "prefix+_"
