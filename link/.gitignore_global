@@ -67,3 +67,6 @@ Desktop.ini
 .worktrees
 .agent-shell
 .dir-locals.el
+
+**/.claude/settings.local.json
+
