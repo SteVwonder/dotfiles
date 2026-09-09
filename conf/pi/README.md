@@ -35,6 +35,7 @@ into `common.json` (an agent can do this) so it's shared.
 | `agent/extensions/retry-prompt.ts` | `/retry` | ✅ |
 | `agent/extensions/common-settings.ts` | injects common.json → settings.json | ✅ |
 | `agent/open-tui.json` | TUI display prefs | via open-tui package |
+| `agent/extension-data/pi-tool-display-intent/config.json` | tool-call aggregation layout (`aggregate`) | via pi-tool-display-intent |
 
 `init/70_pi.sh` symlinks these individual files into `~/.pi/agent/...` and
 seeds `settings.json` from `common.json` on first install.
@@ -49,7 +50,11 @@ seeds `settings.json` from `common.json` on first install.
 - `~/.pi/agent/herdr-agent-state.ts` — herdr-managed integration (reinstalled
   by herdr).
 - `lazy.json`, `mcp-cache.json`, `mcp-onboarding.json`, `sessions/`,
-  `missions/`, `run-history.jsonl`, `trust.json`, `extension-data/`, `npm/`.
+  `missions/`, `run-history.jsonl`, `trust.json`, `npm/`.
+
+`extension-data/` is otherwise per-host, except for the single tracked file
+`extension-data/pi-tool-display-intent/config.json` above (symlinked, repo =
+truth); the other per-extension state in `extension-data/` stays local.
 
 Because `settings.json` is per-host, the machine paths never appear in the
 repo at all — no leaking, no working-tree churn.

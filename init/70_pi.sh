@@ -35,6 +35,15 @@ done
 [[ -f "$DOTFILES_PI/open-tui.json" ]] && \
   ln -sfn "$DOTFILES_PI/open-tui.json" "$PI_AGENT/open-tui.json"
 
+# pi-tool-display-intent: tool-call aggregation config (repo = source of truth).
+TOOL_DISPLAY_SRC="$DOTFILES_PI/extension-data/pi-tool-display-intent/config.json"
+if [[ -f "$TOOL_DISPLAY_SRC" ]]; then
+  TOOL_DISPLAY_DIR="$PI_AGENT/extension-data/pi-tool-display-intent"
+  mkdir -p "$TOOL_DISPLAY_DIR"
+  ln -sfn "$TOOL_DISPLAY_SRC" "$TOOL_DISPLAY_DIR/config.json"
+  e_success "Linked extension-data/pi-tool-display-intent/config.json"
+fi
+
 # Portable baseline: symlink it (repo is source of truth).
 ln -sfn "$DOTFILES_PI/common.json" "$PI_AGENT/common.json"
 e_success "Linked common.json"
