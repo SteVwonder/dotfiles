@@ -1,0 +1,25 @@
+{
+  "theme": "dark",
+  "hideThinkingBlock": true,
+  "retry": {
+    "maxRetries": 2,
+    "provider": {
+      "timeoutMs": 60000
+    }
+  },
+  "httpIdleTimeoutMs": 120000,
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    {
+      "source": "npm:pi-subagents@0.58.0"
+    },
+    "npm:pi-mcp-adapter@2.29.0",
+    {
+      "source": "npm:@juicesharp/rpiv-ask-user-question@2.7.1",
+      "extensions": []
+    },
+    "npm:pi-open-tui",
+    "npm:@zhcsyncer/pi-tool-display-intent",
+    "npm:@rahularya01/pi-lazy"
+  ]
+}

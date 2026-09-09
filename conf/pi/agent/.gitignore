@@ -1,0 +1,3 @@
+# Per-host settings: pi writes to it freely (portable bits are injected from
+# common.json by the common-settings extension). NEVER commit a settings.json.
+settings.json

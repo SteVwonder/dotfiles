@@ -28,3 +28,6 @@
 *LOCAL*
 
 /.claude
+
+# pi (conf/pi): per-host settings must never be committed
+conf/pi/agent/settings.json
