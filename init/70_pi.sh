@@ -8,6 +8,7 @@
 #   common.json  -> symlinked (repo = truth, portable baseline). Its contents
 #                   are injected into the per-host settings.json by the
 #                   common-settings extension.
+#   AGENTS.md    -> symlinked (repo = truth) global pi instructions.
 #   extensions/  -> symlinked, auto-discovered by pi (exit-alias, retry-prompt,
 #                   common-settings).
 #   open-tui.json-> symlinked (read-only config for the open-tui display pkg).
@@ -43,6 +44,10 @@ if [[ -f "$TOOL_DISPLAY_SRC" ]]; then
   ln -sfn "$TOOL_DISPLAY_SRC" "$TOOL_DISPLAY_DIR/config.json"
   e_success "Linked extension-data/pi-tool-display-intent/config.json"
 fi
+
+# Global instructions: symlink it (repo is source of truth).
+ln -sfn "$DOTFILES_PI/AGENTS.md" "$PI_AGENT/AGENTS.md"
+e_success "Linked AGENTS.md"
 
 # Portable baseline: symlink it (repo is source of truth).
 ln -sfn "$DOTFILES_PI/common.json" "$PI_AGENT/common.json"
