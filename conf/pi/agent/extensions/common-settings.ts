@@ -52,6 +52,18 @@ function stringify(v: unknown): string {
 	return JSON.stringify(v);
 }
 
+/**
+ * Version-stripped identity key for a package entry, so the same package pinned
+ * at different versions (e.g. `npm:pi-subagents` vs `npm:pi-subagents@0.58.0`)
+ * is treated as one package instead of two. Only a trailing semver-like
+ * `@<version>` is stripped, so scoped npm names, local paths, and git branch
+ * refs are left untouched.
+ */
+function packageKey(p: unknown): string {
+	const s = typeof p === "string" ? p : (p as Record<string, unknown>)?.source ?? stringify(p);
+	return s.replace(/(@\d+(?:\.\d+)*(?:[-+][0-9A-Za-z.-]+)?)$/, "");
+}
+
 /** Merge common.json's portable bits into the live settings.json (idempotent). */
 function syncFromCommon(): void {
 	const common = readJson(COMMON_FILE);
@@ -60,14 +72,16 @@ function syncFromCommon(): void {
 	const settings = readJson(SETTINGS_FILE) ?? {};
 
 	// Union `packages` — keep every machine package the host already has.
-	// Iterate existing-first so a file that already contains everything stays
-	// byte-identical (no churn); append only common packages that are missing.
+	// Existing entries run first and matching is by package name (version pin
+	// ignored), so a common package is copied in only when NO version of that
+	// package is already present; the file stays byte-identical when it already
+	// contains everything (no churn).
 	const commonPkgs = Array.isArray(common.packages) ? (common.packages as unknown[]) : [];
 	const existingPkgs = Array.isArray(settings.packages) ? (settings.packages as unknown[]) : [];
 	const packages: unknown[] = [];
 	const seen = new Set<string>();
 	for (const p of [...existingPkgs, ...commonPkgs]) {
-		const key = typeof p === "string" ? p : (p as Record<string, unknown>)?.source ?? stringify(p);
+		const key = packageKey(p);
 		if (!seen.has(key)) {
 			seen.add(key);
 			packages.push(p);
