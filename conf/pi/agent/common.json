@@ -20,6 +20,7 @@
     },
     "npm:pi-open-tui",
     "npm:@zhcsyncer/pi-tool-display-intent",
-    "npm:@rahularya01/pi-lazy"
+    "npm:@rahularya01/pi-lazy",
+    "npm:@zigai/pi-mention-skill"
   ]
 }
