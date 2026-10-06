@@ -234,4 +234,14 @@ apps are not started from a shell."
 
 (setq smerge-command-prefix (kbd "C-c v"))
 
+;; Mouse support in terminal frames: click to move point/select windows,
+;; drag to select, wheel to scroll.
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1))
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (unless (display-graphic-p frame)
+              (with-selected-frame frame
+                (xterm-mouse-mode 1)))))
+
 (provide 'setup-general)
