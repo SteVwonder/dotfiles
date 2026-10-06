@@ -2,7 +2,7 @@
 
 if type emacsclient &> /dev/null; then
     EDITOR="emacsclient"
-    alias emacs="emacsclient -c"
+    alias emacs="emacsclient -t"
 else
     EDITOR="emacs"
 fi
