@@ -96,8 +96,8 @@
 (defun my/lemonade-copy (text)
   "Copy TEXT with lemonade, ignoring connection failures."
   (condition-case nil
-      (let ((process-connection-type nil)
-            (proc (start-process "lemonade-copy" nil "lemonade" "copy")))
+      (let* ((process-connection-type nil)
+             (proc (start-process "lemonade-copy" nil "lemonade" "copy")))
         (process-send-string proc text)
         (process-send-eof proc))
     (error nil)))
@@ -118,6 +118,31 @@
 (when (and (getenv "SSH_CONNECTION") (executable-find "lemonade"))
   (setq interprogram-cut-function #'my/lemonade-copy)
   (setq interprogram-paste-function #'my/lemonade-paste))
+
+;; Local macOS terminal Emacs: with xterm-mouse-mode the terminal (herdr) no
+;; longer sees drags, so sync the kill ring with the system clipboard directly.
+(when (and (eq system-type 'darwin)
+           (not (getenv "SSH_CONNECTION"))
+           (executable-find "pbcopy"))
+  (defun my/pbcopy (text)
+    "Copy TEXT to the macOS clipboard in terminal frames."
+    (if (display-graphic-p)
+        (gui-select-text text)
+      (let* ((process-connection-type nil)
+             (proc (start-process "pbcopy" nil "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+  (defun my/pbpaste ()
+    "Return macOS clipboard text in terminal frames, unless it is our last kill."
+    (if (display-graphic-p)
+        (gui-selection-value)
+      (let ((text (shell-command-to-string "pbpaste")))
+        (unless (or (string= text "") (string= text (car kill-ring)))
+          text))))
+  (setq interprogram-cut-function #'my/pbcopy
+        interprogram-paste-function #'my/pbpaste
+        ;; copy on drag-select, like the terminal's auto-copy
+        mouse-drag-copy-region t))
 
 (use-package wgrep
   :ensure t
