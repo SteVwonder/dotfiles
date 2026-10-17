@@ -31,6 +31,21 @@ from `server-switch-buffer' calls inside `server-edit'.")
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 
+;; Terminal frames: Emacs counts "✏️" (base char + VS16) as 1 column, but
+;; iTerm2/herdr draw it 2 wide, which desyncs redisplay (garbled lines, wrong
+;; region highlighted). Send VS16 to the terminal as its own 1-column glyph
+;; (no composition, no glyphless substitution) so the widths add up to 2.
+(defun my/tty-fix-emoji-width ()
+  (set-char-table-range composition-function-table '(#xfe00 . #xfe0f) nil)
+  (set-char-table-range glyphless-char-display #xfe0f nil)
+  (set-char-table-range char-width-table #xfe0f 1))
+(unless (display-graphic-p)
+  (my/tty-fix-emoji-width))
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (unless (display-graphic-p frame)
+              (my/tty-fix-emoji-width))))
+
 ;;; General modes
 (delete-selection-mode t)
 (recentf-mode 1)
