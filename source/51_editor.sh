@@ -5,6 +5,7 @@ if type emacsclient &> /dev/null; then
     alias emacs="emacsclient -t"
 else
     EDITOR="emacs"
+    alias emacs="emacs -nw"
 fi
 
 magit() {
