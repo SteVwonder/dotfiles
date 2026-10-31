@@ -16,15 +16,11 @@ packages=(
   build-essential
   emacs
   git-core
-  global
   golang
   htop
-  id3tool
   libncurses-dev
   libssl-dev
   python-pip
-  subversion
-  tmux
   tree
   zsh
 )
