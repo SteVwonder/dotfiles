@@ -232,6 +232,10 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace I' # mnemonics I - iTerm2
 
 [[on-window-detected]]
+    if.app-id = 'dev.herdr.app'
+    run = 'move-node-to-workspace I' # mnemonics I - IDE
+
+[[on-window-detected]]
     if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace M' # mnemonics M - Music
 
