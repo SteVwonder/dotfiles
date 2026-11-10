@@ -236,6 +236,10 @@ automatically-unhide-macos-hidden-apps = true
     run = 'move-node-to-workspace M' # mnemonics M - Music
 
 [[on-window-detected]]
+    if.app-id = 'com.fastmail.mac.Fastmail'
+    run = 'move-node-to-workspace O' # mnemonics O - Outlook/mail
+
+[[on-window-detected]]
     if.app-id = 'com.microsoft.Outlook'
     run = 'move-node-to-workspace O' # mnemonics O - Outlook
 
@@ -257,6 +261,10 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace W' # mnemonics W - Web browser
+
+[[on-window-detected]]
+    if.app-id = 'org.mozilla.firefox'
     run = 'move-node-to-workspace W' # mnemonics W - Web browser
 
 [[on-window-detected]]
