@@ -114,9 +114,16 @@
         (unless (or (string= text "") (string= text (car kill-ring)))
           text))))
   (setq interprogram-cut-function #'my/pbcopy
-        interprogram-paste-function #'my/pbpaste
-        ;; copy on drag-select, like the terminal's auto-copy
-        mouse-drag-copy-region t))
+        interprogram-paste-function #'my/pbpaste))
+
+;; Remote terminal Emacs: M-w / C-w send the kill to the local clipboard via
+;; OSC 52 (through ssh and herdr). Drag-select also copies, like a terminal.
+;; Not gated on SSH_CONNECTION: the emacs daemon / herdr server often lack it.
+(unless (eq system-type 'darwin)
+  (use-package clipetty
+    :ensure t
+    :hook (after-init . global-clipetty-mode))
+  (setq mouse-drag-copy-region t))
 
 (use-package wgrep
   :ensure t
